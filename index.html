@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="MedSyn: Text-guided Anatomy-aware Synthesis of High-Fidelity 3D CT Images">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MedSyn: Text-guided Anatomy-aware Synthesis of High-Fidelity 3D CT Images</title>
+
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">MedSyn: Text-guided Anatomy-aware Synthesis of High-Fidelity 3D CT Images</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="http://xuyanwu.github.io/">Yanwu Xu</a><sup>1*</sup>,</span>
+            <span class="author-block">
+              <a href="https://lisun-ai.github.io/">Li Sun</a><sup>1*</sup>,</span>
+            <span class="author-block">
+              <a href="https://xiaoiker.github.io/">Wei Peng</a><sup>2*</sup>,</span>
+            <span class="author-block">
+              <a href="https://shuyuej.com/">Shuyue Jia</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://katelyn98.github.io/">Katelyn Morrison</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://perer.org/">Adam Perer</a><sup>3</sup>,
+            </span>
+              <a href="https://www.linkedin.com/in/afrooz-zandifar-545626a3/">Afrooz Zandifar</a><sup>4</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://www.thevislab.com/lab/doku.php">Shyam Visweswaran</a><sup>5</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://www.motahhare.com/">Motahhare Eslami</a><sup>3</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://batman-lab.com/">Kayhan Batmanghelich</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Boston University,</span>
+            <span class="author-block"><sup>2</sup>Stanford University,</span>
+            <span class="author-block"><sup>3</sup>Carnegie Mellon University,</span>
+            <span class="author-block"><sup>4</sup>University of Pittsburgh Medical Center,</span>
+            <span class="author-block"><sup>5</sup>University of Pittsburgh</span>
+          </div>
+
+          <div class="is-size-6 publication-authors">
+              <span class="author-block"><sup>*</sup>Equal Contribution</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://ieeexplore.ieee.org/document/10566053"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2310.03559"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/batmanlab/MedSyn"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            This paper introduces a novel methodology for producing high-quality 3D lung CT images guided by textual information. While diffusion-based generative models are increasingly used in medical imaging, current state-of-the-art approaches are limited to low-resolution outputs and underutilize radiology reports' abundant information. Nevertheless, expanding text-guided generation to high-resolution 3D images poses significant memory and anatomical detail-preserving challenges. Addressing the memory issue, we introduce a hierarchical scheme that uses a modified UNet architecture. We start by synthesizing low-resolution images conditioned on the text, serving as a foundation for subsequent generators for complete volumetric data. To ensure the anatomical plausibility of the generated samples, we provide further guidance by generating vascular, airway, and lobular segmentation masks in conjunction with the CT images. The model demonstrates the capability to use textual input and segmentation tasks to generate synthesized images. Algorithmic comparative assessments and blind evaluations conducted by 10 board-certified radiologists indicate that our approach exhibits superior performance compared to baseline methods, especially in accurately retaining crucial anatomical features such as fissure lines and airways. This study focuses on two main objectives: (1) the development of a method for creating images based on textual prompts and anatomical components, and (2) the capability to generate new images conditioning on anatomical elements. 
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+</div>
+    
+</section>
+
+<section class="section">
+<div class="container is-max-desktop">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <h2 class="title is-3"> Model Architecture</h2>
+      <div class="content has-text-justified">
+          <p>
+            Model structure for the low-resolution base model.
+          </p>
+        </div>
+    </div>
+  </div>
+  </div>
+  
+  <div class="columns is-centered has-text-centered">  
+  <div class="column is-six-fifths">      
+    <img id="teaser" width="50%" src="./static/images/schematic.jpg">
+  </div>
+  </div>
+
+  <div class="container is-max-desktop">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <div class="content has-text-justified">
+          <p>
+            Structure for our two-stage hierarchical model.
+          </p>
+        </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="columns is-centered has-text-centered">  
+  <div class="column is-six-fifths">      
+    <img id="teaser" width="50%" src="./static/images/two_stage_model.jpg">
+  </div>
+  </div>
+
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-six-fifths">
+      <h2 class="title is-3"> Comparison of Generated Samples</h2>
+    </div>
+  </div>
+
+    <div class="columns is-centered has-text-centered">
+    <div class="column is-six-fifths">
+      <img id="teaser" width="50%" src="./static/images/visualize_slice_v3.jpg">
+    </div>
+    </div>  
+
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-six-fifths">
+      <h2 class="title is-3"> Generation Conditioned on Prompt</h2>
+    </div>
+  </div>
+
+    <div class="columns is-centered has-text-centered">
+    <div class="column is-six-fifths">
+      <img id="teaser" width="50%" src="./static/images/prompt_comparison_v2.jpg">
+    </div>
+    </div>  
+
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-six-fifths">
+      <h2 class="title is-3"> Generation Conditioned on Segmentation Mask</h2>
+    </div>
+  </div>
+
+    <div class="columns is-centered has-text-centered">
+    <div class="column is-six-fifths">
+      <img id="teaser" width="50%" src="./static/images/marginalization.jpg">
+    </div>
+    </div>  
+
+  </section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@ARTICLE{medsyn2024,
+  author={Xu, Yanwu and Sun, Li and Peng, Wei and Jia, Shuyue and Morrison, Katelyn and Perer, Adam and Zandifar, Afrooz and Visweswaran, Shyam and Eslami, Motahhare and Batmanghelich, Kayhan},
+  journal={IEEE Transactions on Medical Imaging}, 
+  title={MedSyn: Text-guided Anatomy-aware Synthesis of High-Fidelity 3D CT Images}, 
+  year={2024},
+  doi={10.1109/TMI.2024.3415032}}
+</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://arxiv.org/pdf/2310.03559">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://batman-lab.com/" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            We use the template from <a
+              href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> for this website.
+            
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
