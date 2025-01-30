@@ -2,158 +2,105 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="description"
-        content="AI Summer School: Pitt HexAI Research Laboratory">
+  <meta name="description" content="AI Summer School: Pitt HexAI Research Laboratory">
   <meta name="keywords" content="AI Summer School">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AI Summer School: Pitt HexAI Research Laboratory</title>
 
-
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
   <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="icon" href="./static/images/favicon.png">
-
+  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
+  <script>
+    $(document).ready(function() {
+      $(".nav-item a").click(function(event) {
+        event.preventDefault();
+        var target = $(this).attr("href");
+        $('html, body').animate({
+          scrollTop: $(target).offset().top
+        }, 600);
+      });
+    });
+  </script>
 </head>
 <body>
-
-
-</br>          
-  
-  <h1 class="title is-3" style="text-align: center;"> </h1>
-  <h1 class="title is-3" style="text-align: center;">AI Summer School</h1>
-  <h3 class="title is-3" style="text-align: center;">Medical Imaging Informatics</h3>
-
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3"></h2>
-        <div class="content has-text-justified">
-          <p>
-            Our AI Summer School organized by the <a href="https://pitthexai.github.io/" target="_blank">Pitt HexAI Research Laboratory</a> aims to provide a stimulating and unique opportunity for students in grades 11 and 12 to dive into the fascinating world of artificial intelligence (AI) and its application in medical imaging informatics. This summer school is held between June 24 and June 28, 2024, at the <a href="http://www.pitt.edu" target="_blank">University of Pittsburgh</a>, in collaboration with the <a href="https://www.path.pitt.edu/divisions/computational-pathology-informatics/computational-pathology-ai-center-excellence" target="_blank">Computational Pathology & AI Center of Excellence (CPACE)</a> within the School of Medicine, plus the <a href="https://www.shrs.pitt.edu/" target="_blank">School of Health and Rehabilitation Sciences</a>, and <a href="https://webinabox.vtools.ieee.org/wibp_home/index/R20037" target="_blank">IEEE Computer Society</a> in Pittsburgh.
-          </p>
+  <nav class="navbar is-dark" role="navigation">
+    <div class="container">
+      <div class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item nav-item" href="#home">Home</a>
+          <a class="navbar-item nav-item" href="#program">Program</a>
+          <a class="navbar-item nav-item" href="#registration">Registration</a>
+          <a class="navbar-item nav-item" href="#testimonials">Students' Testimonials</a>
         </div>
       </div>
     </div>
-    <!--/ Abstract. -->
-</div>
-    
-</section>
-
-
-<section>
-          <div class="column has-text-centered">
-            <div class="publication-links">
-
-
-              <div class="video-container">
-        <!-- Embed code from YouTube -->
-        <iframe src="https://www.youtube.com/embed/emEAd2dhQb0?si=SUnv1l0TCb9bYhXM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </nav>
+  
+  <section id="home" class="section">
+    <div class="container is-max-desktop">
+      <h1 class="title is-3" style="text-align: center;">AI Summer School</h1>
+      <h3 class="title is-3" style="text-align: center;">Medical Imaging Informatics</h3>
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <p>Our AI Summer School organized by the <a href="https://pitthexai.github.io/" target="_blank">Pitt HexAI Research Laboratory</a> aims to provide a stimulating and unique opportunity for students in grades 11 and 12 to dive into the fascinating world of artificial intelligence (AI) and its application in medical imaging informatics.</p>
+        </div>
+      </div>
     </div>
-            </br>
-              
-              <!-- Code Link. -->
-              <span class="link-block">
-                <a href="https://github.com/pitthexai/AISummerSchoolinMedicalImagingInformatics" target="_blank"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>GitHub</span>
-                  </a>
-              </span>
-              
-            </div>
-
+  </section>
+  
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <div class="content has-text-justified">
+            <p>Our AI Summer School is held between June 24 and June 28, 2024, at the <a href="http://www.pitt.edu" target="_blank">University of Pittsburgh</a>, in collaboration with the <a href="https://www.path.pitt.edu/divisions/computational-pathology-informatics/computational-pathology-ai-center-excellence" target="_blank">Computational Pathology & AI Center of Excellence (CPACE)</a>, the <a href="https://www.shrs.pitt.edu/" target="_blank">School of Health and Rehabilitation Sciences</a>, and <a href="https://webinabox.vtools.ieee.org/wibp_home/index/R20037" target="_blank">IEEE Computer Society</a> in Pittsburgh.</p>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-
-<style>
-        /* Optional: Centering the video */
-        .video-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        iframe {
-            width: 560px;
-            height: 315px;
-            border: none;
-        }
-    </style>
-
-    <div class="video-container">
-        <!-- Embed code from YouTube -->
-        <iframe src="https://cdnapisec.kaltura.com/p/5687602/embedPlaykitJs/uiconf_id/53926702?iframeembed=true&entry_id=1_qg4nv08s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-<section class="section">
-<div class="container is-max-desktop">
-  <div class="columns is-centered has-text-centered">
-    <div class="column is-four-fifths">
-      <h2 class="title is-3"> Medical Imaging Informatics</h2>
-      <div class="content has-text-justified">
-          <p>
-            Imaging informatics or computer vision as a subfield of AI has been around for several years dealing with how computers can understand from digital images and video sequences. Advanced computer vision algorithms have already demonstrated successful applications in a variety of domains, including medical image interpretation, remote surgery, surveillance systems, security and biometrics, autonomous vehicles, and scene reconstruction, purposing to name a few. There is a list of fascinating problems in applied computer vision in medical imaging, with object detection and localization being one of the most interesting ones. Object detection and localization is now also widely associated with self-driving cars where automatic systems combine computer vision, LIDAR, and GPUs to generate a multidimensional representation of the road with all its participants. It is also commonly used in medical image analysis, video surveillance and monitoring, counting people for general statistics, and computationally analyze customer experience with walking patterns within shopping centers. In this summer school, you will learn -from scratch- how to use advanced computer vision algorithms to tackle the problem of object detection and localization in medical images. We will discuss object detection mechanism(s) in practice with several hands-on-practices starting from manual image annotation to programming and implementation in Python. We, together, will explore what object detection computational vision algorithm is, what is does, and how. The current AI summer school at the University of Pittsburgh is structured such that in addition to attending lectures, the students will be also working in teams on a project assignment.
-          </p>
-        </div>
-    </div>
-  </div>
-  </div>
-  
-</br>
-  
-  <div class="columns is-centered has-text-centered">  
-  <div class="column is-six-fifths">      
-    <img id="teaser" width="30%" src="./static/images/flyer2024.png">
-  </div>
-  </div>
-
-</br>
-
-  
   </section>
 
+  <section>
+    <div class="column has-text-centered">
+      <div class="publication-links">
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/emEAd2dhQb0?si=SUnv1l0TCb9bYhXM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <br>
+        <span class="link-block">
+          <a href="https://github.com/pitthexai/AISummerSchoolinMedicalImagingInformatics" target="_blank" class="external-link button is-normal is-rounded is-dark">
+            <span class="icon">
+              <i class="fab fa-github"></i>
+            </span>
+            <span>GitHub</span>
+          </a>
+        </span>
+      </div>
+    </div>
+  </section>
 
-
-
-
+  <section id="program" class="section">
+    <div class="container">
+      <h2 class="title">Program</h2>
+      <p>Details about the AI Summer School schedule, curriculum, and key sessions.</p>
+    </div>
+  </section>
+  
+  <section id="registration" class="section">
+    <div class="container">
+      <h2 class="title">Registration</h2>
+      <p>Information on how to apply, eligibility criteria, and deadlines.</p>
+    </div>
+  </section>
+  
+  <section id="testimonials" class="section">
+    <div class="container">
+      <h2 class="title">Students' Testimonials</h2>
+      <p>Read what past participants have to say about their experience at the AI Summer School.</p>
+    </div>
+  </section>
 </body>
 </html>
