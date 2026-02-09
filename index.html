@@ -55,6 +55,33 @@
         }
 
 
+
+
+
+        /* ===== 2025 Collapsible button ===== */
+        .year-btn {
+            cursor: pointer;
+            user-select: none;
+            color: #3273dc;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+    
+        .year-content {
+            display: none;
+        }
+    
+        .year-content.open {
+            display: block;
+        }
+    </style>
+
+
+        
+
+        
+
         /* ===== Force center alignment for Our Team section ===== */
         #team {
             text-align: center;
@@ -712,15 +739,21 @@
 
 
 
-     
+    
          <!-- 2025 -->   
-        <!-- Instructors -->
+        
         <div class="team-subsection mt-6">
             <h2 class="title has-text-centered">
               <span class="year-btn" onclick="toggle2025(this)">
                 <span class="arrow">▶</span> 2025
               </span>
             </h2>
+
+            
+            <div id="content2025" class="year-content">
+
+                
+            <!-- Instructors -->
             <h3 class="subtitle has-text-centered"><strong>Instructors</strong></h3>
             <div class="columns  is-mobile is-multiline is-centered">
                 <!-- Team Member 1 -->
@@ -861,6 +894,24 @@
     </div>
 </section>
 
+
+<script>
+  function toggle2025(el) {
+    const box = document.getElementById("content2025");
+    const arrow = el.querySelector(".arrow");
+
+    if (box.classList.contains("open")) {
+      box.classList.remove("open");
+      arrow.textContent = "▶";
+    } else {
+      box.classList.add("open");
+      arrow.textContent = "▼";
+    }
+  }
+</script>
+
+
+
 </body>
 </html>
 
@@ -936,7 +987,9 @@
 
     </div>
 
+   
   </div>
+</div>    
 </section>
 
 
