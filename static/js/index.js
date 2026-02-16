@@ -79,8 +79,10 @@ $(document).ready(function() {
 
 
 
-
-window.addEventListener("scroll", function () {
+// =========================
+// Sticky hero shrink on scroll
+// =========================
+window.addEventListener("scroll", () => {
   const hero = document.getElementById("sticky-hero");
   if (!hero) return;
 
