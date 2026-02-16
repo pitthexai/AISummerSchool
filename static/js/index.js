@@ -76,3 +76,14 @@ $(document).ready(function() {
     bulmaSlider.attach();
 
 })
+
+
+
+
+window.addEventListener("scroll", function () {
+  const hero = document.getElementById("sticky-hero");
+  if (!hero) return;
+
+  if (window.scrollY > 120) hero.classList.add("shrink");
+  else hero.classList.remove("shrink");
+});
