@@ -212,7 +212,7 @@ body {
   position: relative;
 
   border-radius: 50%;
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 .circle-avatar-container .is-rounded{
@@ -234,11 +234,4 @@ body {
   transform: translateY(-2px) scale(1.04);
   box-shadow: 0 10px 22px rgba(0,0,0,0.14);
   border-color: #bdbdbd;
-}
-
-
-
-.circle-avatar-container .is-rounded{
-  border: 8px solid red !important;
-  box-shadow: 0 0 0 8px yellow !important;
 }
