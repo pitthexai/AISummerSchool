@@ -132,7 +132,72 @@
     </style>
 
 
-        
+    <style>
+    /* ===== Pitt HexAI top nav on AI Summer School page ===== */
+    .pitt-topbar {
+      background: #003594;
+      color: white;
+      font-size: 12px;
+      padding: 2px 0;
+      text-align: center;
+    }
+    
+    .pitt-site-header {
+      background: #fff;
+      padding: 6px 0;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .pitt-site-header .inner {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: 0 16px;
+    }
+    
+    .pitt-logo img {
+      height: 48px;
+      width: auto;
+      display: block;
+    }
+    
+    .pitt-main-nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    
+    .pitt-main-nav a {
+      color: #222;
+      text-decoration: none;
+    }
+    
+    .pitt-main-nav a:hover {
+      color: #106eea;
+    }
+    
+    .pitt-main-nav a.active {
+      color: #106eea;
+      border-bottom: 2px solid #106eea;
+      padding-bottom: 4px;
+    }
+    
+    /* make black local nav thinner */
+    .navbar.is-dark {
+      min-height: 36px;
+    }
+    
+    .navbar.is-dark .navbar-item {
+      padding-top: 6px;
+      padding-bottom: 6px;
+      font-size: 14px;
+    }
+    </style>    
 
         <!--
 
@@ -155,7 +220,29 @@
 <body>
 
 
+<!-- ===== Pitt HexAI Website Header ===== -->
+<div class="pitt-topbar">
+  University of Pittsburgh
+</div>
 
+<header class="pitt-site-header">
+  <div class="inner">
+
+    <a class="pitt-logo" href="https://pitthexai.github.io/index.html">
+      <img src="./photos/Pitthexai_logo.png" alt="Pitt HexAI Logo">
+    </a>
+
+    <nav class="pitt-main-nav">
+      <a href="https://pitthexai.github.io/index.html">Home</a>
+      <a href="https://pitthexai.github.io/research.html">Research Projects</a>
+      <a href="https://pitthexai.github.io/publications.html">Publications</a>
+      <a href="https://pitthexai.github.io/podcast.html">HexAI Podcast</a>
+      <a class="active" href="https://pitthexai.github.io/AISummerSchool/">AI Summer School</a>
+      <a href="https://pitthexai.github.io/people.html">Team</a>
+    </nav>
+
+  </div>
+</header>
 
 
     
