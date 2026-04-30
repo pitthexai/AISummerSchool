@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="./static/css/bulma.min.css">
     <link rel="stylesheet" href="./static/css/index.css">
     <link rel="icon" href="./static/images/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">    
     <script defer src="./static/js/fontawesome.all.min.js"></script>
     <script src="./static/js/bulma-carousel.min.js"></script>
     <script src="./static/js/bulma-slider.min.js"></script>
@@ -133,7 +135,6 @@
 
 
     <style>
-    /* ===== Pitt HexAI top nav on AI Summer School page ===== */
     .pitt-topbar {
       background: #003594;
       color: white;
@@ -144,29 +145,45 @@
     
     .pitt-site-header {
       background: #fff;
-      padding: 6px 0;
+      padding: 4px 0 2px;
       border-bottom: 1px solid #eee;
     }
     
     .pitt-site-header .inner {
-      max-width: 1100px;
+      max-width: 1140px;
       margin: auto;
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 26px;
       padding: 0 16px;
     }
     
+    .pitt-logo {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-decoration: none;
+      line-height: 1;
+    }
+    
     .pitt-logo img {
-      height: 48px;
+      height: 62px;
       width: auto;
       display: block;
+    }
+    
+    .pitt-logo-subtitle {
+      color: #106eea;
+      font-size: 12px;
+      font-weight: 700;
+      margin-top: -2px;
+      white-space: nowrap;
     }
     
     .pitt-main-nav {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 15px;
       flex-wrap: wrap;
       font-size: 14px;
       font-weight: 600;
@@ -175,19 +192,32 @@
     .pitt-main-nav a {
       color: #222;
       text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
     }
     
-    .pitt-main-nav a:hover {
+    .pitt-main-nav a:hover,
+    .pitt-main-nav a.active {
       color: #106eea;
     }
     
     .pitt-main-nav a.active {
-      color: #106eea;
       border-bottom: 2px solid #106eea;
       padding-bottom: 4px;
     }
     
-    /* make black local nav thinner */
+    .pitt-social {
+      font-size: 20px;
+      color: #111 !important;
+    }
+    
+    .pitt-social:hover {
+      color: #106eea !important;
+    }
+    
+    /* black local nav thinner */
     .navbar.is-dark {
       min-height: 36px;
     }
@@ -230,15 +260,41 @@
 
     <a class="pitt-logo" href="https://pitthexai.github.io/index.html">
       <img src="./photos/Pitthexai_logo.png" alt="Pitt HexAI Logo">
+      <span class="pitt-logo-subtitle">AI for Musculoskeletal Care</span>
     </a>
 
     <nav class="pitt-main-nav">
-      <a href="https://pitthexai.github.io/index.html">Home</a>
-      <a href="https://pitthexai.github.io/research.html">Research Projects</a>
-      <a href="https://pitthexai.github.io/publications.html">Publications</a>
-      <a href="https://pitthexai.github.io/podcast.html">HexAI Podcast</a>
-      <a class="active" href="https://pitthexai.github.io/AISummerSchool/">AI Summer School</a>
-      <a href="https://pitthexai.github.io/people.html">Team</a>
+      <a href="https://pitthexai.github.io/index.html">
+        <i class="bx bx-home"></i> Home
+      </a>
+
+      <a href="https://pitthexai.github.io/research.html">
+        <i class="bx bx-search"></i> Research Projects
+      </a>
+
+      <a href="https://pitthexai.github.io/publications.html">
+        <i class="bx bx-search"></i> Publications
+      </a>
+
+      <a href="https://pitthexai.github.io/podcast.html">
+        <i class="bi bi-broadcast-pin"></i> HexAI Podcast
+      </a>
+
+      <a class="active" href="https://pitthexai.github.io/AISummerSchool/">
+        <i class="bx bxs-bank"></i> AI Summer School
+      </a>
+
+      <a href="https://pitthexai.github.io/people.html">
+        <i class="bi bi-people-fill"></i> Team
+      </a>
+
+      <a class="pitt-social" href="https://www.linkedin.com/in/ahmadtafti/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <i class="bi bi-linkedin"></i>
+      </a>
+
+      <a class="pitt-social" href="https://www.youtube.com/@user-xb1ti1jp4e" target="_blank" rel="noopener" aria-label="YouTube">
+        <i class="bi bi-youtube"></i>
+      </a>
     </nav>
 
   </div>
