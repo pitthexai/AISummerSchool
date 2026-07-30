@@ -1,1665 +1,1022 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="description" content="AI Summer School: Pitt HexAI Research Laboratory">
-    <meta name="keywords" content="AI Summer School">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AI Summer School: Pitt HexAI Research Laboratory</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="AI Summer School on Medical Imaging Informatics, University of Pittsburgh. A free one-week AI program for high school students in grades 11 and 12.">
+<title>AI Summer School · Medical Imaging Informatics · University of Pittsburgh</title>
+<link rel="icon" type="image/png" href="photos%20and%20videos/Pitthexai_logo.png">
+<link rel="apple-touch-icon" href="photos%20and%20videos/Pitthexai_logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ════ TOKENS ════ */
+:root{
+  --surface:#f6f9fe; --surface-bright:#ffffff;
+  --on-surface:#0f172a; --on-surface-variant:#334155;
+  --outline:#64748b; --outline-variant:#cbd5e1;
+  --primary:#002677; --primary-bright:#0033a0; --primary-container:#1a4ccc; --inverse-primary:#a3c2ff;
+  --secondary:#c28700; --secondary-bright:#f2a900; --tertiary:#004d66; --tertiary-bright:#007399;
+  --font-display:"Libre Caslon Text", Georgia, serif;
+  --font-body:"Avenir Next","Avenir","Segoe UI",system-ui,-apple-system,sans-serif;
+  --maxw:1180px; --nav-w:80px; --nav-w-open:256px;
+  --shadow-md:0 10px 25px -5px rgba(0,0,0,.08),0 8px 10px -6px rgba(0,0,0,.04);
+  --shadow-lg:0 24px 48px -12px rgba(0,0,0,.2);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--on-surface);background:var(--surface);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,.display{font-family:var(--font-display);font-weight:700;line-height:1.12;letter-spacing:-.01em}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+::selection{background:var(--secondary-bright);color:var(--primary)}
+.eyebrow{display:inline-flex;align-items:center;gap:.7rem;font-size:14px;font-weight:700;letter-spacing:.02em;color:var(--primary)}
+.eyebrow::before{content:"";width:2.2rem;height:1px;background:linear-gradient(90deg,var(--primary),transparent)}
+.eyebrow.right{flex-direction:row-reverse}
+.eyebrow.right::before{background:linear-gradient(270deg,var(--primary),transparent)}
+.eyebrow-light{color:rgba(255,255,255,.92)}
+.eyebrow-light::before{background:linear-gradient(90deg,rgba(255,255,255,.8),transparent)}
+.eyebrow-light.right::before{background:linear-gradient(270deg,rgba(255,255,255,.8),transparent)}
+.hl{background-image:linear-gradient(transparent 60%,rgba(242,169,0,.45) 60%);border-radius:2px;padding:0 .08em}
+.ta-right{text-align:right}
+.ta-right .lead{margin-left:auto}
 
-    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
-    <link rel="stylesheet" href="./static/css/bulma.min.css">
-    <link rel="stylesheet" href="./static/css/index.css">
-    <link rel="icon" href="./static/images/favicon.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">    
-    <script defer src="./static/js/fontawesome.all.min.js"></script>
-    <script src="./static/js/bulma-carousel.min.js"></script>
-    <script src="./static/js/bulma-slider.min.js"></script>
-    <script src="./static/js/index.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+/* ════ LIQUID GLASS (more transparent) ════ */
+.glass{background:linear-gradient(135deg,rgba(255,255,255,.34),rgba(255,255,255,.10));
+  backdrop-filter:blur(14px) saturate(150%);-webkit-backdrop-filter:blur(14px) saturate(150%);
+  border:1px solid rgba(255,255,255,.5);
+  box-shadow:0 8px 30px rgba(0,18,51,.12),inset 0 1px 0 rgba(255,255,255,.7)}
+.glass-soft{background:linear-gradient(135deg,rgba(255,255,255,.22),rgba(255,255,255,.06));
+  backdrop-filter:blur(11px) saturate(140%);-webkit-backdrop-filter:blur(11px) saturate(140%);
+  border:1px solid rgba(255,255,255,.4);box-shadow:0 5px 18px rgba(0,18,51,.08),inset 0 1px 0 rgba(255,255,255,.55)}
+.glass-dark{background:linear-gradient(135deg,rgba(12,34,86,.34),rgba(0,18,51,.18));
+  backdrop-filter:blur(15px) saturate(150%);-webkit-backdrop-filter:blur(15px) saturate(150%);
+  border:1px solid rgba(255,255,255,.2);color:#fff;
+  box-shadow:0 12px 40px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.24)}
+.glass-gold{background:linear-gradient(135deg,rgba(242,169,0,.92),rgba(194,135,0,.9));
+  border:1px solid rgba(255,255,255,.5);box-shadow:0 12px 30px -8px rgba(242,169,0,.5),inset 0 1px 0 rgba(255,255,255,.6)}
+.sheen{position:relative;overflow:hidden}
+.sheen::after{content:"";position:absolute;top:-60%;left:-30%;width:50%;height:220%;
+  background:linear-gradient(115deg,transparent,rgba(255,255,255,.3),transparent);
+  transform:rotate(8deg) translateX(-220%);transition:transform .9s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+.sheen:hover::after{transform:rotate(8deg) translateX(320%)}
 
-    <style>
-    .circle-avatar-container{
-      width: 128px;
-      height: 128px;
-      margin: 0 auto;
-      position: relative;
-    
-      border-radius: 50%;
-      overflow: hidden; 
-    }
-    
-    .circle-avatar-container .is-rounded{
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-    
-      border: 3px solid #d9d9d9;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.10);
-    
-      transition: transform 0.25s ease,
-                  box-shadow 0.25s ease,
-                  border-color 0.25s ease;
-    }
-    
-   
-    .circle-avatar-container:hover .is-rounded{
-      transform: translateY(-2px) scale(1.04);
-      box-shadow: 0 10px 22px rgba(0,0,0,0.14);
-      border-color: #1f4e79;
-    }
+/* ════ STATIC AURORA (no constant repaint for performance) ════ */
+.bg-aurora{background:linear-gradient(125deg,#001233,#002677 30%,#1a4ccc 52%,#004d66 74%,#001f54 100%)}
+@keyframes float-soft{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.float{animation:float-soft 6.5s ease-in-out infinite}
+.float-slow{animation:float-soft 9s ease-in-out infinite}
+@keyframes cue{0%{transform:translateY(0);opacity:1}70%{transform:translateY(11px);opacity:0}100%{opacity:0}}
+.cue{animation:cue 2.2s ease-in-out infinite}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes marquee-rev{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@keyframes kenburns{0%{transform:scale(1.05)}50%{transform:scale(1.13)}100%{transform:scale(1.05)}}
 
+/* ════ MOUSE FX ════ */
+.mouse-follower{position:fixed;width:42px;height:42px;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,51,160,.16),rgba(0,51,160,.04) 70%,transparent);
+  border:1px solid rgba(0,51,160,.2);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);
+  left:var(--mx,-200px);top:var(--my,-200px);opacity:0;transition:opacity .3s;will-change:left,top}
+body.mouse-on .mouse-follower{opacity:1}
+.click-ripple{position:fixed;border-radius:50%;pointer-events:none;background:rgba(0,51,160,.22);
+  transform:translate(-50%,-50%) scale(0);animation:ripple .6s cubic-bezier(.1,.8,.3,1) forwards;z-index:9999}
+@keyframes ripple{to{transform:translate(-50%,-50%) scale(26);opacity:0}}
 
-    #team .columns{
-      justify-content: center;
-      gap: 24px;
-    }
+/* ════ REVEAL / SECTION ENTRANCE ════ */
+@media (prefers-reduced-motion:no-preference){
+  .reveal{opacity:0;transform:translateY(46px);transition:opacity .8s ease-out,transform .8s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal-l{opacity:0;transform:translateX(-46px);transition:opacity .8s ease-out,transform .8s cubic-bezier(.2,.8,.2,1)}
+  .reveal-l.in{opacity:1;transform:none}
+  .reveal-r{opacity:0;transform:translateX(46px);transition:opacity .8s ease-out,transform .8s cubic-bezier(.2,.8,.2,1)}
+  .reveal-r.in{opacity:1;transform:none}
+  .reveal-s{opacity:0;transform:scale(.9);transition:opacity .8s ease-out,transform .8s cubic-bezier(.34,1.56,.64,1)}
+  .reveal-s.in{opacity:1;transform:none}
+  .reveal-clip{clip-path:inset(0 0 100% 0);transition:clip-path 1.05s cubic-bezier(.2,.8,.2,1)}
+  .reveal-clip.in{clip-path:inset(0 0 0 0)}
+  .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}.d6{transition-delay:.6s}
+}
 
-    #team .column.is-narrow{
-      flex: 0 0 200px;
-      width: 200px;
-      text-align: center;
-    }
-    
-    #team .column.is-narrow p{
-      word-break: keep-all;
-      overflow-wrap: normal;
-      hyphens: none;
-    }
-        
-    </style>
+/* ════ BRAND BAR ════ */
+.brandbar{position:fixed;top:0;left:0;right:0;height:46px;z-index:90;display:flex;align-items:center;
+  justify-content:space-between;padding:0 22px;color:#fff;font-size:13px;
+  background:#001f3f;border-bottom:1px solid rgba(255,255,255,.14)}
+.brandbar .org{font-weight:700;display:flex;align-items:center;gap:9px}
+.brandbar .org .dot{width:8px;height:8px;border-radius:50%;background:var(--secondary-bright);box-shadow:0 0 10px var(--secondary-bright)}
+.brandbar .links{display:flex;gap:18px;font-size:12.5px;font-weight:600}
+.brandbar .links a{opacity:.82;transition:.2s}
+.brandbar .links a:hover{opacity:1;color:var(--secondary-bright)}
 
+/* ════ COLLAPSIBLE GLASS SIDEBAR ════ */
+.sidenav{position:fixed;top:0;left:0;bottom:0;width:var(--nav-w);z-index:70;color:#fff;display:flex;flex-direction:column;
+  padding:58px 0 20px;overflow:hidden;border-right:1px solid rgba(255,255,255,.16);
+  background:#000c28;
+  backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%);
+  box-shadow:0 20px 60px rgba(0,0,0,.45);transition:width .38s cubic-bezier(.2,.8,.2,1)}
+/* skyline spans the FULL length of the bar */
+.sidenav::before{content:"";position:absolute;inset:0;z-index:0;
+  background:url("photos%20and%20videos/university-of-pittsburgh-cloudy-skyline-dol98832g1ht6q32.jpg") center/cover;opacity:.62}
+/* dark gradient across the WHOLE length (slightly lighter so the skyline shows a bit more) */
+.sidenav::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,8,30,.9) 0%,rgba(0,11,36,.78) 32%,rgba(0,13,42,.64) 62%,rgba(0,15,46,.6) 100%)}
+.sidenav>*{position:relative;z-index:2}
+.sidenav:hover{width:var(--nav-w-open)}
+.sn-brand{display:flex;align-items:center;gap:12px;padding:6px 0 0 22px;height:46px}
+.sn-mark{flex:0 0 auto;width:42px;height:42px;border-radius:12px;background:#fff;display:grid;place-items:center;box-shadow:0 6px 16px -4px rgba(0,0,0,.4)}
+.sn-mark .hexclip{width:28px;height:28px;overflow:hidden;position:relative}
+.sn-mark .hexclip img{position:absolute;height:36px;width:auto;max-width:none;left:-1px;top:-2px;display:block}
+.sn-full{white-space:nowrap;opacity:0;transform:translateX(-6px);transition:.3s;transition-delay:.05s}
+.sidenav:hover .sn-full{opacity:1;transform:none}
+.sn-full .t{font-family:var(--font-display);font-size:18px;line-height:1.05}
+.sn-full .t b{color:var(--secondary-bright)}
+.sn-full .s{font-size:11px;color:var(--inverse-primary);opacity:.9}
+.navlist{margin-top:22px;display:flex;flex-direction:column;gap:4px;padding:0 14px}
+.navlink{position:relative;display:flex;align-items:center;gap:14px;height:46px;padding:0 12px;border-radius:13px;font-size:14.5px;font-weight:600;color:rgba(255,255,255,.85);cursor:pointer;transition:.25s;white-space:nowrap}
+.navlink .ico{flex:0 0 auto;width:22px;height:22px;opacity:.95}
+.navlink .lbl{opacity:0;transform:translateX(-6px);transition:.28s}
+.sidenav:hover .navlink .lbl{opacity:1;transform:none}
+.navlink:hover{color:#fff;background:rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.2)}
+.navlink.active{color:#fff;background:linear-gradient(135deg,rgba(255,255,255,.22),rgba(255,255,255,.06));box-shadow:inset 0 1px 0 rgba(255,255,255,.3)}
+.navlink.active::before{content:"";position:absolute;left:-14px;top:50%;transform:translateY(-50%);width:4px;height:24px;border-radius:0 4px 4px 0;background:var(--secondary-bright);box-shadow:0 0 12px var(--secondary-bright)}
+.sn-cta{margin:auto 14px 0;height:46px;border-radius:13px;display:flex;align-items:center;gap:12px;padding:0 14px;font-weight:700;font-size:13.5px;color:#3a2900;white-space:nowrap;background:linear-gradient(135deg,var(--secondary-bright),var(--secondary));box-shadow:0 10px 24px -8px rgba(242,169,0,.6)}
+.sn-cta .ico{flex:0 0 auto;width:22px;height:22px}
+.sn-cta .lbl{opacity:0;transition:.28s}
+.sidenav:hover .sn-cta .lbl{opacity:1}
+.sn-foot{margin-top:14px;padding:0 22px;font-size:11px;color:rgba(255,255,255,.7);line-height:1.5;opacity:0;transition:.3s}
+.sidenav:hover .sn-foot{opacity:1}
+.navtoggle{display:none}
+.scrim{position:fixed;inset:0;background:rgba(0,18,51,.5);z-index:65;opacity:0;visibility:hidden;transition:.3s}
+body.nav-open .scrim{opacity:1;visibility:visible}
 
+/* ════ LAYOUT ════ */
+.main{margin-left:var(--nav-w);padding-top:46px}
+.section{padding:96px clamp(22px,5vw,64px);position:relative}
+.section.img-bg{color:#fff;overflow:hidden}
+.section .imgbg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0;will-change:transform}
+.section .imgbg-ov{position:absolute;inset:0;z-index:1}
+.section.img-bg .wrap{position:relative;z-index:2}
+.wrap{max-width:var(--maxw);margin:0 auto}
+.section h2.title{font-size:clamp(30px,4vw,46px);margin:14px 0 8px}
+.section .lead{font-size:18px;color:var(--on-surface-variant);max-width:62ch}
+.section.img-bg .lead{color:rgba(255,255,255,.9)}
+.divider{height:1px;border:0;background:linear-gradient(90deg,transparent,var(--outline-variant),transparent)}
+/* perf: skip rendering offscreen heavy sections */
+.cv{content-visibility:auto;contain-intrinsic-size:1px 900px}
 
-    
-    <script>
-        $(document).ready(function () {
-            $(".nav-item a").click(function (event) {
-                event.preventDefault();
-                var target = $(this).attr("href");
-                $('html, body').animate({
-                    scrollTop: $(target).offset().top
-                }, 600);
-            });
-        });
-    </script>
+/* ════ HERO ════ */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:120px clamp(22px,5vw,72px) 90px;overflow:hidden;color:#fff}
+.hero .skyline{position:absolute;inset:0;background:url("photos%20and%20videos/university-of-pittsburgh-cloudy-skyline-dol98832g1ht6q32.jpg") center/cover;opacity:.24;filter:saturate(1.1);animation:kenburns 26s ease-in-out infinite;will-change:transform}
+.hero .veil{position:absolute;inset:0;background:linear-gradient(115deg,rgba(0,18,51,.92),rgba(0,38,119,.78) 45%,rgba(0,77,102,.7))}
+.hero .glow{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none}
+.hero .glow.g1{width:480px;height:480px;background:rgba(26,76,204,.5);top:-120px;right:-80px}
+.hero .glow.g2{width:420px;height:420px;background:rgba(242,169,0,.18);bottom:-120px;left:10%}
+.hero-inner{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;width:100%}
+.hero h1{font-size:clamp(44px,7vw,90px);line-height:1.03;margin:20px 0 10px;max-width:16ch}
+.hero h1 .gold{color:var(--secondary-bright)}
+.hero .tagline{font-size:clamp(17px,2.2vw,23px);font-family:var(--font-display);font-style:italic;color:var(--inverse-primary);margin-bottom:14px}
+.hero .hero-sub{font-family:var(--font-display);font-weight:700;font-size:clamp(21px,3vw,36px);line-height:1.16;color:#fff;margin-bottom:18px;max-width:20ch}
+.hero .blurb{font-size:18px;max-width:60ch;color:rgba(255,255,255,.92)}
+.hero .facts{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.fact{display:flex;align-items:center;gap:10px;padding:12px 18px;border-radius:16px;font-size:14px;font-weight:600;color:#fff}
+.fact svg{width:17px;height:17px;color:var(--secondary-bright)}
+.hero .btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:999px;font-weight:700;font-size:15px;transition:transform .25s,box-shadow .25s}
+.btn svg{width:18px;height:18px}
+.btn-gold{color:#3a2900}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 16px 32px -8px rgba(242,169,0,.75)}
+.btn-ghost{color:#fff}.btn-ghost:hover{transform:translateY(-3px)}
+.scrollcue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:7px;color:rgba(255,255,255,.75);font-size:12px}
+.scrollcue svg{width:22px;height:22px}
+.split .w{display:inline-block;overflow:hidden;vertical-align:bottom;padding:.16em;margin:-.16em}
+.split .w i{display:inline-block;font-style:inherit;transform:translateY(120%);opacity:0;transition:transform .8s cubic-bezier(.2,.65,.2,1),opacity .5s;will-change:transform}
+.split.in .w i{transform:none;opacity:1}
+.logobar{position:relative;z-index:2;margin-top:54px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.logobar .track{display:flex;width:max-content;gap:64px;align-items:center;animation:marquee 30s linear infinite}
+.logobar:hover .track{animation-play-state:paused}
+.logobar img{height:42px;width:auto;filter:brightness(0) invert(1);opacity:.85;transition:opacity .25s}
+.logobar img:hover{opacity:1}
 
-    <style>
-        /* ===== Ensure perfect circles and consistent sizing ===== */
-        .circle-avatar-container {
-            width: 128px;
-            height: 128px;
-            margin: 0 auto;
-        }
+/* ════ ABOUT ════ */
+.about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;margin-top:40px}
+.about-grid.flip{grid-template-columns:.85fr 1.15fr}
+.about-copy p{margin-bottom:16px;font-size:17px;color:var(--on-surface-variant)}
+.about-media{position:relative}
+.about-media .pic{border-radius:24px;overflow:hidden;box-shadow:var(--shadow-lg);aspect-ratio:4/3}
+.about-media .pic img{width:100%;height:100%;object-fit:cover}
+.about-media .chip{position:absolute;padding:14px 18px;border-radius:18px;font-weight:700;color:var(--primary)}
+.about-media .chip small{display:block;font-weight:600;font-size:11px;color:var(--on-surface-variant)}
+.about-media .chip b{font-family:var(--font-display);font-size:24px}
+.chip.c1{bottom:-22px;left:-22px}.chip.c2{top:-22px;right:-22px}
+.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:56px}
+.fcard{padding:26px 22px;border-radius:20px;transition:transform .3s}
+.fcard:hover{transform:translateY(-6px)}
+.fcard .ic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;margin-bottom:14px;color:#fff;background:linear-gradient(135deg,var(--primary),var(--primary-container));box-shadow:0 8px 18px -6px rgba(0,38,119,.6)}
+.fcard .ic svg{width:24px;height:24px}
+.fcard h4{font-size:18px;margin-bottom:6px}
+.fcard p{font-size:14.5px;color:var(--on-surface-variant)}
 
-        .circle-avatar-container .is-rounded {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-        }
+/* ════ VIDEOS ════ */
+.videos{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:38px}
+.vid{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:16/9;box-shadow:var(--shadow-md);cursor:pointer;display:block}
+.vid .poster{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .5s}
+.vid:hover .poster{transform:scale(1.05)}
+.vid .poster .scrim2{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,18,51,.55),rgba(0,38,119,.45))}
+.vid .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:74px;height:74px;border-radius:50%;display:grid;place-items:center;color:#fff;z-index:2;transition:transform .25s}
+.vid:hover .play{transform:translate(-50%,-50%) scale(1.1)}
+.vid .play svg{width:30px;height:30px;margin-left:4px}
+.vid .vlabel{position:absolute;left:18px;bottom:16px;z-index:2;color:#fff;font-weight:700;font-size:14px;text-shadow:0 2px 8px rgba(0,0,0,.5)}
+.vid .vhint{position:absolute;right:14px;top:12px;z-index:2;color:#fff;font-size:11px;font-weight:600;opacity:.85;display:flex;align-items:center;gap:5px}
+.vid .vhint svg{width:13px;height:13px}
 
-        /* Optional: Add hover effect */
-        .circle-avatar-container img {
-            transition: transform 0.3s ease;
-        }
+/* ════ PROGRAM ════ */
+.timeline{position:relative;margin-top:48px;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--primary),var(--secondary-bright))}
+.tnode{position:relative;padding:0 0 30px 26px}
+.tnode .tcard{padding:20px 24px;border-radius:18px}
+.tnode::before{content:"";position:absolute;left:-30px;top:10px;width:20px;height:20px;border-radius:50%;background:#fff;border:3px solid var(--primary);box-shadow:0 0 0 4px rgba(0,38,119,.1)}
+.tnode:nth-child(even)::before{border-color:var(--secondary)}
+.tnode .day{font-size:13px;font-weight:700;color:var(--secondary)}
+.tnode h4{font-size:20px;margin:4px 0 6px}
+.tnode p{font-size:15px;color:var(--on-surface-variant);max-width:60ch}
+.prereq{margin-top:22px;padding:20px 24px;border-radius:18px;color:var(--primary)}
+.toolchips{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.toolchip{padding:9px 17px;border-radius:999px;font-size:13.5px;font-weight:600;color:var(--primary);transition:transform .2s,background .2s,color .2s}
+.toolchip:hover{transform:translateY(-3px);background:var(--primary);color:#fff}
 
-        .circle-avatar-container img:hover {
-            transform: scale(1.05);
-        }
+/* ════ REGISTRATION ════ */
+.reg-wrap{display:grid;grid-template-columns:1fr .82fr;gap:40px;margin-top:40px;align-items:start}
+.reg-copy p{font-size:17px;color:var(--on-surface-variant);margin-bottom:16px}
+.reg-status{padding:30px;border-radius:24px}
+.reg-status .now{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.reg-status .now .pill{padding:5px 14px;border-radius:999px;font-size:12px;font-weight:700}
+.pill-closed{background:#ffdad6;color:#93000a}
+.reg-status h4{color:#fff;font-size:22px}
+.yearlist{list-style:none;margin-top:8px}
+.yearlist li{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.92);font-size:15px}
+.yearlist li:last-child{border-bottom:0}
+.yearlist .st{font-size:12px;font-weight:700;color:var(--inverse-primary);border:1px solid rgba(255,255,255,.32);padding:3px 10px;border-radius:999px}
 
+/* ════ TESTIMONIALS ════ */
+.tgrid{columns:2;column-gap:24px;margin-top:40px}
+.quote{break-inside:avoid;margin-bottom:24px;padding:28px;border-radius:20px;position:relative;transition:transform .3s}
+.quote:hover{transform:translateY(-5px)}
+.quote .mark{font-family:var(--font-display);font-size:64px;line-height:.6;color:rgba(255,255,255,.5);position:absolute;top:18px;right:22px}
+.quote p{font-size:15.5px;color:#fff;font-style:italic;position:relative;z-index:1}
+.quote .who{margin-top:16px;display:flex;align-items:center;gap:11px;font-weight:700;color:#fff}
+.quote .av{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:#fff;font-style:normal;font-family:var(--font-body);background:linear-gradient(135deg,var(--secondary-bright),var(--secondary))}
+/* testimonial carousel (3 visible, center focus) */
+.carousel{position:relative;max-width:1040px;margin:40px auto 0}
+.carousel-viewport{overflow:hidden;padding:6px 0}
+.carousel-track{display:flex;align-items:stretch;gap:24px;transition:transform .55s cubic-bezier(.2,.8,.2,1)}
+.tslide{flex:0 0 58%;min-width:0;opacity:.4;transform:scale(.9);transition:opacity .5s,transform .5s;cursor:pointer}
+.tslide.active{opacity:1;transform:scale(1);cursor:default}
+.tslide .quote{margin:0;height:100%}
+.tslide .quote:hover{transform:none}
+.carousel-nav{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:24px}
+.cnav{cursor:pointer;user-select:none;font-size:30px;line-height:1;color:rgba(255,255,255,.7);transition:color .2s,transform .2s;padding:0 4px}
+.cnav:hover{color:#fff;transform:scale(1.2)}
+.carousel-dots{display:flex;justify-content:center;gap:9px}
+.cdot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:.25s}
+.cdot.on{background:var(--secondary-bright);transform:scale(1.3)}
+@media (max-width:700px){.tslide{flex:0 0 84%}}
 
+/* ════ TEAM ════ */
+.team-group{margin-top:52px}
+.team-group .gh{display:flex;align-items:center;gap:14px;margin-bottom:26px}
+.team-group .gh h3{font-size:24px;color:var(--primary)}
+.team-group .gh .line{flex:1;height:1px;background:linear-gradient(90deg,var(--outline-variant),transparent)}
+.team-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:22px}
+.member{position:relative;flex:0 0 200px;width:200px;border-radius:20px;overflow:hidden;aspect-ratio:3/4;cursor:pointer;background:linear-gradient(135deg,#dbe6fb,#c3d4f2);box-shadow:0 10px 28px -10px rgba(0,18,51,.4),inset 0 1px 0 rgba(255,255,255,.6)}
+@media (max-width:480px){.member{flex:0 0 46%;width:46%}}
+/* team section: faint, slowly moving gradient background */
+#team{position:relative;overflow:hidden}
+#team .wrap{position:relative;z-index:1}
+.team-deco{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.team-aurora{position:absolute;inset:-30%;will-change:transform;filter:blur(26px);
+  background:radial-gradient(40% 40% at 28% 30%,rgba(26,76,204,.26),transparent 72%),radial-gradient(46% 46% at 74% 66%,rgba(242,169,0,.22),transparent 72%),radial-gradient(42% 42% at 60% 18%,rgba(0,115,153,.22),transparent 74%);
+  animation:team-drift 16s ease-in-out infinite alternate}
+@keyframes team-drift{0%{transform:rotate(-5deg) scale(1.05) translate(-2%,1%)}50%{transform:rotate(8deg) scale(1.12) translate(3%,-3%)}100%{transform:rotate(-7deg) scale(1.07) translate(-3%,3%)}}
+@media (prefers-reduced-motion:reduce){.team-aurora{animation:none}}
+.gh-toggle{cursor:pointer;user-select:none}
+.gh-toggle .garw{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--primary);color:#fff;font-size:11px;flex:0 0 auto;transition:transform .3s}
+.gh-toggle.open .garw{transform:rotate(90deg)}
+.gh .gcount{color:var(--outline);font-size:.62em;font-weight:600}
+.team-grid.cbody{display:none}
+.team-grid.cbody.open{display:flex}
+.member img{width:100%;height:100%;object-fit:cover;transition:transform .55s cubic-bezier(.2,.8,.2,1)}
+.member:hover img{transform:scale(1.07)}
+.member .fallback{width:100%;height:100%;display:grid;place-items:center;font-family:var(--font-display);font-size:46px;color:#fff;background:linear-gradient(135deg,var(--primary),var(--tertiary-bright))}
+.member .label{position:absolute;left:0;right:0;bottom:0;padding:30px 16px 14px;z-index:2;background:linear-gradient(transparent,rgba(0,12,40,.86));color:#fff;transition:opacity .3s}
+.member:hover .label{opacity:0}
+.member .label .nm{font-weight:700;font-size:14px;line-height:1.25}
+.member .label .af{font-size:11.5px;color:rgba(255,255,255,.8);margin-top:2px}
+.member .minfo{position:absolute;inset:0;z-index:3;padding:20px 18px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;opacity:0;transition:opacity .35s;background:linear-gradient(160deg,rgba(0,31,84,.72),rgba(0,12,40,.92));backdrop-filter:blur(6px) saturate(140%);-webkit-backdrop-filter:blur(6px) saturate(140%)}
+.member:hover .minfo{opacity:1}
+.member .minfo::before{content:"";position:absolute;inset:11px;border:1px solid rgba(255,255,255,.42);border-radius:12px;pointer-events:none}
+.member .minfo .role{font-size:11px;font-weight:700;color:var(--secondary-bright);margin-bottom:5px}
+.member .minfo .bn{font-family:var(--font-display);font-size:17px;line-height:1.15;margin-bottom:3px}
+.member .minfo .ba{font-size:11.5px;color:var(--inverse-primary);margin-bottom:9px}
+.member .minfo .bt{font-size:12.5px;line-height:1.5;color:rgba(255,255,255,.94)}
+.member .minfo .blink{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:11.5px;font-weight:700;color:var(--secondary-bright)}
+.member .minfo .blink svg{width:13px;height:13px}
+.yearbtn{display:inline-flex;align-items:center;gap:12px;cursor:pointer;user-select:none;font-family:var(--font-display);font-size:30px;color:var(--primary);margin-top:60px}
+.yearbtn .arw{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--primary);color:#fff;font-size:15px;transition:transform .3s}
+.yearbtn.open .arw{transform:rotate(90deg)}
+.yearbody{display:none}
+.yearbody.open{display:block;animation:fadein .5s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
+/* ════ ALUMNI ROTATING BANNER ════ */
+/* collapsible button (alumni) */
+.collapse-btn{display:inline-flex;align-items:center;gap:11px;margin-top:30px;padding:12px 22px;border-radius:999px;
+  font-family:var(--font-body);font-weight:700;font-size:15px;color:var(--primary);cursor:pointer;
+  background:linear-gradient(135deg,rgba(255,255,255,.7),rgba(255,255,255,.4));border:1px solid rgba(0,38,119,.18);
+  box-shadow:0 6px 18px rgba(0,18,51,.08);transition:transform .25s,box-shadow .25s}
+.collapse-btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,18,51,.14)}
+.collapse-btn .cbarw{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--primary);color:#fff;font-size:11px;transition:transform .3s}
+.collapse-btn.open .cbarw{transform:rotate(90deg)}
+.collapse-body{display:none;animation:fadein .5s ease}
+.collapse-body.open{display:block}
+.alumni-list{list-style:none;columns:5;column-gap:26px;margin-top:26px}
+.alumni-list li{break-inside:avoid;padding:9px 0;font-size:15px;font-weight:600;color:var(--on-surface-variant);
+  border-bottom:1px solid var(--outline-variant);display:flex;align-items:center;gap:10px}
+.alumni-list li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--secondary-bright);flex:0 0 auto}
+@media (max-width:900px){.alumni-list{columns:3}}
+@media (max-width:540px){.alumni-list{columns:2}}
+/* FAQ accordion */
+.faq{max-width:840px;margin:38px auto 0;display:flex;flex-direction:column;gap:14px}
+.faq-item{border-radius:16px;overflow:hidden;background:linear-gradient(135deg,rgba(255,255,255,.72),rgba(255,255,255,.46));border:1px solid rgba(0,38,119,.12);box-shadow:0 6px 18px rgba(0,18,51,.06)}
+.faq-q{width:100%;text-align:left;cursor:pointer;border:0;background:transparent;padding:18px 22px;font-family:var(--font-body);font-weight:700;font-size:16.5px;color:var(--primary);display:flex;justify-content:space-between;align-items:center;gap:14px}
+.faq-ic{flex:0 0 auto;font-size:24px;line-height:1;color:var(--secondary);transition:transform .3s}
+.faq-item.open .faq-ic{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.faq-a p{padding:0 22px 18px;color:var(--on-surface-variant);font-size:15px;line-height:1.6}
+.faq-item.open .faq-a{max-height:360px}
 
+/* ════ STATS ════ */
+.statband{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:40px}
+.stat{padding:30px 22px;border-radius:20px;text-align:center;color:#fff}
+.stat .n{font-family:var(--font-display);font-size:46px;line-height:1;color:var(--secondary-bright)}
+.stat .l{margin-top:8px;font-size:14px;color:rgba(255,255,255,.88)}
+.charts{display:grid;gap:30px;margin-top:46px}
+.chartcard{padding:26px;border-radius:20px}
+.chartcard h4{text-align:center;margin-bottom:18px;color:#fff}
+.chartrow{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:10px}
+.chartrow figure{text-align:center}
+.chartrow figcaption{font-weight:700;color:rgba(255,255,255,.92);margin-bottom:10px}
+.chartrow img,.chartcard>img{margin:0 auto;border-radius:12px;background:#fff;padding:8px}
 
-        /* ===== 2025 Collapsible button ===== */
-        .year-btn {
-            cursor: pointer;
-            user-select: none;
-            color: #3273dc;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-    
-        .year-content {
-            display: none;
-        }
-    
-        .year-content.open {
-            display: block;
-        }
-    </style>
+/* ════ SPONSORS ════ */
+.sponsor-block{margin-top:40px}
+.sponsor-block h3{text-align:center;font-size:22px;color:var(--primary);margin-bottom:26px}
+.sponsor-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:26px}
+.sponsor{display:flex;flex-direction:column;align-items:center;gap:12px;width:214px;padding:26px 20px;border-radius:20px;transition:transform .3s}
+.sponsor:hover{transform:translateY(-6px)}
+.sponsor .logo{height:76px;display:grid;place-items:center}
+.sponsor .logo img{max-height:76px;width:auto;object-fit:contain}
+.sponsor p{font-size:13.5px;font-weight:600;color:var(--on-surface-variant);text-align:center;line-height:1.4}
 
+/* ════ FOOTER ════ */
+.footer{position:relative;color:#fff;padding:70px clamp(22px,5vw,64px) 40px;overflow:hidden}
+.footer .veil{position:absolute;inset:0;background:linear-gradient(135deg,#001233,#001f54)}
+.footer-inner{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+.footer h4{font-size:20px;margin-bottom:12px}
+.footer .gold{color:var(--secondary-bright)}
+.footer p,.footer a{font-size:14.5px;color:rgba(255,255,255,.8);line-height:1.8}
+.footer a:hover{color:var(--secondary-bright)}
+.footer .col ul{list-style:none}
+.footer .copy{position:relative;z-index:2;max-width:var(--maxw);margin:40px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,.16);font-size:13px;color:rgba(255,255,255,.6);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 
-    <style>
-    .pitt-topbar {
-      background: #003594;
-      color: white;
-      font-size: 11px;
-      display: flex;
-      justify-content: flex-end;
-      padding: 4px 340px;
-    }
-    
-    .pitt-site-header {
-      background: #fff;
-      padding: 4px 0 2px;
-      border-bottom: 1px solid #eee;
-    }
-    
-    .pitt-site-header .inner {
-      max-width: 1140px;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      gap: 26px;
-      padding: 0 16px 0 80px;;
-    }
-    
-    .pitt-logo {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: flex-start;
-      text-decoration: none;
-      line-height: 1;
-    }
-    
-    .pitt-logo img {
-      height: 62px;
-      width: auto;
-      display: block;
-    }
-    
-    .pitt-logo-subtitle {
-      color: #106eea;
-      font-size: 12px;
-      font-weight: 700;
-      margin-top: -2px;
-      white-space: nowrap;
-    }
-    
-    .pitt-main-nav {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      flex-wrap: wrap;
-      font-size: 14px;
-      font-weight: 600;
-    }
-    
-    .pitt-main-nav a {
-      color: #222;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      white-space: nowrap;
-    }
-    
-    .pitt-main-nav a:hover,
-    .pitt-main-nav a.active {
-      color: #106eea;
-    }
-    
-    .pitt-main-nav a.active {
-      border-bottom: 2px solid #106eea;
-      padding-bottom: 4px;
-    }
-    
-    .pitt-social {
-      font-size: 20px;
-      color: #111 !important;
-    }
-    
-    .pitt-social:hover {
-      color: #106eea !important;
-    }
-
-    .pitt-social.youtube-icon:hover {
-      color: #ff0000 !important;
-    }
-    
-    /* black local nav thinner */
-    .navbar.is-dark {
-      min-height: 36px;
-    }
-    
-    .navbar.is-dark .navbar-item {
-      padding-top: 6px;
-      padding-bottom: 6px;
-      font-size: 14px;
-    }
-
-    .navbar.is-dark .navbar-start {
-      padding-left: 180px;
-    }
-        
-    </style>    
-
-        <!--
-
-        /* ===== Force center alignment for Our Team section ===== */
-        #team {
-            text-align: center;
-        }
-    
-        #team .columns {
-            justify-content: center;
-        }
-    
-        #team .column {
-            text-align: center;
-        }
-    </style> -->
-
-    
+/* ════ RESPONSIVE ════ */
+@media (max-width:1024px){
+  .feature-grid,.statband{grid-template-columns:repeat(2,1fr)}
+  .about-grid,.about-grid.flip,.reg-wrap{grid-template-columns:1fr}
+  .videos{grid-template-columns:1fr}.tgrid{columns:1}
+  .footer-inner{grid-template-columns:1fr 1fr}
+  .ta-right{text-align:left}.ta-right .lead{margin-left:0}
+}
+@media (max-width:860px){
+  html,body{max-width:100%;overflow-x:clip}
+  :root{--nav-w:0px}
+  .brandbar{padding:0 16px 0 60px;font-size:12px}.brandbar .links{display:none}
+  .sidenav{transform:translateX(-100%);width:var(--nav-w-open);transition:transform .35s}
+  .sidenav .sn-full,.sidenav .navlink .lbl,.sidenav .sn-cta .lbl,.sidenav .sn-foot{opacity:1;transform:none}
+  body.nav-open .sidenav{transform:none}
+  .navtoggle{display:grid;place-items:center;position:fixed;top:7px;left:10px;z-index:80;width:40px;height:32px;border-radius:10px;color:#fff;border:0;cursor:pointer;background:linear-gradient(135deg,var(--primary),var(--primary-container))}
+  .navtoggle svg{width:20px;height:20px}
+  .main{margin-left:0}
+  .chartrow{grid-template-columns:1fr}.feature-grid,.statband{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr}.chip.c1{left:0}.chip.c2{right:0}
+  .reveal-l,.reveal-r{transform:translateY(32px)}
+  .reveal-l.in,.reveal-r.in{transform:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal,.reveal-l,.reveal-r,.reveal-s{opacity:1;transform:none}.reveal-clip{clip-path:none}}
+</style>
 </head>
 <body>
+<div class="mouse-follower" aria-hidden="true"></div>
 
-
-<!-- ===== Pitt HexAI Website Header ===== -->
-<div class="pitt-topbar">
-  University of Pittsburgh
+<div class="brandbar">
+  <span class="org"><span class="dot"></span> University of Pittsburgh</span>
+  <span class="links">
+    <a href="../index.html">Pitt HexAI</a>
+    <a href="../research.html">Research</a>
+    <a href="../publications.html">Publications</a>
+    <a href="../podcast.html">Podcast</a>
+    <a href="../people.html">Lab Team</a>
+  </span>
 </div>
 
-<header class="pitt-site-header">
-  <div class="inner">
+<button class="navtoggle" id="navToggle" aria-label="Open navigation"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+<div class="scrim" id="scrim"></div>
 
-    <a class="pitt-logo" href="https://pitthexai.github.io/index.html">
-      <img src="./photos/Pitthexai_logo.png" alt="Pitt HexAI Logo">
-      <span class="pitt-logo-subtitle">AI for Musculoskeletal Care</span>
-    </a>
-
-    <nav class="pitt-main-nav">
-      <a href="https://pitthexai.github.io/index.html">
-        <i class="bx bx-home"></i> Home
-      </a>
-
-      <a href="https://pitthexai.github.io/research.html">
-        <i class="bx bx-search"></i> Research Projects
-      </a>
-
-      <a href="https://pitthexai.github.io/publications.html">
-        <i class="bx bx-search"></i> Publications
-      </a>
-
-      <a href="https://pitthexai.github.io/podcast.html">
-        <i class="bi bi-broadcast-pin"></i> HexAI Podcast
-      </a>
-
-      <a class="active" href="https://pitthexai.github.io/AISummerSchool/">
-        <i class="bx bxs-bank"></i> AI Summer School
-      </a>
-
-      <a href="https://pitthexai.github.io/people.html">
-        <i class="bi bi-people-fill"></i> Team
-      </a>
-
-      <a class="pitt-social" href="https://www.linkedin.com/in/ahmadtafti/" target="_blank" rel="noopener" aria-label="LinkedIn">
-        <i class="bi bi-linkedin"></i>
-      </a>
-
-      <a class="pitt-social youtube-icon" href="https://www.youtube.com/@user-xb1ti1jp4e" target="_blank" rel="noopener" aria-label="YouTube">
-        <i class="bi bi-youtube"></i>
-      </a>
-    </nav>
-
+<nav class="sidenav" id="sidenav">
+  <div class="sn-brand"><span class="sn-mark"><span class="hexclip"><img src="photos%20and%20videos/Pitthexai_logo.png" alt="Pitt HexAI"></span></span><span class="sn-full"><span class="t">AI <b>Summer</b> School</span><br><span class="s">Medical Imaging Informatics</span></span></div>
+  <div class="navlist" id="navlist">
+    <a class="navlink active" data-to="home"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg></span><span class="lbl">Home</span></a>
+    <a class="navlink" data-to="about"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg></span><span class="lbl">About</span></a>
+    <a class="navlink" data-to="program"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16M4 12h16M4 19h10"/></svg></span><span class="lbl">Program</span></a>
+    <a class="navlink" data-to="registration"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3 8-8M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span><span class="lbl">Registration</span></a>
+    <a class="navlink" data-to="testimonials"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></span><span class="lbl">Testimonials</span></a>
+    <a class="navlink" data-to="team"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20v-1a5 5 0 015-5h2a5 5 0 015 5v1M15.5 20v-1a4 4 0 014-4"/></svg></span><span class="lbl">Our Team</span></a>
+    <a class="navlink" data-to="alumni"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 7a4 4 0 100 8 4 4 0 000-8zM23 21v-2a4 4 0 00-3-3.87"/></svg></span><span class="lbl">Alumni</span></a>
+    <a class="navlink" data-to="statistics"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M7 14l4-4 3 3 5-6"/></svg></span><span class="lbl">By the Numbers</span></a>
+    <a class="navlink" data-to="sponsors"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6 4.5 2.3 7.1L12 16.8 5.7 21l2.3-7.1-6-4.5h7.6z"/></svg></span><span class="lbl">Sponsors</span></a>
+    <a class="navlink" data-to="faq"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.2 9.3a2.8 2.8 0 015.4 1c0 1.9-2.8 2.5-2.8 2.5M12 17h.01"/></svg></span><span class="lbl">FAQ</span></a>
   </div>
-</header>
-
-
-    
-<nav class="navbar is-dark" role="navigation">
-    <div class="container">
-        <div class="navbar-menu">
-            <div class="navbar-start">
-                <a class="navbar-item nav-item" href="#home">Home</a>
-                <a class="navbar-item nav-item" href="#program">Program</a>
-                <a class="navbar-item nav-item" href="#registration">Registration</a>
-                <a class="navbar-item nav-item" href="#testimonials">Students' Testimonials</a>
-                <a class="navbar-item nav-item" href="#alumni">Alumni</a>
-                <a class="navbar-item nav-item" href="#statistics">AI Summer School by the Numbers</a>
-                <a class="navbar-item nav-item" href="#sponsors">Sponsors</a>
-                <a class="navbar-item nav-item" href="#team">Our Team</a>
-            </div>
-        </div>
-    </div>
+  <a class="sn-cta" href="https://github.com/pitthexai/AISummerSchoolinMedicalImagingInformatics" target="_blank" rel="noopener"><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 008.4 22.9c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.4-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 016 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0012 .5z"/></svg></span><span class="lbl">Curriculum</span></a>
+  <div class="sn-foot">Pitt HexAI Research Laboratory and CPACE, Pittsburgh PA</div>
 </nav>
 
+<div class="main">
 
-<!-- Sticky hero wrapper starts -->
-<div id="sticky-hero">
-        
-<!-- Flex container for logos -->
-<div class="logo-row" style="display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap; margin-bottom: 2rem;">
+<section class="hero" id="home">
+  <div class="skyline"></div>
+  <div class="veil"></div>
+  <div class="glow g1 float"></div>
+  <div class="glow g2 float-slow"></div>
+  <div class="hero-inner">
+    <span class="eyebrow eyebrow-light">University of Pittsburgh · Since 2023</span>
+    <h1 class="split" id="heroTitle">AI Summer School</h1>
+    <div class="tagline">Medical Imaging Informatics</div>
+    <p class="hero-sub reveal d1">Where high schoolers <span class="gold">teach machines</span> to see medicine.</p>
+    <p class="blurb">A free, immersive one-week journey into artificial intelligence and computer vision for
+      medical images, hosted by the <span class="hl">Pitt HexAI Research Laboratory</span> and the
+      Computational Pathology and AI Center of Excellence.</p>
+    <div class="facts">
+      <span class="fact glass-dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>June 8 to 12, 2026 · 9 am to 4 pm EDT</span>
+      <span class="fact glass-dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Grades 11 and 12</span>
+      <span class="fact glass-dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>Free · Certificate awarded</span>
+    </div>
+    <div class="btns">
+      <a class="btn btn-gold glass-gold" href="#registration"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3 8-8M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>Registration</a>
+      <a class="btn btn-ghost glass-dark" href="#program"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3l14 9-14 9z"/></svg>See the Program</a>
+    </div>
+    <div class="logobar"><div class="track" id="logoTrack">
+      <img src="photos%20and%20videos/shrs.png" alt="Pitt SHRS">
+      <img src="photos%20and%20videos/Leidos-logo.png" alt="Leidos">
+      <img src="photos%20and%20videos/Pitthexai_logo.png" alt="Pitt HexAI">
+      <img src="photos%20and%20videos/shrs.png" alt="Pitt SHRS">
+      <img src="photos%20and%20videos/Leidos-logo.png" alt="Leidos">
+      <img src="photos%20and%20videos/Pitthexai_logo.png" alt="Pitt HexAI">
+      <img src="photos%20and%20videos/shrs.png" alt="Pitt SHRS">
+      <img src="photos%20and%20videos/Leidos-logo.png" alt="Leidos">
+      <img src="photos%20and%20videos/Pitthexai_logo.png" alt="Pitt HexAI">
+    </div></div>
+  </div>
+  <a class="scrollcue" href="#about">Scroll<svg class="cue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+</section>
 
-    <!-- LOGO 1 -->
-    <div>
-        <a href="https://www.shrs.pitt.edu" target="_blank">
-            <img src="./photos/shrs.png" alt="Pitt SHRS" style="max-width: 315px; height: auto;">
+<section class="section" id="about">
+  <div class="wrap ta-right">
+    <span class="eyebrow right reveal">The big picture</span>
+    <h2 class="title reveal d1">Artificial intelligence, taught the way it should be learned.</h2>
+  </div>
+  <div class="wrap">
+    <div class="about-grid flip">
+      <div class="about-media reveal-l">
+        <div class="pic"><img src="photos%20and%20videos/Students%20listening%20to%20lecture%20(2025).jpg" alt="Students at the AI Summer School, 2025" loading="lazy" decoding="async"></div>
+        <div class="chip c1 glass sheen"><small>Running since</small><b>2023</b></div>
+        <div class="chip c2 glass sheen"><small>Tuition</small><b>Free</b></div>
+      </div>
+      <div class="about-copy ta-right reveal-r d1">
+        <p>Our AI Summer School, organized by the
+          <a href="https://pitthexai.github.io/" target="_blank" rel="noopener" style="color:var(--primary);font-weight:700">Pitt HexAI Research Laboratory</a>
+          and the
+          <a href="https://cpace.pitt.edu/" target="_blank" rel="noopener" style="color:var(--primary);font-weight:700">Computational Pathology and AI Center of Excellence</a>,
+          gives advanced high school students (grades 11 and 12) a stimulating, hands-on entry into artificial
+          intelligence and its application in medical imaging informatics. We launched the program in the
+          summer of 2023, and it has run every year since.</p>
+        <p>This year's school runs <b>Monday, June 8 to Friday, June 12, 2026, 9:00 am to 4:00 pm EDT</b> at the
+          <a href="http://www.pitt.edu" target="_blank" rel="noopener" style="color:var(--primary);font-weight:700">University of Pittsburgh</a>,
+          in collaboration with
+          <a href="https://www.path.pitt.edu/divisions/computational-pathology-informatics/computational-pathology-ai-center-excellence" target="_blank" rel="noopener" style="color:var(--primary);font-weight:700">CPACE</a>,
+          the <a href="https://www.shrs.pitt.edu/" target="_blank" rel="noopener" style="color:var(--primary);font-weight:700">School of Health and Rehabilitation Sciences</a>,
+          and the <a href="https://webinabox.vtools.ieee.org/wibp_home/index/R20037" target="_blank" rel="noopener" style="color:var(--primary);font-weight:700">IEEE Computer Society</a>.</p>
+        <p>Medical imaging informatics uses AI-driven computer vision to analyze and interpret medical images for
+          better diagnosis and treatment. A central theme is <span class="hl">object detection and localization</span>,
+          teaching AI systems to find and locate relevant features within an image. Through lectures, hands-on
+          exercises, and collaborative projects in Python, students gain practical skills to tackle real-world
+          challenges in the field.</p>
+      </div>
+    </div>
+
+    <div class="feature-grid">
+      <div class="fcard glass sheen reveal-s d1"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17l6-6-6-6M12 19h8"/></svg></div><h4>Code in Python</h4><p>Hands-on practice with Python and Google Colab, no setup headaches, just building.</p></div>
+      <div class="fcard glass sheen reveal-s d2"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div><h4>Real AI models</h4><p>From CNNs to YOLO and SSD object detection, applied directly to medical images.</p></div>
+      <div class="fcard glass sheen reveal-s d3"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 7a4 4 0 100 8 4 4 0 000-8z"/></svg></div><h4>Learn from experts</h4><p>Daily faculty lectures plus guest talks from AI researchers in academia and industry.</p></div>
+      <div class="fcard glass sheen reveal-s d4"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15a7 7 0 100-14 7 7 0 000 14zM8.2 13.6L7 22l5-3 5 3-1.2-8.4"/></svg></div><h4>Earn a certificate</h4><p>Complete a team project and receive a certificate of participation at the closing ceremony.</p></div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* readability for content placed over the Program image background */
+#program .tnode h4{color:#fff}
+#program .tnode p{color:rgba(255,255,255,.88)}
+#program .tnode .day{color:var(--secondary-bright)}
+#program .prereq{color:#fff}
+#program .prereq b{color:var(--secondary-bright)}
+#program .toolchip{color:#fff}
+/* curved, scroll-drawn timeline */
+.ptimeline{position:relative;margin-top:50px;padding:6px 0}
+.pcurve{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:visible}
+.pcurve .pcurvePath{fill:none;stroke:var(--secondary-bright);stroke-width:3;stroke-linecap:round;
+  filter:drop-shadow(0 0 6px rgba(242,169,0,.55))}
+.ptimeline .tnode{position:relative;width:48%;margin:0 0 50px 0;padding:0}
+.ptimeline .tnode::before{display:none}
+.ptimeline .tnode h4{color:#fff}
+.ptimeline .tnode p{color:rgba(255,255,255,.88)}
+.ptimeline .tnode .day{color:var(--secondary-bright)}
+.ptimeline .tnode.l{margin-right:auto}
+.ptimeline .tnode.r{margin-left:auto}
+.ptimeline .tnode:last-child{margin-bottom:0}
+.pdot{position:absolute;top:30px;width:20px;height:20px;border-radius:50%;z-index:3;background:#0a1f4d;
+  border:3px solid rgba(255,255,255,.5);transition:transform .4s,background .4s,border-color .4s,box-shadow .4s}
+.tnode.l .pdot{right:-10px}
+.tnode.r .pdot{left:-10px}
+.pdot.on{background:var(--secondary-bright);border-color:#fff;transform:scale(1.28);box-shadow:0 0 18px 3px rgba(242,169,0,.7)}
+.reveal-f{opacity:0;transition:opacity .8s ease}
+.reveal-f.in{opacity:1}
+@media (max-width:768px){
+  .ptimeline .tnode,.ptimeline .tnode.l,.ptimeline .tnode.r{width:auto;margin:0 0 32px 36px}
+  .tnode.l .pdot,.tnode.r .pdot{left:-26px;right:auto}
+}
+@media (prefers-reduced-motion:reduce){.reveal-f{opacity:1}.pcurve .pcurvePath{stroke-dashoffset:0!important}}
+</style>
+
+<section class="section img-bg" id="program">
+  <div class="imgbg" style="background-image:url('photos%20and%20videos/1749519856631.jpg')"></div>
+  <div class="imgbg-ov" style="background:linear-gradient(125deg,rgba(0,12,40,.93),rgba(0,31,84,.84) 50%,rgba(0,38,119,.78))"></div>
+  <div class="wrap">
+    <span class="eyebrow eyebrow-light reveal">One week, start to finish</span>
+    <h2 class="title reveal d1" style="color:#fff">The Program</h2>
+    <p class="lead reveal d2">A comprehensive one-week program that takes students from foundational concepts
+      to a real, collaborative AI project, with lectures, hands-on coding, and guest talks every day.</p>
+    <div class="ptimeline" id="ptimeline">
+      <svg class="pcurve" preserveAspectRatio="none" aria-hidden="true"><path class="pcurvePath"></path></svg>
+      <div class="tnode l reveal-f"><span class="pdot"></span><div class="tcard glass-dark sheen"><div class="day">Foundations</div><h4>Intro to AI and computer vision</h4><p>The program opens with foundational concepts: an introduction to AI, computer vision, and digital image operations, followed by hands-on practice with Python and Google Colab.</p></div></div>
+      <div class="tnode r reveal-f"><span class="pdot"></span><div class="tcard glass-dark sheen"><div class="day">Building up</div><h4>Deep learning and CNNs</h4><p>As the week progresses, students explore advanced topics such as deep learning and convolutional neural networks (CNNs), the engines behind modern image understanding.</p></div></div>
+      <div class="tnode l reveal-f"><span class="pdot"></span><div class="tcard glass-dark sheen"><div class="day">Going deeper</div><h4>Object detection: YOLO and SSD</h4><p>Students learn object detection techniques like YOLO and SSD, practicing medical image annotation, image filtering, and object localization with tools like PyTorch, ITK-SNAP, and Liner.ai.</p></div></div>
+      <div class="tnode r reveal-f"><span class="pdot"></span><div class="tcard glass-dark sheen"><div class="day">The finale</div><h4>Team project and certificate ceremony</h4><p>The program culminates in a collaborative team project applying everything to real-world challenges, followed by team presentations and a certificate ceremony recognizing each student's achievement.</p></div></div>
+    </div>
+    <div class="toolchips reveal d2">
+      <span class="toolchip glass-dark">Python</span><span class="toolchip glass-dark">Google Colab</span><span class="toolchip glass-dark">PyTorch</span>
+      <span class="toolchip glass-dark">CNNs</span><span class="toolchip glass-dark">YOLO</span><span class="toolchip glass-dark">SSD</span>
+      <span class="toolchip glass-dark">ITK-SNAP</span><span class="toolchip glass-dark">Liner.ai</span><span class="toolchip glass-dark">Image annotation</span>
+    </div>
+    <div class="prereq glass-dark sheen reveal d3"><b>Prerequisite:</b> Basic Python programming. New to it? Start with this friendly
+      <a href="https://www.tutorialspoint.com/python/index.htm" target="_blank" rel="noopener" style="color:var(--secondary-bright);font-weight:700;text-decoration:underline">Python tutorial</a> before the school begins.</div>
+
+    <div style="margin-top:60px">
+      <span class="eyebrow eyebrow-light reveal">Watch and listen</span>
+      <h2 class="title reveal d1" style="color:#fff;font-size:clamp(24px,3vw,34px)">Inside the classroom</h2>
+      <div class="videos reveal d2">
+        <a class="vid glass-dark" href="https://www.youtube.com/watch?v=--jPZdjR4-0" target="_blank" rel="noopener">
+          <div class="poster" style="background-image:url('photos%20and%20videos/1749519857001.jpg')"><div class="scrim2"></div></div>
+          <div class="play glass-dark"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l14 8-14 8z"/></svg></div>
+          <div class="vlabel">AI Summer School, highlights</div>
+          <div class="vhint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>YouTube</div>
         </a>
-    </div>
-
-    <!-- LOGO 2 -->
-    <div>
-        <a href="https://cpace.pitt.edu" target="_blank">
-            <img src="./photos/cpace.png" alt="CPACE" style="max-width: 255px; height: auto;">
+        <a class="vid glass-dark" href="https://www.youtube.com/watch?v=emEAd2dhQb0" target="_blank" rel="noopener">
+          <div class="poster" style="background-image:url('photos%20and%20videos/1750006535339.jpg')"><div class="scrim2"></div></div>
+          <div class="play glass-dark"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l14 8-14 8z"/></svg></div>
+          <div class="vlabel">Guest lectures and hands-on labs</div>
+          <div class="vhint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>YouTube</div>
         </a>
-    </div>
-
-
-
-    <!-- LOGO 3 -->
-    <div>
-        <a href="https://www.leidos.com" target="_blank">
-            <img src="./photos/Leidos-logo.png" alt="Leidos" style="max-width: 220px; height: auto;">
-        </a>
-    </div>
-
-    
-    
-    <!-- LOGO 3 -->
-    <div>
-        <a href="https://pitthexai.github.io" target="_blank">
-            <img src="./photos/Pitthexai_logo.png" alt="Pitt HexAI" style="max-width: 255px; height: auto;">
-        </a>
-    </div>
-
-</div>
-
-
-    <h1 class="title is-1 hero-title" style="text-align: center;">AI Summer School</h1>
-    <h3 class="title is-3 hero-subtitle" style="text-align: center;">Medical Imaging Informatics</h3>
-    <hr class="section-divider dashed">
-    <h2 class="title has-text-centered">University of Pittsburgh</h2>
-    <hr class="section-divider dashed">
-
-</div>
-<!-- Sticky hero wrapper ends -->
-
-<div id="hero-spacer"></div>    
-    
-<section id="home" class="section">
-    <div class="container is-max-desktop">
-
-
-                
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-        <h1 class="title is-1" style="text-align: center;">AI Summer School</h1>
-        <h3 class="title is-3" style="text-align: center;">Medical Imaging Informatics</h3>
-        <h4 class="title is-4" style="text-align: center;">University of Pittsburgh</h4>
-        -->
-        <p></p>
-        <div class="columns is-centered has-text-centered">
-
-           
-            <div class="content has-text-justified">
-                <p></p>
-                <p>Our AI Summer School organized by the <a href="https://pitthexai.github.io/" target="_blank">Pitt
-                    HexAI Research Laboratory</a> and <a href="https://cpace.pitt.edu/" target="_blank">Computational Pathology and AI Center of Excellence (CPACE)</a> aims to provide a stimulating and unique opportunity for <strong>high
-                    school students (grades 11 and 12)</strong> to dive into the fascinating world
-                    of artificial intelligence (AI) and its application in medical imaging informatics. This is a
-                    program designed for advanced high school students (grades 11–12). We launched the AI Summer School in the summer of 2023, and it
-                    has been conducted annually since its inception. This year, our AI Summer School will be held
-                    between <strong>Monday, June 8 to Friday, June 12, 2026; 9:00 AM to 4:00 PM EDT</strong>, at the <a
-                            href="http://www.pitt.edu" target="_blank">University of Pittsburgh</a>, in collaboration
-                    with the <a
-                            href="https://www.path.pitt.edu/divisions/computational-pathology-informatics/computational-pathology-ai-center-excellence"
-                            target="_blank">Computational Pathology & AI Center of Excellence (CPACE)</a>, the <a
-                            href="https://www.shrs.pitt.edu/" target="_blank">School of Health and Rehabilitation
-                        Sciences</a>, and <a href="https://webinabox.vtools.ieee.org/wibp_home/index/R20037"
-                                             target="_blank">IEEE Computer Society</a> in Pittsburgh, Pennsylvania.</p>
-                <p>Medical imaging informatics leverages AI-driven computer vision to analyze and interpret medical
-                    images for better diagnosis and treatment. A key area of focus is object detection and localization,
-                    where AI systems identify and locate relevant features within medical images. This summer school
-                    will dive into these techniques, teaching participants how to apply them using Python programming.
-                    Through lectures, hands-on exercises, and collaborative projects, attendees will gain practical
-                    skills in AI-powered medical image analysis, preparing them to tackle real-world challenges in the
-                    field.</p>
-
-            </div>
-        </div>
-    </div>
-</section>
-
-
-
-
-<section>
-  <div class="column has-text-centered">
-    <div class="publication-links">
-
-      <!-- Flex container for the videos -->
-      <div class="video-row" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-
-        <!-- First video -->
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/--jPZdjR4-0?si=3U1kO3RpvKfgBzMs" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen style="width: 480px; height: 280px;"></iframe>
-        </div>
-
-        <!-- Second video -->
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/emEAd2dhQb0?si=SUnv1l0TCb9bYhXM" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen style="width: 480px; height: 280px;"></iframe>
-        </div>
-
-      </div> <!-- end video-row -->
-
-    </br>
-        
-            <span class="link-block">
-                <a href="https://github.com/pitthexai/AISummerSchoolinMedicalImagingInformatics" target="_blank"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>GitHub</span>
-                  </a>
-              </span>
-        </div>
-    </div>
-
-    <p></p>
-
-
-</section>
-
-
-<section id="program" class="section">
-    <div class="container">
-        <h2 class="title">Program</h2>
-        <div class="content has-text-justified">
-            <p>The AI Summer School offers a comprehensive <strong>one week</strong> program designed to introduce high
-                school and community college students to artificial intelligence and its applications in medical
-                imaging. The program begins with foundational concepts, including an introduction to AI, computer
-                vision, and digital image operations, followed by <strong>hands-on practice with Python and Google
-                    Colab</strong>. As the week progresses, students explore advanced topics such as deep learning,
-                convolutional neural networks (CNNs), and object detection techniques like YOLO and SSD. Each day
-                includes lectures from esteemed faculty, hands-on coding exercises, and guest talks from AI researchers
-                in academia and industry. Students will gain practical experience in medical image annotation, image
-                filtering, and object localization, utilizing tools like PyTorch, ITK-SNAP, and Liner.ai. The program
-                culminates in a collaborative team project, where participants apply their knowledge to real-world
-                challenges, followed by team presentations. The summer school concludes with a <strong>certificate
-                    ceremony</strong>, recognizing students' achievements and their participation in this immersive AI
-                learning experience. Further information is available <a
-                        href="https://github.com/pitthexai/AISummerSchoolinMedicalImagingInformatics" target="_blank">here</a>!
-            </p>
-            <p><strong>Prerequisite:</strong> Basic Python programming! If not familiar with this prerequisite, follow
-                the link <a href="https://www.tutorialspoint.com/python/index.htm" target="_blank">here</a>!</p>
-        </div>
-    </div>
-
-    <style>
-        /* Optional: Centering the video */
-        .video-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        iframe {
-            width: 560px;
-            height: 315px;
-            border: none;
-        }
-    </style>
-
-    <div class="video-container">
-        <!-- Embed code from YouTube -->
-        <iframe src="https://cdnapisec.kaltura.com/p/5687602/embedPlaykitJs/uiconf_id/53926702?iframeembed=true&entry_id=1_qg4nv08s"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-    </div>
-</section>
-
-<section id="registration" class="section">
-    <div class="container">
-        <h2 class="title">Registration (Free)</h2>
-        <div class="content has-text-justified">
-            <p>We invite <strong>high school students in grades 11 and 12</strong>, who have a strong interest in advanced technology, 
-                healthcare informatics, and artificial intelligence (AI) to apply. Students from all backgrounds and levels of experience are 
-                encouraged to apply. Upon successful completion of the summer program, students will receive a certificate of participation, 
-                acknowledging their commitment and accomplishments in AI-powered medical imaging informatics.</p>
-
-            <ul>
-                 <li>
-  <strong>Year 2026:</strong> Registration closed on Thursday, April 30, 2026 at 11:59 PM EDT [Closed].
-</li>
-                 <li>Year 2025: [Closed]</li>
-                 <li>Year 2024: [Closed]</li>
-                 <li>Year 2023: [Closed]</li>
-            </ul>
-        </div>
-    </div>
-
-</section>
-
-<section id="testimonials" class="section">
-    <div class="container">
-        <h2 class="title">Students' Testimonials</h2>
-        <div class="content has-text-justified">
-            <p>Read what past participants have to say about their experience at the AI Summer School.</p>
-            <ul>
-                <li><i>Everything was just so interesting and I feel like I have found something new that I might want
-                    pursue in the future, and I think Dr. Tafti and all the other instructors were very helpfuland
-                    really just facilitated like the entire learning process. And I found that AI and all these really
-                    hard things that I always thought were really complicated were actually quite easy to
-                    understand. </i> - <strong>Katherine</strong>
-                </li>
-                <li><i>After coming here I learnd a lot as I didn't know a huge lot about AI before coming here, but
-                    after coming here know I have learned about like machine learning and like deep learning, the
-                    differences between that and I just feel like AI is such a big like broad topic that can really be
-                    implemented into anything.</i> - <strong>Sophia</strong>
-                </li>
-                <li><i>I was so glad that I signed up because there is so many opportunities and so much to learn from
-                    this program, and you can meet a lot of guest speakers and we have a great teacher Dr. Tafti and he
-                    will teach you so much about AI and medical imaging.</i> - <strong>Zoe</strong>
-                </li>
-
-                <li><i>It was such a pleasure being part of the AI in Medical Imaging camp this past week. 
-                    Thank you for leading such a fun and insightful experience! I really appreciated your engaging teaching style and the way you broke down complex concepts in a way that was easy to understand.
-                    The camp has sparked my interest in learning more about bioinformatics and the intersection between AI and medicine.</i> - <strong>Hrshikesh</strong>
-                </li>
-
-                <li><i>Thank you very much for conducting this AI Summer school, I feel like I learned a lot and I am now interested in maybe pursuing a career in health informatics.</i> - <strong>Pragnya</strong>
-                </li>
-
-
-
-                
-            </ul>
-        </div>
-    </div>
-</section>
-
-
-<section id="alumni" class="section">
-    <div class="container">
-        <h2 class="title">Alumni</h2>
-
-        <div class="content">
-            <p>Our AI Summer School alumni (first names only):</p>
-
-            <div class="columns is-multiline">
-
-                <div class="column is-one-quarter">
-                    <ul>
-                        <li>Katherine</li>
-                        <li>Saniya</li>
-                        <li>Sophia</li>
-                        <li>Delia</li>
-                        <li>Samuel</li>
-                        <li>Ethan</li>
-                        <li>Alan</li>
-                        <li>Sarah</li>
-                        <li>Jailyn</li>
-                        <li>Othman</li>
-                        <li>Danny</li>
-                        <li>Akshar</li>
-                        <li>Parth</li>
-                    </ul>
-                </div>
-
-                <div class="column is-one-quarter">
-                    <ul>
-                        <li>Ishal Fathima</li>
-                        <li>Sara</li>
-                        <li>Amber</li>
-                        <li>Saharsha</li>
-                        <li>Amulya</li>
-                        <li>Rachel</li>
-                        <li>Leah</li>
-                        <li>Sarah</li>
-                        <li>Jailyn</li>
-                        <li>Othman</li>
-                        <li>Thomas</li>
-                        <li>Ahmed</li>
-                        <li>Chun Kit</li>
-                    </ul>
-                </div>
-
-                <div class="column is-one-quarter">
-                    <ul>
-                        <li>Darren</li>
-                        <li>Sohan</li>
-                        <li>Sophia</li>
-                        <li>Alexandra</li>
-                        <li>Airah</li>
-                        <li>Chuhan</li>
-                        <li>Bhavika</li>
-                        <li>Shaun</li>
-                        <li>Srenithi</li>
-                        <li>Mariam</li>
-                        <li>Neil</li>
-                        <li>Kevin</li>
-                        <li>Erick</li>
-                    </ul>
-                </div>
-
-                <div class="column is-one-quarter">
-                    <ul>
-                        <li>Neil</li>
-                        <li>Ziqian</li>
-                        <li>Zoe</li>
-                        <li>Arthur</li>
-                        <li>Fae</li>
-                        <li>Milan</li>
-                        <li>McKayla</li>
-                        <li>Rasika</li>
-                        <li>Julia</li>
-                        <li>Jason</li>
-                        <li>Michael </li>
-                    </ul>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</section>
-
-
-
-<section id="statistics" class="section">
-  <div class="container">
-    <h2 class="title">AI Summer School - By the Numbers</h2>
-
-    <div class="content">
-      <h3 class="subtitle">Number of Students by Year</h3>
-      <figure class="image">
-        <img src="./photos/Statistics/number_of_students_by_year_v1.png" alt="Number of students by year" style="max-width:500px; margin:auto; display:block;">
-      </figure>
-
-      <hr class="section-divider dashed">
-
-      <h3 class="subtitle">Sex Distribution by Year</h3>
-      <div class="columns is-multiline is-centered has-text-centered">
-
-        <div class="column is-one-third">
-          <h4 class="has-text-weight-semibold">2023</h4>
-          <figure class="image">
-            <img src="./photos/Statistics/sex_2023_v1.png" style="max-width:300px;">
-          </figure>
-        </div>
-
-        <div class="column is-one-third">
-          <h4 class="has-text-weight-semibold">2024</h4>
-          <figure class="image">
-            <img src="./photos/Statistics/sex_2024_v1.png" style="max-width:300px;">
-          </figure>
-        </div>
-
-        <div class="column is-one-third">
-          <h4 class="has-text-weight-semibold">2025</h4>
-          <figure class="image">
-            <img src="./photos/Statistics/sex_2025_v1.png" style="max-width:300px;">>
-          </figure>
-        </div>
-
       </div>
     </div>
   </div>
 </section>
 
-
-
-
-
-
-    
-
-<!--
-<section id="sponsors" class="section">
-    <div class="container">
-        <h2 class="title">Sponsors</h2>
-        <ul>
-            <li>
-                <a href="https://www.path.pitt.edu/divisions/computational-pathology-informatics/computational-pathology-ai-center-excellence"
-                   target="_blank">Computational Pathology & AI Center of Excellence (CPACE)</a></li>
-            <li><a href="https://www.shrs.pitt.edu/" target="_blank">Pitt School of Health and Rehabilitation
-                Sciences</a></li>
-            <li><a href="https://webinabox.vtools.ieee.org/wibp_home/index/R20037" target="_blank">IEEE Computer
-                Society</a></li>
-
-             <li><a href="https://www.pghtech.org/" target="_blank">Pittsburgh Technology Council</a></li>
-
-            
+<section class="section" id="registration">
+  <div class="wrap">
+    <span class="eyebrow reveal">Admissions</span>
+    <h2 class="title reveal d1">Registration</h2>
+    <div class="reg-wrap">
+      <div class="reg-copy reveal-l">
+        <p>We invite <b>high school students in grades 11 and 12</b> with a strong interest in advanced
+          technology, healthcare informatics, and artificial intelligence to apply. Students from all
+          backgrounds and levels of experience are encouraged to join.</p>
+        <p>Upon successful completion of the program, students receive a <b>certificate of participation</b>,
+          acknowledging their commitment and accomplishments in AI-powered medical imaging informatics.</p>
+        <p style="color:var(--primary);font-weight:600">Applications open each spring. Check back ahead of the next cohort, or follow Pitt HexAI for announcements.</p>
+      </div>
+      <div class="reg-status bg-aurora sheen reveal-r d1" style="margin-top:-28px">
+        <div class="now"><span class="pill pill-closed">Closed</span><span style="color:rgba(255,255,255,.82);font-size:14px">2026 cohort</span></div>
+        <h4>Registration cycles</h4>
+        <ul class="yearlist">
+          <li><span>Year 2026, closed Apr 30, 2026</span><span class="st">Closed</span></li>
+          <li><span>Year 2025</span><span class="st">Closed</span></li>
+          <li><span>Year 2024</span><span class="st">Closed</span></li>
+          <li><span>Year 2023</span><span class="st">Closed</span></li>
         </ul>
-        <div class="content has-text-justified">
-            <p></p>
-
-        </div>
+      </div>
     </div>
+  </div>
 </section>
 
--->
-
-    
-<section id="team" class="section">
-    <div class="container">
-        <h2 class="title has-text-centered">Our Team</h2>
-
-
-<!-- Organizing Committee -->
-        <div class="team-subsection">
-            <h3 class="subtitle has-text-centered"><strong>Program Chair</strong></h3>
-            <div class="columns  is-mobile is-multiline is-centered">
-                <!-- Team Member 1 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Organizing%20Committee/aptafti.jpg"
-                                 alt="Ahmad P. Tafti, PhD, FAMIA">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold mt-3">Ahmad P. Tafti, PhD, FAMIA</p>
-                </div>
-            </div>
-        </div>
-    
-
-    </br>
-        
-        <!-- Organizing Committee -->
-        <div class="team-subsection">
-            <h3 class="subtitle has-text-centered"><strong>Organizing Committee</strong></h3>
-            <div class="columns  is-mobile is-multiline is-centered">
-                <!-- Team Member 1 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Organizing%20Committee/aptafti.jpg"
-                                 alt="Ahmad P. Tafti, PhD, FAMIA">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold mt-3">Ahmad P. Tafti, PhD, FAMIA</p>
-                </div>
-                <!-- Team Member 2 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Organizing%20Committee/Hooman_Rashidi.png"
-                                 alt="Hooman H. Rashidi, MD, MS">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold mt-3">Hooman H. Rashidi, MD, MS</p>
-                </div>
-                <!-- Team Member 3 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Organizing%20Committee/Liron%20Pantanowitz.jpg"
-                                 alt="Liron Pantanowitz, MD, PhD">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold mt-3">Liron Pantanowitz, MD, PhD</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Program Directors -->
-        <div class="team-subsection mt-6">
-            
-            <h3 class="subtitle has-text-centered"><strong>Program Directors</strong></h3>
-            <div class="columns  is-mobile is-multiline is-centered">
-                <!-- Team Member 1 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Program%20Directors/Ann%20Vinski.png"
-                                 alt="Ann Vinski, PhD">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold mt-3">Ann Vinski, PhD</p>
-                </div>
-                <!-- Team Member 2 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Program%20Directors/Nicole%20Myers.jpg"
-                                 alt="Nicole Myers, RN, MS">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold mt-3">Nicole Myers, RN, MS</p>
-                </div>
-            </div>
-        </div>
-
-        
-
-
-        
-
-
-
-         
-          <!-- ===================== 2026 ===================== -->
-         <!-- Instructors -->
-        <div class="team-subsection mt-6">
-            
-            <hr class="section-divider dashed">
-            <h2 class="title has-text-centered">2026</h2>
-            <hr class="section-divider dashed">
-            
-            <h3 class="subtitle has-text-centered"><strong>Instructors</strong></h3>
-            <div class="columns  is-mobile is-multiline is-centered">
-
-                
-                <!-- Team Member 1 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Instructors/aptafti.jpg"
-                                 alt="Ahmad P. Tafti, PhD, FAMIA">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold mt-3">Ahmad P. Tafti, PhD, FAMIA</p>
-                </div>
-
-
-                <!-- Team Member2 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Instructors/Myers.jpg" alt="Nicole Myers, RN, MSHI">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold mt-3">Nicole Myers, RN, MSHI</p>
-                </div>
-            </div>
-               
-
-
-                <!-- Scond Row -->
-                <div class="columns is-centered is-multiline is-mobile">
-
-                
-                
-                <!-- Team Member 3 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Instructors/Fengyi%20Gao.jpg" alt="Fengyi Gao, MS">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold mt-3">Fengyi Gao, MS</p>
-                </div>
-
-                
-                <!-- Team Member 4 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Instructors/Yushui.jpeg" alt="Yushui Han, MS">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold mt-3">Yushui Han, MS</p>
-                </div>
-
-                
-                <!-- Team Member 5 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Instructors/Nickolas%20Littlefield.jpg"
-                                 alt="Nickolas Littlefield, MS">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold mt-3">Nickolas Littlefield, MS</p>
-                </div>
-
-                
-                <!-- Team Member 6 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Instructors/chloe.png" alt="Chloe Fox, MSHI">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold mt-3">Chloe Fox, MSHI</p>
-                </div>
-
-
-
-                <!-- Team Member 7 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Instructors/Shah_Palak.jpg" alt="Palak Shah, BA, MS1">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold mt-3">Palak Shah, BA, MS1</p>
-                </div>
-               
-                
-
-                
-            </div>
-        </div>
-
-
-
-
-
-
-        
-        <hr class="section-divider dashed">
-        <!-- Teaching Assistant -->
-        <div class="team-subsection mt-6">
-            <h3 class="subtitle has-text-centered"><strong>Teaching Assistant</strong></h3>
-            <div class="columns  is-mobile is-multiline is-centered">
-
-                
-                <!-- Team Member 1 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Teaching%20Assistant/Sara_Tafti.jpeg"
-                                 alt="Sara_Tafti (University of Pittsburgh)">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold has-text-centered mt-3">Sara Tafti<br>(University of Pittsburgh)</p>
-                </div>
-
-
-                
-                <!-- Team Member 2 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Teaching%20Assistant/Oliwia.jpg"
-                                 alt="Oliwia Saykiewicz (University of Pittsburgh)">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold has-text-centered mt-3">Oliwia Saykiewicz<br>(University of Pittsburgh)</p>
-                </div>
-
-
-                
-            </div>
-        </div>
-
-
-
-
-
-
-
-        
-
-        
-
-        <hr class="section-divider dashed">
-        <!-- Guest Speakers -->
-        <div class="team-subsection mt-6">
-            <h3 class="subtitle has-text-centered"><strong>Keynote Speakers</strong></h3>
-            <div class="columns  is-mobile is-multiline is-centered">
-
-                
-                <!-- Team Member 1 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Guest%20Speakers/Wang_Yanshan_2025_1.jpg"
-                                 alt="Yanshan Wang, PhD, FAMIA (University of Pittsburgh)">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold has-text-centered mt-3">Yanshan Wang, PhD, FAMIA<br>(University of Pittsburgh)</p>
-                </div>
-
-                
-                <!-- Team Member 2 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Guest%20Speakers/shyam_Visweswaran.png"
-                                 alt="Shyam Visweswaran, PhD (University of Pittsburgh)">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold has-text-centered mt-3">Shyam Visweswaran, PhD<br>(University of Pittsburgh)</p>
-                </div>
-
-                
-                <!-- Team Member 3 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Guest%20Speakers/Farnaz.png"
-                                 alt="Farnaz Rezvani, MSc (IEEE Member)">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold has-text-centered mt-3">Farnaz Rezvani, MSc<br>(IEEE Member)</p>
-                </div>
-
-
-                <!-- Team Member 4 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Guest%20Speakers/Jamie%20Gramz.jpg"
-                                 alt="Jamie Gramz (Siemens Healthineers)">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold has-text-centered mt-3">Jamie Gramz<br>(Siemens Healthineers)</p>
-                </div>
-
-                
-                <!-- Team Member 5 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Guest%20Speakers/Bharmal_1.png"
-                                 alt="Shabbir Bharmal<br>(Leidos)">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold has-text-centered mt-3">Shabbir Bharmal<br>(Leidos)</p>
-                </div>
-
-                
-                <!-- Team Member 6 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Guest%20Speakers/Hanieh_1.jpg"
-                                 alt="Hanieh Alasti <br>(IEEE Member)">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold has-text-centered mt-3">Hanieh Alasti<br>(IEEE Member)</p>
-                </div>
-
-
-                
-                <!-- Team Member 7 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Guest%20Speakers/Alexandrini.jfif"
-                                 alt="Mohammad K. Alexanderani, MD (University of Pittsburgh)">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold has-text-centered mt-3">Mohammad K. Alexanderani, MD<br>(University of Pittsburgh)</p>
-                </div>
-                
-
-                <!-- Team Member 8 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Guest%20Speakers/Davneet.png"
-                                 alt="Davneet Minhas, PhD (University of Pittsburgh)">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold has-text-centered mt-3">Davneet Minhas, PhD<br>(University of Pittsburgh)</p>
-                </div>
-
-
-                <!-- Team Member 9 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Guest%20Speakers/Rema_Padman.jpg"
-                                 alt="Rema Padman, PhD, FAMIA<br>(Carnegie Mellon University)">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold has-text-centered mt-3">Rema Padman, PhD, FAMIA<br>(Carnegie Mellon University)</p>
-                </div>
-
-
-                
-                <!-- Team Member 10 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Guest%20Speakers/Jeremy_Minkowitz.jfif"
-                                 alt="Jeremy Minkowitz, DO <br>(University of Pittsburgh)">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold has-text-centered mt-3">Jeremy Minkowitz, DO<br>(University of Pittsburgh)</p>
-                </div>
-                                
-                
-                <!-- Team Member 11 -->
-
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Guest%20Speakers/Husam.png"
-                                 alt="Husam Ghazaleh, PhD<br>(Benedictine University)">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold has-text-centered mt-3">Husam Ghazaleh, PhD<br>(Benedictine University)</p>
-                </div>
-
-            </div>
-
-
-                
-                <!-- Third Row -->
-                <div class="columns is-centered is-multiline is-mobile">
-
-                    
-
-                <!-- Team Member 12 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Guest%20Speakers/ArezooSH.jpg"
-                                 alt="Arezoo Sarkheyli-Hägele, PhD>(Malmö University)">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold has-text-centered mt-3">Arezoo Sarkheyli-Hägele, PhD<br>(Malmö University)</p>
-                </div>
-                    
-
-                <!-- Team Member 13 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Guest%20Speakers/Jacob_Mathew_1.png"
-                                 alt="Jacob_Mathewh, MD, EMDM>(University of Pittsburgh)">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold has-text-centered mt-3">Jacob_Mathew, MD, EMDM<br>(University of Pittsburgh)</p>
-                </div>
-
-                    
-                <!-- Team Member 14 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Guest%20Speakers/Lindsey_Seigh_1.jpg"
-                                 alt="Lindsey Seigh, BS, M.Ed.<br>(University of Pittsburgh)">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold has-text-centered mt-3">Lindsey Seigh, BS, M.Ed.<br>(University of Pittsburgh)</p>
-                </div>
-
-
-                    
-                <!-- Team Member 15 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Guest%20Speakers/rose.png"
-                                 alt="Rose Olson, DC, M.ed<br>(University of Pittsburgh)">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold has-text-centered mt-3">Rose Olson, DC, M.ed<br>(University of Pittsburgh)</p>
-                </div>
-            </div>
-
-
-
-
-
-
-
-                <!-- Fourth Row -->
-                <div class="columns is-centered is-multiline is-mobile">
-
-                    
-
-                <!-- Team Member 16 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Guest%20Speakers/Curtis_Rasmussen.png"
-                                 alt="Curtis Rasmussen, PhD<br>(Focal Point Coachingh)">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold has-text-centered mt-3">Curtis Rasmussen, PhD<br>(Focal Point Coaching)</p>
-                </div>
-
-
-                <!-- Team Member 17 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Guest%20Speakers/Kofi.jpg"
-                                 alt="Kofi Asante Asamoah, MPH<br>(Sankofi Health)">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold has-text-centered mt-3">Kofi Asante Asamoah, MPH<br>(Sankofi Health)</p>
-                </div>
-                    
-
-                <!-- Team Member 18 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Guest%20Speakers/Katayoon_Dadkhah.jpeg"
-                                 alt="Katayoon Dadkhah, MS<br>(George Mason Universityv)">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold has-text-centered mt-3">Katayoon Dadkhah, MS<br>(George Mason University)</p>
-                </div>
-
-                    
-                
-            </div>
-        </div>
-
-
-        <hr class="section-divider dashed">
-        <!-- Career Development -->
-        <div class="team-subsection mt-6">
-            <h3 class="subtitle has-text-centered"><strong>Career Development</strong></h3>
-            <div class="columns  is-mobile is-multiline is-centered">
-                <!-- Team Member 1 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Career%20Development/Taylor%20Cronauer.jpg"
-                                 alt="Taylor Cronauer, MS (University of Pittsburgh)">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold has-text-centered mt-3">Taylor Cronauer, MS<br>(University of Pittsburgh)</p>
-                </div>
-            </div>
-        </div>
-
-
-
-        <hr class="section-divider dashed">
-        <!-- Webmaster -->
-        <div class="team-subsection mt-6">
-            <h3 class="subtitle has-text-centered"><strong>Webmaster</strong></h3>
-            <div class="columns  is-mobile is-multiline is-centered">
-                <!-- Team Member 1 -->
-                <div class="column is-narrow ">
-                    <div class="circle-avatar-container">
-                        <figure class="image is-128x128">
-                            <img class="is-rounded" src="photos/Guest%20Speakers/Farnaz.png"
-                                 alt="Farnaz Rezvani, MSc (IEEE Member)">
-                        </figure>
-                    </div>
-                    <p class="has-text-weight-semibold has-text-centered mt-3">Farnaz Rezvani, MSc<br>(IEEE Member)</p>
-                </div>
-            </div>
-        </div>
-        
-        
+<section class="section img-bg" id="testimonials">
+  <div class="imgbg" style="background-image:url('photos%20and%20videos/1749519856667.jpg')"></div>
+  <div class="imgbg-ov" style="background:linear-gradient(135deg,rgba(0,12,40,.92),rgba(0,31,84,.82) 55%,rgba(0,77,102,.74))"></div>
+  <div class="wrap ta-right">
+    <span class="eyebrow eyebrow-light right reveal">In their own words</span>
+    <h2 class="title reveal d1" style="color:#fff">Students' Testimonials</h2>
+    <p class="lead reveal d2">Read what past participants have to say about their experience at the AI Summer School.</p>
+  </div>
+  <div class="wrap">
+    <div class="carousel reveal d1" id="tCarousel">
+      <div class="carousel-viewport"><div class="carousel-track" id="tTrack">
+        <div class="tslide"><div class="quote glass-dark"><span class="mark">&rdquo;</span><p>Everything was just so interesting and I feel like I have found something new that I might want to pursue in the future. Dr. Tafti and all the other instructors were very helpful and really facilitated the entire learning process. I found that AI and all these really hard things that I always thought were complicated were actually quite easy to understand.</p><div class="who"><span class="av">K</span>Katherine</div></div></div>
+        <div class="tslide"><div class="quote glass-dark"><span class="mark">&rdquo;</span><p>After coming here I learned a lot. I didn't know much about AI before. Now I've learned about machine learning and deep learning and the differences between them. I feel like AI is such a big, broad topic that can really be implemented into anything.</p><div class="who"><span class="av">S</span>Sophia</div></div></div>
+        <div class="tslide"><div class="quote glass-dark"><span class="mark">&rdquo;</span><p>I was so glad that I signed up because there are so many opportunities and so much to learn from this program. You can meet a lot of guest speakers, and we have a great teacher, Dr. Tafti. He will teach you so much about AI and medical imaging.</p><div class="who"><span class="av">Z</span>Zoe</div></div></div>
+        <div class="tslide"><div class="quote glass-dark"><span class="mark">&rdquo;</span><p>It was such a pleasure being part of the AI in Medical Imaging camp this past week. Thank you for leading such a fun and insightful experience! I really appreciated the engaging teaching style and the way complex concepts were broken down. The camp has sparked my interest in bioinformatics and the intersection between AI and medicine.</p><div class="who"><span class="av">H</span>Hrshikesh</div></div></div>
+        <div class="tslide"><div class="quote glass-dark"><span class="mark">&rdquo;</span><p>Thank you very much for conducting this AI Summer School. I feel like I learned a lot, and I am now interested in maybe pursuing a career in health informatics.</p><div class="who"><span class="av">P</span>Pragnya</div></div></div>
+      </div></div>
+      <div class="carousel-nav">
+        <span class="cnav" id="tPrev" role="button" tabindex="0" aria-label="Previous testimonial">&#8249;</span>
+        <div class="carousel-dots" id="tDots"></div>
+        <span class="cnav" id="tNext" role="button" tabindex="0" aria-label="Next testimonial">&#8250;</span>
+      </div>
     </div>
+  </div>
 </section>
 
-</body>
-</html>
+<section class="section cv" id="team" style="background:linear-gradient(180deg,#f6f9fe,#eef4ff)">
+  <div class="team-deco" aria-hidden="true"><div class="team-aurora"></div></div>
+  <div class="wrap">
+    <span class="eyebrow reveal">The people</span>
+    <h2 class="title reveal d1">Our Team</h2>
+    <p class="lead reveal d2">Hover over anyone to reveal more about them. The faculty, staff, and speakers who make the AI Summer School possible.</p>
+    <div id="teamRoot"></div>
+    <div class="yearbtn" id="yr2025btn"><span class="arw">&#9654;</span> Past year · 2025</div>
+    <div class="yearbody" id="yr2025body"><div id="team2025Root"></div></div>
+  </div>
+</section>
 
+<section class="section" id="alumni" style="background:linear-gradient(180deg,#eef4ff,#f6f9fe)">
+  <div class="wrap">
+    <span class="eyebrow reveal">Our growing community</span>
+    <h2 class="title reveal d1">Alumni</h2>
+    <p class="lead reveal d2">Students from four cohorts who have come through the AI Summer School (first names only).</p>
+    <button class="collapse-btn reveal d2" id="alumniBtn"><span class="cbarw">&#9654;</span> <span id="alumniBtnLbl">Show alumni</span></button>
+    <div class="collapse-body" id="alumniBody"><ul class="alumni-list" id="alumniList"></ul></div>
+  </div>
+</section>
 
-
-<hr class="section-divider dashed">
-<section id="sponsors" class="section">
-  <div class="container has-text-centered">
-
-    <!-- Organizers -->
-    <h2 class="title is-4 mt-6">Organizers</h2>
-    
-    <div class="columns is-centered is-multiline is-variable is-4 mt-4">
-
-
-    
-      <!-- SHRS -->
-      <div class="column is-3-desktop is-6-tablet is-12-mobile has-text-centered">
-        <a href="https://www.shrs.pitt.edu/" target="_blank">
-          <img src="photos/Sponsors/SHRS_1.png" style="max-height: 70px;">
-          <p class="mt-2 has-text-weight-semibold">
-            Pitt School of Health and Rehabilitation Sciences
-          </p>
-        </a>
-      </div>
-
-
-        
-      <!-- CPACE -->
-      <div class="column is-3-desktop is-6-tablet is-12-mobile has-text-centered">
-        <a href="https://www.path.pitt.edu/divisions/computational-pathology-informatics/computational-pathology-ai-center-excellence" target="_blank">
-          <img src="photos/Sponsors/cpace.png" style="max-height: 80px;">
-          <p class="mt-2 has-text-weight-semibold">
-            Computational Pathology & AI<br>
-            Center of Excellence (CPACE)
-          </p>
-        </a>
-      </div>
-    
-
-      <!-- Leidos -->
-      <div class="column is-3-desktop is-6-tablet is-12-mobile has-text-centered">
-        <a href="https://www.leidos.com/" target="_blank">
-          <img src="photos/Sponsors/Leidos-logo.png" style="max-height: 90px;">
-          <p class="mt-2 has-text-weight-semibold">
-            Leidos<br>
-            
-          </p>
-        </a>
-      </div>
-
-
-
-        
-      <!-- Pitt HexAI -->
-      <div class="column is-3-desktop is-6-tablet is-12-mobile has-text-centered">
-        <a href="https://pitthexai.github.io/index.html" target="_blank">
-          <img src="photos/Pitthexai_logo.png" style="max-height: 90px;">
-          <p class="mt-2 has-text-weight-semibold">
-            Pitt Health + Explainable AI<br>
-            (Pitt HexAI) Research Laboratory
-          </p>
-        </a>
-      </div>
-    
+<section class="section img-bg cv" id="statistics">
+  <div class="imgbg" style="background-image:url('photos%20and%20videos/1749519857001.jpg')"></div>
+  <div class="imgbg-ov bg-aurora" style="opacity:.93"></div>
+  <div class="wrap">
+    <span class="eyebrow eyebrow-light reveal">Impact</span>
+    <h2 class="title reveal d1" style="color:#fff">By the Numbers</h2>
+    <div class="statband">
+      <div class="stat glass-dark sheen reveal-s"><div class="n" data-count="4">0</div><div class="l">Annual cohorts since 2023</div></div>
+      <div class="stat glass-dark sheen reveal-s d1"><div class="n" data-count="5">0</div><div class="l">Days of immersive learning</div></div>
+      <div class="stat glass-dark sheen reveal-s d2"><div class="n" data-count="100" data-suffix="%">0</div><div class="l">Free for every student</div></div>
+      <div class="stat glass-dark sheen reveal-s d3"><div class="n" data-count="20" data-suffix="+">0</div><div class="l">Faculty and guest speakers (2026)</div></div>
     </div>
-
-
-    <hr class="section-divider dashed">  
-    <!-- Sponsors -->
-    <h2 class="title is-4 mt-6">Sponsors</h2>
-
-    <div class="columns is-centered is-multiline is-variable is-5 mt-4">
-
-      <!-- IEEE -->
-      <div class="column is-narrow">
-        <a href="https://webinabox.vtools.ieee.org/wibp_home/index/R20037" target="_blank">
-          <img src="photos/Sponsors/IEEE.png" style="max-height: 80px;">
-          <p class="mt-2 has-text-weight-semibold">
-            IEEE Computer Society
-          </p>
-        </a>
-      </div>
-
-
-
-        
-      <!-- Pittsburgh Technology Council -->
-        <!--
-      <div class="column is-narrow">
-        <a href="https://www.pghtech.org/" target="_blank">
-          <img src="photos/Sponsors/Council.png" style="max-height: 80px;">
-          <p class="mt-2 has-text-weight-semibold">
-            Pittsburgh Technology Council
-          </p>
-        </a>
-      </div> -->
-
-
-
-
-
-        
-
-      <!-- Logo Cabin Fence -->
-      <div class="column is-narrow">
-        <a href="https://logcabinfence.com/" target="_blank">
-          <img src="photos/Sponsors/Log_Cabin_Fence.png" style="max-height: 80px;">
-          <p class="mt-2 has-text-weight-semibold">
-            Log Cabin Fence
-          </p>
-        </a>
-      </div>
-
-
-    <!-- Logo Humanitarian AI -->
-      <div class="column is-narrow">
-        <a href="https://humanitarianai.org/" target="_blank">
-          <img src="photos/Sponsors/HAIToday_icon.png" style="max-height: 80px;">
-          <p class="mt-2 has-text-weight-semibold">
-            Humanitarian AI
-          </p>
-        </a>
-      </div>
-
-
-
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- ===================== 2025 ===================== -->
-
-<div class="team-subsection mt-6">
-  <h2 class="title has-text-centered">
-    <span class="year-btn" onclick="toggle2025(this)">
-      <span class="arrow">▶</span> 2025
-    </span>
-  </h2>
-
-  <!-- Everything that should collapse goes inside this div -->
-  <div id="content2025" class="year-content">
-
-    <!-- Instructors -->
-    <h3 class="subtitle has-text-centered"><strong>Instructors</strong></h3>
-    <div class="columns is-mobile is-multiline is-centered">
-      <div class="column is-narrow">
-        <div class="circle-avatar-container">
-          <figure class="image is-128x128">
-            <img class="is-rounded" src="photos/Instructors/Ahmad%20P%20Tafti.jpg" alt="Ahmad P. Tafti, PhD, FAMIA">
-          </figure>
-        </div>
-        <p class="has-text-weight-semibold mt-3">Ahmad P. Tafti, PhD, FAMIA</p>
-      </div>
-
-      <div class="column is-narrow">
-        <div class="circle-avatar-container">
-          <figure class="image is-128x128">
-            <img class="is-rounded" src="photos/Instructors/Nickolas%20Littlefield.jpg" alt="Nickolas Littlefield, MS">
-          </figure>
-        </div>
-        <p class="has-text-weight-semibold mt-3">Nickolas Littlefield, MS</p>
-      </div>
-
-      <div class="column is-narrow">
-        <div class="circle-avatar-container">
-          <figure class="image is-128x128">
-            <img class="is-rounded" src="photos/Instructors/Fengyi%20Gao.jpg" alt="Fengyi Gao, MS">
-          </figure>
-        </div>
-        <p class="has-text-weight-semibold mt-3">Fengyi Gao, MS</p>
-      </div>
-    </div>
-
-    <!-- Guest Speakers -->
-    <div class="team-subsection mt-6">
-      <h3 class="subtitle has-text-centered"><strong>Guest Speakers</strong></h3>
-      <div class="columns is-mobile is-multiline is-centered">
-
-        <div class="column is-narrow">
-          <div class="circle-avatar-container">
-            <figure class="image is-128x128">
-              <img class="is-rounded" src="photos/Guest%20Speakers/Mahdieh%20Poostchi.jpeg" alt="Mahdieh Poostchi, PhD (Microsoft)">
-            </figure>
-          </div>
-          <p class="has-text-weight-semibold has-text-centered mt-3">Mahdieh Poostchi, PhD<br>(Microsoft)</p>
-        </div>
-
-        <div class="column is-narrow">
-          <div class="circle-avatar-container">
-            <figure class="image is-128x128">
-              <img class="is-rounded" src="photos/Guest%20Speakers/Jamie%20Gramz.jpg" alt="Jamie Gramz (Siemens Healthineers)">
-            </figure>
-          </div>
-          <p class="has-text-weight-semibold has-text-centered mt-3">Jamie Gramz<br>(Siemens Healthineers)</p>
-        </div>
-
-        <div class="column is-narrow">
-          <div class="circle-avatar-container">
-            <figure class="image is-128x128">
-              <img class="is-rounded" src="photos/Guest%20Speakers/Yanshan%20Wang.jpg" alt="Yanshan Wang, PhD, FAMIA (University of Pittsburgh)">
-            </figure>
-          </div>
-          <p class="has-text-weight-semibold has-text-centered mt-3">Yanshan Wang, PhD, FAMIA<br>(University of Pittsburgh)</p>
-        </div>
-
-        <div class="column is-narrow">
-          <div class="circle-avatar-container">
-            <figure class="image is-128x128">
-              <img class="is-rounded" src="photos/Guest%20Speakers/Arezou%20Farzaneh.jpg" alt="Arezou Farzaneh, MS (University of Pittsburgh)">
-            </figure>
-          </div>
-          <p class="has-text-weight-semibold has-text-centered mt-3">Arezou Farzaneh, MS<br>(University of Pittsburgh)</p>
-        </div>
-
-        <div class="column is-narrow">
-          <div class="circle-avatar-container">
-            <figure class="image is-128x128">
-              <img class="is-rounded" src="photos/Guest%20Speakers/Lindsey%20Seigh.JPG" alt="Lindsey Seigh, BS, M.Ed. (University of Pittsburgh)">
-            </figure>
-          </div>
-          <p class="has-text-weight-semibold has-text-centered mt-3">Lindsey Seigh, BS, M.Ed.<br>(University of Pittsburgh)</p>
-        </div>
-
-        <div class="column is-narrow">
-          <div class="circle-avatar-container">
-            <figure class="image is-128x128">
-              <img class="is-rounded" src="photos/Guest%20Speakers/Matthew%20Hanna.jpg" alt="Matthew Hanna, MD (University of Pittsburgh)">
-            </figure>
-          </div>
-          <p class="has-text-weight-semibold has-text-centered mt-3">Matthew Hanna, MD<br>(University of Pittsburgh)</p>
-        </div>
-
-        <div class="column is-narrow">
-          <div class="circle-avatar-container">
-            <figure class="image is-128x128">
-              <img class="is-rounded" src="photos/Guest%20Speakers/rose.png" alt="Rose Olson, DC, M.Ed (University of Pittsburgh)">
-            </figure>
-          </div>
-          <p class="has-text-weight-semibold has-text-centered mt-3">Rose Olson, DC, M.Ed<br>(University of Pittsburgh)</p>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Career Development -->
-    <div class="team-subsection mt-6">
-      <h3 class="subtitle has-text-centered"><strong>Career Development</strong></h3>
-      <div class="columns is-mobile is-multiline is-centered">
-        <div class="column is-narrow">
-          <div class="circle-avatar-container">
-            <figure class="image is-128x128">
-              <img class="is-rounded" src="photos/Career%20Development/Taylor%20Cronauer.jpg" alt="Taylor Cronauer, MS (University of Pittsburgh)">
-            </figure>
-          </div>
-          <p class="has-text-weight-semibold has-text-centered mt-3">Taylor Cronauer, MS<br>(University of Pittsburgh)</p>
+    <div class="charts reveal d2">
+      <div class="chartcard glass-dark sheen"><h4>Number of students by year</h4>
+        <img src="photos%20and%20videos/Statistics/number_of_students_by_year_v1.png" alt="Number of students by year" loading="lazy" decoding="async" style="max-width:560px;width:100%"></div>
+      <div class="chartcard glass-dark sheen"><h4>Sex distribution by year</h4>
+        <div class="chartrow">
+          <figure><figcaption>2023</figcaption><img src="photos%20and%20videos/Statistics/sex_2023_v1.png" alt="Sex distribution 2023" loading="lazy" decoding="async" style="max-width:300px;width:100%"></figure>
+          <figure><figcaption>2024</figcaption><img src="photos%20and%20videos/Statistics/sex_2024_v1.png" alt="Sex distribution 2024" loading="lazy" decoding="async" style="max-width:300px;width:100%"></figure>
+          <figure><figcaption>2025</figcaption><img src="photos%20and%20videos/Statistics/sex_2025_v1.png" alt="Sex distribution 2025" loading="lazy" decoding="async" style="max-width:300px;width:100%"></figure>
         </div>
       </div>
     </div>
 
-    <!-- Sponsors (inside the collapsible 2025 box) -->
-    <section id="sponsors" class="section">
-      <div class="container has-text-centered">
+  </div>
+</section>
 
-        <!-- Organizers -->
-        <h2 class="title is-4 mt-6">Organizers</h2>
-
-        <div class="columns is-centered is-multiline is-variable is-4 mt-4">
-
-          <div class="column is-4-desktop is-6-tablet is-12-mobile has-text-centered">
-            <a href="https://www.path.pitt.edu/divisions/computational-pathology-informatics/computational-pathology-ai-center-excellence" target="_blank">
-              <img src="photos/Sponsors/cpace.png" style="max-height: 80px;">
-              <p class="mt-2 has-text-weight-semibold">
-                Computational Pathology & AI<br>
-                Center of Excellence (CPACE)
-              </p>
-            </a>
-          </div>
-
-          <div class="column is-4-desktop is-6-tablet is-12-mobile has-text-centered">
-            <a href="https://www.shrs.pitt.edu/" target="_blank">
-              <img src="photos/Sponsors/SHRS_1.png" style="max-height: 70px;">
-              <p class="mt-2 has-text-weight-semibold">
-                Pitt School of Health and Rehabilitation Sciences
-              </p>
-            </a>
-          </div>
-
-          <div class="column is-4-desktop is-6-tablet is-12-mobile has-text-centered">
-            <a href="https://pitthexai.github.io/index.html" target="_blank">
-              <img src="photos/Pitthexai_logo.png" style="max-height: 90px;">
-              <p class="mt-2 has-text-weight-semibold">
-                Pitt Health + Explainable AI<br>
-                (Pitt HexAI) Research Laboratory
-              </p>
-            </a>
-          </div>
-
-        </div>
-
-        <!-- Sponsors -->
-        <h2 class="title is-4 mt-6">Sponsors</h2>
-
-        <div class="columns is-centered is-multiline is-variable is-5 mt-4">
-
-          <div class="column is-narrow">
-            <a href="https://webinabox.vtools.ieee.org/wibp_home/index/R20037" target="_blank">
-              <img src="photos/Sponsors/IEEE.png" style="max-height: 80px;">
-              <p class="mt-2 has-text-weight-semibold">IEEE Computer Society</p>
-            </a>
-          </div>
-
-          <div class="column is-narrow">
-            <a href="https://www.pghtech.org/" target="_blank">
-              <img src="photos/Sponsors/Council.png" style="max-height: 80px;">
-              <p class="mt-2 has-text-weight-semibold">Pittsburgh Technology Council</p>
-            </a>
-          </div>
-
-        </div>
-
+<section class="section cv" id="sponsors" style="background:linear-gradient(180deg,#f6f9fe,#eef4ff)">
+  <div class="wrap">
+    <span class="eyebrow reveal">With thanks to</span>
+    <h2 class="title reveal d1">Organizers and Sponsors</h2>
+    <div class="sponsor-block reveal d2">
+      <h3>Organizers</h3>
+      <div class="sponsor-grid">
+        <a class="sponsor glass sheen" href="https://www.shrs.pitt.edu/" target="_blank" rel="noopener"><span class="logo"><img src="photos%20and%20videos/Sponsors/SHRS_1.png" alt="Pitt SHRS" loading="lazy" decoding="async"></span><p>Pitt School of Health and Rehabilitation Sciences</p></a>
+        <a class="sponsor glass sheen" href="https://www.path.pitt.edu/divisions/computational-pathology-informatics/computational-pathology-ai-center-excellence" target="_blank" rel="noopener"><span class="logo"><img src="photos%20and%20videos/Sponsors/cpace.png" alt="CPACE" loading="lazy" decoding="async"></span><p>Computational Pathology and AI Center of Excellence (CPACE)</p></a>
+        <a class="sponsor glass sheen" href="https://www.leidos.com/" target="_blank" rel="noopener"><span class="logo"><img src="photos%20and%20videos/Sponsors/Leidos-logo.png" alt="Leidos" loading="lazy" decoding="async"></span><p>Leidos</p></a>
+    <a class="sponsor glass sheen" href="../index.html"><span class="logo"><img src="photos%20and%20videos/Pitthexai_logo.png" alt="Pitt HexAI" loading="lazy" decoding="async"></span><p>Pitt Health + Explainable AI (Pitt HexAI) Research Laboratory</p></a>
       </div>
-    </section>
+    </div>
+    <div class="sponsor-block reveal d2" style="margin-top:54px">
+      <h3>Sponsors</h3>
+      <div class="sponsor-grid">
+        <a class="sponsor glass sheen" href="https://webinabox.vtools.ieee.org/wibp_home/index/R20037" target="_blank" rel="noopener"><span class="logo"><img src="photos%20and%20videos/Sponsors/IEEE.png" alt="IEEE Computer Society" loading="lazy" decoding="async"></span><p>IEEE Computer Society</p></a>
+        <a class="sponsor glass sheen" href="https://logcabinfence.com/" target="_blank" rel="noopener"><span class="logo"><img src="photos%20and%20videos/Sponsors/Log_Cabin_Fence.png" alt="Log Cabin Fence" loading="lazy" decoding="async"></span><p>Log Cabin Fence</p></a>
+        <a class="sponsor glass sheen" href="https://humanitarianai.org/" target="_blank" rel="noopener"><span class="logo"><img src="photos%20and%20videos/Sponsors/HAIToday_icon.png" alt="Humanitarian AI" loading="lazy" decoding="async"></span><p>Humanitarian AI</p></a>
+      </div>
+    </div>
+  </div>
+</section>
 
-  </div> <!-- /#content2025 -->
+<section class="section" id="faq" style="background:linear-gradient(180deg,#eef4ff,#f6f9fe)">
+  <div class="wrap">
+    <span class="eyebrow reveal">Good to know</span>
+    <h2 class="title reveal d1">Frequently Asked Questions</h2>
+    <p class="lead reveal d2">Everything you might want to know before applying. Tap a question to expand it.</p>
+    <div class="faq reveal d2" id="faqList">
+      <div class="faq-item"><button class="faq-q">Who can apply?<span class="faq-ic">+</span></button><div class="faq-a"><p>High school students in grades 11 and 12. Students from all backgrounds and levels of experience are encouraged to apply, no prior AI background required.</p></div></div>
+      <div class="faq-item"><button class="faq-q">How much does it cost?<span class="faq-ic">+</span></button><div class="faq-a"><p>Nothing. The AI Summer School is completely free, and lunch is provided at no cost each day.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Do I need coding experience?<span class="faq-ic">+</span></button><div class="faq-a"><p>The only prerequisite is basic Python programming, and a beginner-friendly tutorial is shared beforehand. Everything else is taught from the ground up.</p></div></div>
+      <div class="faq-item"><button class="faq-q">When and where is it held?<span class="faq-ic">+</span></button><div class="faq-a"><p>The 2026 school runs Monday, June 8 to Friday, June 12, 9:00 am to 4:00 pm EDT, in person at the University of Pittsburgh in Pittsburgh, Pennsylvania. Admitted students receive additional location details.</p></div></div>
+      <div class="faq-item"><button class="faq-q">What will I learn and do?<span class="faq-ic">+</span></button><div class="faq-a"><p>Foundations of AI and computer vision, deep learning and convolutional neural networks, and object detection with YOLO and SSD, all hands-on in Python and Google Colab. You will practice medical image annotation and finish with a collaborative team project, plus daily guest talks.</p></div></div>
+      <div class="faq-item"><button class="faq-q">What should I bring?<span class="faq-ic">+</span></button><div class="faq-a"><p>A laptop and charger (and a mouse if you prefer one). Lunch is provided free each day.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Will I receive a certificate?<span class="faq-ic">+</span></button><div class="faq-a"><p>Yes. Students who successfully complete the program receive a certificate of participation in AI-powered medical imaging informatics.</p></div></div>
+      <div class="faq-item"><button class="faq-q">How do I apply?<span class="faq-ic">+</span></button><div class="faq-a"><p>Applications open each spring, right here on this website. The 2026 cohort is now closed, so check back ahead of the next cycle.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Who organizes the school?<span class="faq-ic">+</span></button><div class="faq-a"><p>The Pitt HexAI Research Laboratory and the Computational Pathology and AI Center of Excellence (CPACE) at the University of Pittsburgh, in collaboration with the School of Health and Rehabilitation Sciences and the IEEE Computer Society.</p></div></div>
+    </div>
+  </div>
+</section>
 
-</div> <!-- /.team-subsection -->
+<footer class="footer">
+  <div class="veil"></div>
+  <div class="footer-inner">
+    <div class="col"><h4>AI <span class="gold">Summer</span> School</h4><p>The AI Summer School on Medical Imaging Informatics is hosted by the Pitt HexAI Research Laboratory and CPACE at the University of Pittsburgh, introducing the next generation to trustworthy, explainable AI.</p></div>
+    <div class="col"><h4>Explore</h4><ul><li><a href="#about">About the school</a></li><li><a href="#program">Program</a></li><li><a href="#registration">Registration</a></li><li><a href="#team">Our team</a></li><li><a href="https://github.com/pitthexai/AISummerSchoolinMedicalImagingInformatics" target="_blank" rel="noopener">Curriculum on GitHub</a></li></ul></div>
+      <div class="col"><h4>Pitt HexAI</h4><ul><li><a href="../index.html">Lab home</a></li><li><a href="../research.html">Research projects</a></li><li><a href="../publications.html">Publications</a></li><li><a href="https://www.linkedin.com/in/ahmadtafti/" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://www.youtube.com/@user-xb1ti1jp4e" target="_blank" rel="noopener">YouTube</a></li></ul></div>
+  </div>
+  <div class="copy"><span>(c) <span id="yr"></span> Pitt HexAI Research Laboratory, University of Pittsburgh</span><span>Pittsburgh, Pennsylvania</span></div>
+</footer>
+
+</div>
 
 <script>
-  function toggle2025(el) {
-    const box = document.getElementById("content2025");
-    const arrow = el.querySelector(".arrow");
+var P="photos%20and%20videos/";
+var OC=P+"Organizing%20Committee/",PD=P+"Program%20Directors/",IN=P+"Instructors/",TA=P+"Teaching%20Assistant/",GS=P+"Guest%20Speakers/",CD=P+"Career%20Development/";
 
-    if (box.classList.contains("open")) {
-      box.classList.remove("open");
-      arrow.textContent = "▶";
-    } else {
-      box.classList.add("open");
-      arrow.textContent = "▼";
-    }
+var team2026={
+  "Program Chair":[
+    {n:"Ahmad P. Tafti, PhD, FAMIA",img:OC+"aptafti.jpg",role:"Program Chair",af:"University of Pittsburgh",
+     bio:"Founding Director of the Pitt HexAI Research Laboratory and Assistant Professor of Health Informatics; a Fellow of the American Medical Informatics Association.",link:"https://aptafti.github.io/"}
+  ],
+  "Organizing Committee":[
+    {n:"Ahmad P. Tafti, PhD, FAMIA",img:OC+"aptafti.jpg",role:"Organizing Committee",af:"University of Pittsburgh",
+     bio:"Director of the Pitt HexAI Research Laboratory, focused on trustworthy, explainable AI for healthcare.",link:"https://aptafti.github.io/"},
+    {n:"Hooman H. Rashidi, MD, MS",img:OC+"Hooman_Rashidi.png",role:"Organizing Committee",af:"University of Pittsburgh",
+     bio:"Associate Dean of AI in Medicine and founding Executive Director of CPACE; a leader in democratizing AI in medicine."},
+    {n:"Liron Pantanowitz, MD, PhD",img:OC+"Liron%20Pantanowitz.jpg",role:"Organizing Committee",af:"Pitt / UPMC",
+     bio:"Maud L. Menten Professor and Chair of Pathology, and a pioneer in digital and computational pathology."}
+  ],
+  "Program Directors":[
+    {n:"Ann Vinski, PhD",img:PD+"Ann%20Vinski.png",role:"Program Director",af:"University of Pittsburgh"},
+    {n:"Nicole Myers, RN, MS",img:PD+"Nicole%20Myers.jpg",role:"Program Director",af:"University of Pittsburgh"}
+  ],
+  "Instructors":[
+    {n:"Ahmad P. Tafti, PhD, FAMIA",img:IN+"aptafti.jpg",role:"Instructor",af:"University of Pittsburgh",
+     bio:"Director of the Pitt HexAI Research Laboratory, leading the school's core AI and computer-vision instruction.",link:"https://aptafti.github.io/"},
+    {n:"Nicole Myers, RN, MSHI",img:IN+"Myers.jpg",role:"Instructor",af:"University of Pittsburgh"},
+    {n:"Fengyi Gao, MS",img:IN+"Fengyi%20Gao.jpg",role:"Instructor",af:"University of Pittsburgh"},
+    {n:"Yushui Han, MS",img:IN+"Yushui.jpeg",role:"Instructor",af:"University of Pittsburgh"},
+    {n:"Nickolas Littlefield, MS",img:IN+"Nickolas%20Littlefield.jpg",role:"Instructor",af:"University of Pittsburgh"},
+    {n:"Chloe Fox, MSHI",img:IN+"chloe.png",role:"Instructor",af:"University of Pittsburgh"},
+    {n:"Palak Shah, BA, MS1",img:IN+"Shah_Palak.jpg",role:"Instructor",af:"University of Pittsburgh"}
+  ],
+  "Teaching Assistants":[
+    {n:"Sara Tafti",img:TA+"Sara_Tafti.jpeg",role:"Teaching Assistant",af:"University of Pittsburgh"},
+    {n:"Oliwia Saykiewicz",img:TA+"Oliwia.jpg",role:"Teaching Assistant",af:"University of Pittsburgh"}
+  ],
+  "Keynote Speakers":[
+    {n:"Yanshan Wang, PhD, FAMIA",img:GS+"Wang_Yanshan_2025_1.jpg",role:"Keynote Speaker",af:"University of Pittsburgh",
+     bio:"Assistant Professor and Vice Chair of Research in Health Information Management, working on AI and NLP in healthcare."},
+    {n:"Shyam Visweswaran, PhD",img:GS+"shyam_Visweswaran.png",role:"Keynote Speaker",af:"University of Pittsburgh",
+     bio:"Professor of Biomedical Informatics and Director of the Center for Clinical Artificial Intelligence at Pitt."},
+    {n:"Farnaz Rezvani, MSc",img:GS+"Farnaz.png",role:"Keynote Speaker",af:"IEEE Member"},
+    {n:"Jamie Gramz",img:GS+"Jamie%20Gramz.jpg",role:"Keynote Speaker",af:"Siemens Healthineers"},
+    {n:"Shabbir Bharmal",img:GS+"Bharmal_1.png",role:"Keynote Speaker",af:"Leidos"},
+    {n:"Hanieh Alasti",img:GS+"Hanieh_1.jpg",role:"Keynote Speaker",af:"IEEE Member"},
+    {n:"Mohammad K. Alexanderani, MD",img:GS+"Alexandrini.jfif",role:"Keynote Speaker",af:"University of Pittsburgh"},
+    {n:"Davneet Minhas, PhD",img:GS+"Davneet.png",role:"Keynote Speaker",af:"University of Pittsburgh"},
+    {n:"Rema Padman, PhD, FAMIA",img:GS+"Rema_Padman.jpg",role:"Keynote Speaker",af:"Carnegie Mellon University",
+     bio:"Trustees Professor of Management Science and Healthcare Informatics at CMU's Heinz College and Adjunct Professor at Pitt."},
+    {n:"Jeremy Minkowitz, DO",img:GS+"Jeremy_Minkowitz.jfif",role:"Keynote Speaker",af:"University of Pittsburgh"},
+    {n:"Husam Ghazaleh, PhD",img:GS+"Husam.png",role:"Keynote Speaker",af:"Benedictine University"},
+    {n:"Jacob Mathew, MD, EMDM",img:GS+"Jacob_Mathew_1.png",role:"Keynote Speaker",af:"University of Pittsburgh"},
+    {n:"Lindsey Seigh, BS, M.Ed.",img:GS+"Lindsey_Seigh_1.jpg",role:"Keynote Speaker",af:"University of Pittsburgh"},
+    {n:"Rose Olson, DC, M.Ed.",img:GS+"rose.png",role:"Keynote Speaker",af:"University of Pittsburgh"},
+    {n:"Kofi Asante Asamoah, MPH",img:GS+"Kofi.jpg",role:"Keynote Speaker",af:"Sankofi Health"},
+    {n:"Katayoon Dadkhah, MS",img:GS+"Katayoon_Dadkhah.jpeg",role:"Keynote Speaker",af:"George Mason University"}
+  ],
+  "Career Development":[
+    {n:"Taylor Cronauer, MS",img:CD+"Taylor%20Cronauer.jpg",role:"Career Development",af:"University of Pittsburgh"}
+  ],
+  "Webmaster":[
+    {n:"Farnaz Rezvani, MSc",img:GS+"Farnaz.png",role:"Webmaster",af:"IEEE Member"}
+  ]
+};
+var team2025={
+  "Instructors":[
+    {n:"Ahmad P. Tafti, PhD, FAMIA",img:IN+"Ahmad%20P%20Tafti.jpg",role:"Instructor",af:"University of Pittsburgh",
+     bio:"Director of the Pitt HexAI Research Laboratory and Assistant Professor of Health Informatics at Pitt.",link:"https://aptafti.github.io/"},
+    {n:"Nickolas Littlefield, MS",img:IN+"Nickolas%20Littlefield.jpg",role:"Instructor",af:"University of Pittsburgh"},
+    {n:"Fengyi Gao, MS",img:IN+"Fengyi%20Gao.jpg",role:"Instructor",af:"University of Pittsburgh"}
+  ],
+  "Guest Speakers":[
+    {n:"Mahdieh Poostchi, PhD",img:GS+"Mahdieh%20Poostchi.jpeg",role:"Guest Speaker",af:"Microsoft"},
+    {n:"Jamie Gramz",img:GS+"Jamie%20Gramz.jpg",role:"Guest Speaker",af:"Siemens Healthineers"},
+    {n:"Yanshan Wang, PhD, FAMIA",img:GS+"Yanshan%20Wang.jpg",role:"Guest Speaker",af:"University of Pittsburgh",
+     bio:"Assistant Professor and Vice Chair of Research in Health Information Management, working on AI and NLP in healthcare."},
+    {n:"Arezou Farzaneh, MS",img:GS+"Arezou%20Farzaneh.jpg",role:"Guest Speaker",af:"University of Pittsburgh"},
+    {n:"Lindsey Seigh, BS, M.Ed.",img:GS+"Lindsey_Seigh_1.jpg",role:"Guest Speaker",af:"University of Pittsburgh"},
+    {n:"Matthew Hanna, MD",img:GS+"Matthew%20Hanna.jpg",role:"Guest Speaker",af:"University of Pittsburgh"},
+    {n:"Rose Olson, DC, M.Ed.",img:GS+"rose.png",role:"Guest Speaker",af:"University of Pittsburgh"}
+  ],
+  "Career Development":[
+    {n:"Taylor Cronauer, MS",img:CD+"Taylor%20Cronauer.jpg",role:"Career Development",af:"University of Pittsburgh"}
+  ]
+};
+var alumni=["Katherine","Saniya","Sophia","Delia","Samuel","Ethan","Alan","Sarah","Jailyn","Othman","Danny","Akshar","Parth","Ishal Fathima","Sara","Amber","Saharsha","Amulya","Rachel","Leah","Thomas","Ahmed","Chun Kit","Darren","Sohan","Alexandra","Airah","Chuhan","Bhavika","Shaun","Srenithi","Mariam","Neil","Kevin","Erick","Ziqian","Zoe","Arthur","Fae","Milan","McKayla","Rasika","Julia","Jason","Michael"];
+
+/* ═══ RENDER ═══ */
+function esc(s){return (s||"").replace(/"/g,"&quot;");}
+function memberHTML(m){
+  var initials=m.n.replace(/,.*$/,"").split(" ").map(function(w){return w[0];}).slice(0,2).join("");
+  var bioBody=m.bio?m.bio:(m.role+(m.af?" &middot; "+m.af:"")+".");
+  var link=m.link?'<a class="blink" href="'+esc(m.link)+'" target="_blank" rel="noopener">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></a>':"";
+  return '<div class="member">'
+    +'<img src="'+esc(m.img)+'" alt="'+esc(m.n)+'" loading="lazy" decoding="async" data-init="'+initials+'" onerror="teamImgFail(this)">'
+    +'<div class="label"><div class="nm">'+esc(m.n)+'</div><div class="af">'+esc(m.af||"")+'</div></div>'
+    +'<div class="minfo"><div class="role">'+esc(m.role)+'</div><div class="bn">'+esc(m.n)+'</div>'
+    +'<div class="ba">'+esc(m.af||"")+'</div><div class="bt">'+bioBody+'</div>'+link+'</div></div>';
+}
+function teamImgFail(img){var d=document.createElement("div");d.className="fallback";d.textContent=img.dataset.init||"?";img.parentNode.insertBefore(d,img);img.remove();}
+function groupHTML(t,a){
+  var collapsible=/speaker/i.test(t);
+  var grid='<div class="team-grid'+(collapsible?' cbody':'')+'">'+a.map(memberHTML).join("")+'</div>';
+  if(collapsible){
+    return '<div class="team-group reveal"><div class="gh gh-toggle" data-gtoggle><h3>'+t+' <span class="gcount">('+a.length+')</span></h3><span class="line"></span><span class="garw">&#9654;</span></div>'+grid+'</div>';
   }
-</script>
+  return '<div class="team-group reveal"><div class="gh"><h3>'+t+'</h3><span class="line"></span></div>'+grid+'</div>';
+}
+function renderTeam(root,data){document.getElementById(root).innerHTML=Object.keys(data).map(function(k){return groupHTML(k,data[k]);}).join("");}
+renderTeam("teamRoot",team2026);
+renderTeam("team2025Root",team2025);
 
-<!-- =================== /2025 (Collapsible) + Sponsors =================== -->
+/* alumni collapsible list */
+(function(){
+  var list=document.getElementById("alumniList"); if(!list) return;
+  list.innerHTML=alumni.map(function(a){return "<li>"+a+"</li>";}).join("");
+  var btn=document.getElementById("alumniBtn"), body=document.getElementById("alumniBody"), lbl=document.getElementById("alumniBtnLbl");
+  lbl.textContent="Show alumni ("+alumni.length+")";
+  btn.addEventListener("click",function(){
+    var open=body.classList.toggle("open"); btn.classList.toggle("open",open);
+    lbl.textContent=(open?"Hide alumni (":"Show alumni (")+alumni.length+")";
+    if(open) setTimeout(observeReveals,30);
+  });
+})();
+
+document.getElementById("yr").textContent=new Date().getFullYear();
+
+/* ═══ INTERACTIONS ═══ */
+var links=[].slice.call(document.querySelectorAll(".navlink"));
+links.forEach(function(l){l.addEventListener("click",function(){
+  var el=document.getElementById(l.dataset.to);
+  if(el){el.scrollIntoView({behavior:"smooth",block:"start"});}
+  document.body.classList.remove("nav-open");
+});});
+var sections=links.map(function(l){return document.getElementById(l.dataset.to);});
+var spy=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(e.isIntersecting){var id=e.target.id;links.forEach(function(l){l.classList.toggle("active",l.dataset.to===id);});}
+});},{rootMargin:"-45% 0px -50% 0px"});
+sections.forEach(function(s){if(s)spy.observe(s);});
+
+var rev=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");rev.unobserve(e.target);}});},{threshold:.12});
+function observeReveals(){document.querySelectorAll(".reveal,.reveal-l,.reveal-r,.reveal-s,.reveal-clip,.reveal-f").forEach(function(el){if(!el.classList.contains("in"))rev.observe(el);});}
+observeReveals();
+
+var ht=document.getElementById("heroTitle");
+(function(){var walk=function(node){[].slice.call(node.childNodes).forEach(function(ch){
+  if(ch.nodeType===3){var frag=document.createDocumentFragment();ch.textContent.split(/(\s+)/).forEach(function(tok){
+    if(tok.trim()===""){frag.appendChild(document.createTextNode(tok));}
+    else{var w=document.createElement("span");w.className="w";var i=document.createElement("i");i.textContent=tok;w.appendChild(i);frag.appendChild(w);}});
+    ch.replaceWith(frag);}else if(ch.nodeType===1){walk(ch);}});};
+  walk(ht);setTimeout(function(){ht.classList.add("in");},200);})();
+
+var counters=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(e.isIntersecting){var el=e.target,target=+el.dataset.count,suf=el.dataset.suffix||"";
+    var cur=0,step=Math.max(1,Math.round(target/40));
+    var t=setInterval(function(){cur+=step;if(cur>=target){cur=target;clearInterval(t);}el.textContent=cur+suf;},28);
+    counters.unobserve(el);}
+});},{threshold:.5});
+document.querySelectorAll("[data-count]").forEach(function(c){counters.observe(c);});
+
+var tgl=document.getElementById("navToggle"),scrim=document.getElementById("scrim");
+tgl.addEventListener("click",function(){document.body.classList.toggle("nav-open");});
+scrim.addEventListener("click",function(){document.body.classList.remove("nav-open");});
+
+var yb=document.getElementById("yr2025btn"),ybody=document.getElementById("yr2025body");
+yb.addEventListener("click",function(){yb.classList.toggle("open");ybody.classList.toggle("open");if(ybody.classList.contains("open")){setTimeout(observeReveals,50);}});
+
+/* curved, scroll-drawn timelines (works for every .ptimeline on the page) */
+function buildCurves(){
+  document.querySelectorAll(".ptimeline").forEach(function(tl){
+    var svg=tl.querySelector(".pcurve"), path=tl.querySelector(".pcurvePath");
+    var dots=[].slice.call(tl.querySelectorAll(".pdot"));
+    if(!svg||!path||dots.length<2) return;
+    var W=tl.clientWidth, H=tl.clientHeight, box=tl.getBoundingClientRect();
+    svg.setAttribute("viewBox","0 0 "+W+" "+H);
+    var pts=dots.map(function(d){var r=d.getBoundingClientRect();return {x:r.left-box.left+r.width/2,y:r.top-box.top+r.height/2};});
+    var dstr="M "+pts[0].x.toFixed(1)+" "+pts[0].y.toFixed(1);
+    for(var i=0;i<pts.length-1;i++){
+      var p0=pts[i-1]||pts[i],p1=pts[i],p2=pts[i+1],p3=pts[i+2]||pts[i+1];
+      var c1x=p1.x+(p2.x-p0.x)/6,c1y=p1.y+(p2.y-p0.y)/6;
+      var c2x=p2.x-(p3.x-p1.x)/6,c2y=p2.y-(p3.y-p1.y)/6;
+      dstr+=" C "+c1x.toFixed(1)+" "+c1y.toFixed(1)+" "+c2x.toFixed(1)+" "+c2y.toFixed(1)+" "+p2.x.toFixed(1)+" "+p2.y.toFixed(1);
+    }
+    path.setAttribute("d",dstr);
+    var len=path.getTotalLength();
+    tl._len=len; tl._dots=dots; tl._path=path;
+    path.style.strokeDasharray=len;
+  });
+  updateCurves();
+}
+function updateCurves(){
+  document.querySelectorAll(".ptimeline").forEach(function(tl){
+    if(!tl._len) return;
+    var r=tl.getBoundingClientRect(), vh=window.innerHeight;
+    var prog=(vh*0.78 - r.top)/(r.height*0.82);
+    prog=Math.max(0,Math.min(1,prog));
+    tl._path.style.strokeDashoffset=tl._len*(1-prog);
+    var n=tl._dots.length;
+    tl._dots.forEach(function(d,i){d.classList.toggle("on",prog>=(i+0.55)/n);});
+  });
+}
+window.addEventListener("scroll",updateCurves,{passive:true});
+window.addEventListener("resize",buildCurves);
+window.addEventListener("load",buildCurves);
+buildCurves(); setTimeout(buildCurves,400); setTimeout(buildCurves,1200);
+
+/* collapsible team groups (speakers) */
+document.addEventListener("click",function(e){
+  var t=e.target.closest&&e.target.closest("[data-gtoggle]"); if(!t) return;
+  t.classList.toggle("open");
+  var grid=t.nextElementSibling;
+  if(grid){grid.classList.toggle("open"); if(grid.classList.contains("open")) setTimeout(observeReveals,30);}
+});
+
+/* testimonial carousel (3 visible, center focus, autoplay 4s) */
+(function(){
+  var track=document.getElementById("tTrack"); if(!track) return;
+  var viewport=track.parentNode;
+  var slides=[].slice.call(track.children), n=slides.length, idx=0, timer=null;
+  var dotsWrap=document.getElementById("tDots"), dots=[];
+  for(var i=0;i<n;i++){(function(k){var d=document.createElement("span");d.className="cdot"+(k===0?" on":"");d.addEventListener("click",function(){go(k);reset();});dotsWrap.appendChild(d);dots.push(d);})(i);}
+  slides.forEach(function(s,k){s.addEventListener("click",function(){if(k!==idx){go(k);reset();}});});
+  function go(i){
+    idx=(i+n)%n;
+    var s=slides[idx];
+    var x=s.offsetLeft + s.offsetWidth/2 - viewport.clientWidth/2;
+    track.style.transform="translateX("+(-x)+"px)";
+    slides.forEach(function(sl,k){sl.classList.toggle("active",k===idx);});
+    dots.forEach(function(d,k){d.classList.toggle("on",k===idx);});
+  }
+  function start(){timer=setInterval(function(){go(idx+1);},4000);}
+  function reset(){clearInterval(timer);start();}
+  var nx=document.getElementById("tNext"), pv=document.getElementById("tPrev"), car=document.getElementById("tCarousel");
+  if(nx)nx.addEventListener("click",function(){go(idx+1);reset();});
+  if(pv)pv.addEventListener("click",function(){go(idx-1);reset();});
+  if(car){car.addEventListener("mouseenter",function(){clearInterval(timer);});car.addEventListener("mouseleave",reset);}
+  window.addEventListener("resize",function(){go(idx);});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)go(idx);});},{threshold:.15});
+  io.observe(track);
+  go(0); start();
+})();
+
+/* FAQ accordion */
+document.querySelectorAll(".faq-q").forEach(function(q){q.addEventListener("click",function(){q.parentNode.classList.toggle("open");});});
+
+var mf=document.querySelector(".mouse-follower");
+window.addEventListener("mousemove",function(e){document.body.classList.add("mouse-on");
+  mf.style.setProperty("--mx",e.clientX+"px");mf.style.setProperty("--my",e.clientY+"px");},{passive:true});
+window.addEventListener("click",function(e){var r=document.createElement("span");r.className="click-ripple";
+  r.style.left=e.clientX+"px";r.style.top=e.clientY+"px";r.style.width=r.style.height="14px";
+  document.body.appendChild(r);setTimeout(function(){r.remove();},650);});
+</script>
+</body>
+</html>

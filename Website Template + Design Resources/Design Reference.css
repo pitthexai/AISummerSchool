@@ -1,0 +1,446 @@
+@import "tailwindcss";
+
+@theme {
+  /* Cool, crisp surface colors for a clean laboratory aesthetic */
+  --color-surface: #f8fafc;
+  --color-surface-dim: #cbd5e1;
+  --color-surface-bright: #ffffff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f1f5f9;
+  --color-surface-container: #e2e8f0;
+  --color-surface-container-high: #cbd5e1;
+  --color-surface-container-highest: #94a3b8;
+  
+  /* High contrast text */
+  --color-on-surface: #0f172a;
+  --color-on-surface-variant: #334155;
+  --color-inverse-surface: #1e293b;
+  --color-inverse-on-surface: #f8fafc;
+  
+  /* Outline and borders */
+  --color-outline: #64748b;
+  --color-outline-variant: #cbd5e1;
+  
+  /* Primary Blue Palette (Derived from logo) */
+  --color-surface-tint: #0033a0;
+  --color-primary: #002677;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #1a4ccc;
+  --color-on-primary-container: #d6e4ff;
+  --color-inverse-primary: #a3c2ff;
+  
+  /* Secondary Accent (Golden Yellow from logo, used sparingly) */
+  --color-secondary: #c28700;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #f2a900;
+  --color-on-secondary-container: #4d3500;
+  
+  /* Tertiary (A cool teal/cyan to complement the blue) */
+  --color-tertiary: #004d66;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #007399;
+  --color-on-tertiary-container: #cceeff;
+  
+  /* Error states */
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+  
+  /* Fixed accent colors */
+  --color-primary-fixed: #d6e4ff;
+  --color-primary-fixed-dim: #a3c2ff;
+  --color-on-primary-fixed: #001240;
+  --color-on-primary-fixed-variant: #002677;
+  --color-secondary-fixed: #ffdf99;
+  --color-secondary-fixed-dim: #ffcc4d;
+  --color-on-secondary-fixed: #261a00;
+  --color-on-secondary-fixed-variant: #735000;
+  --color-tertiary-fixed: #cceeff;
+  --color-tertiary-fixed-dim: #80d4ff;
+  --color-on-tertiary-fixed: #001a24;
+  --color-on-tertiary-fixed-variant: #004d66;
+  
+  --color-background: #f8fafc;
+  --color-on-background: #0f172a;
+  --color-surface-variant: #e2e8f0;
+
+  --font-headline: "Libre Caslon Text", serif;
+  --font-body: "Avenir Next", "Avenir", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  --radius-DEFAULT: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+}
+
+/* Custom Gradients and Utilities (Shifted to Blues) */
+.bg-hero {
+    background: linear-gradient(135deg, #001233 0%, #00081a 50%, #001f54 100%);
+}
+.bg-about {
+    background: linear-gradient(135deg, #f0f5ff 0%, #d6e4ff 100%);
+}
+.bg-story {
+    background: linear-gradient(135deg, #d6e4ff 0%, #a3c2ff 100%);
+}
+.bg-impact {
+    background: linear-gradient(135deg, #a3c2ff 0%, #e0f2fe 100%);
+}
+.bg-hub {
+    /* Subtle integration of the yellow accent here */
+    background: linear-gradient(135deg, #a3c2ff 0%, #ffd970 100%);
+}
+
+/* ── Liquid glass (amplified) ───────────────────────────────
+   Layered translucency + saturation boost + inner highlights
+   for a pronounced, premium "liquid glass" feel. */
+.liquid-glass {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.22));
+    backdrop-filter: blur(22px) saturate(185%);
+    -webkit-backdrop-filter: blur(22px) saturate(185%);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 8px 32px rgba(0, 18, 51, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.85), inset 0 -1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.liquid-glass-soft {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.14));
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    box-shadow: 0 6px 22px rgba(0, 18, 51, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.liquid-glass-strong {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.6));
+    backdrop-filter: blur(28px) saturate(190%);
+    -webkit-backdrop-filter: blur(28px) saturate(190%);
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    box-shadow: 0 14px 40px -8px rgba(0, 18, 51, 0.22), inset 0 2px 0 rgba(255, 255, 255, 0.9), inset 0 -1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Glass moving-sheen helper: add .liquid-sheen to any glass card */
+.liquid-sheen { position: relative; overflow: hidden; }
+.liquid-sheen::after {
+    content: ""; position: absolute; top: -60%; left: -30%; width: 50%; height: 220%;
+    background: linear-gradient(115deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    transform: rotate(8deg) translateX(-220%);
+    transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1); pointer-events: none;
+}
+.liquid-sheen:hover::after { transform: rotate(8deg) translateX(320%); }
+
+/* physical string vibration simulation keyframes */
+@keyframes vibrate {
+  0% { transform: translate(0, 0) scaleY(1); }
+  15% { transform: translate(0, -3px) scaleY(1.25); }
+  30% { transform: translate(0, 2px) scaleY(0.75); }
+  45% { transform: translate(0, -1.5px) scaleY(1.1); }
+  60% { transform: translate(0, 1px) scaleY(0.9); }
+  75% { transform: translate(0, -0.5px) scaleY(1.03); }
+  90% { transform: translate(0, 0.2px) scaleY(0.97); }
+  100% { transform: translate(0, 0) scaleY(1); }
+}
+
+.animate-vibrate {
+  animation: vibrate 0.8s ease-in-out;
+}
+
+/* Mouse cursor spotlight */
+.mouse-spotlight {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(
+    380px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 100%
+  );
+  mix-blend-mode: overlay;
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+.mouse-active .mouse-spotlight {
+  opacity: 1;
+}
+
+/* Mouse follower lighter circle effect */
+.mouse-follower-circle {
+  position: fixed;
+  width: 48px;
+  height: 48px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.15) 70%, transparent 100%);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: overlay;
+  transform: translate(-50%, -50%);
+  left: var(--mouse-x, -200px);
+  top: var(--mouse-y, -200px);
+  box-shadow: 0 0 24px 8px rgba(255, 255, 255, 0.25);
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+  will-change: left, top;
+}
+
+.mouse-active .mouse-follower-circle {
+  opacity: 1;
+}
+
+/* Click feedback ripple mechanics */
+.click-ripple {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.45);
+  transform: scale(0);
+  animation: ripple-out 0.6s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+  z-index: 9999;
+}
+
+@keyframes ripple-out {
+  to {
+    transform: scale(4.5);
+    opacity: 0;
+  }
+}
+
+/* ── Page & card animations ─────────────────────────── */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pop-in {
+  from { opacity: 0; transform: scale(0.93); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.animate-fade-in { animation: fade-in 0.4s ease both; }
+.animate-pop-in  { animation: pop-in  0.3s cubic-bezier(0.34,1.56,0.64,1) both; }
+
+/* ── Scroll-triggered reveal animations ─────────────────────────── */
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.75s ease-out, transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .scroll-reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .scroll-reveal-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.75s ease-out, transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .scroll-reveal-left.in-view {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .scroll-reveal-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.75s ease-out, transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .scroll-reveal-right.in-view {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .scroll-reveal-scale {
+    opacity: 0;
+    transform: scale(0.92);
+    transition: opacity 0.75s ease-out, transform 0.75s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .scroll-reveal-scale.in-view {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .scroll-reveal-delay-1 { transition-delay: 0.1s; }
+  .scroll-reveal-delay-2 { transition-delay: 0.2s; }
+  .scroll-reveal-delay-3 { transition-delay: 0.3s; }
+  .scroll-reveal-delay-4 { transition-delay: 0.4s; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Editorial Liquid Glass — redesign layer
+   ═══════════════════════════════════════════════════════════ */
+
+/* Film grain texture overlay (apply to a relative parent) */
+.texture-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Editorial eyebrow label with leading rule */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-primary);
+}
+.eyebrow::before {
+  content: "";
+  width: 2.25rem;
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-primary), transparent);
+  flex-shrink: 0;
+}
+.eyebrow-light {
+  color: rgba(255, 255, 255, 0.85);
+}
+.eyebrow-light::before {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.7), transparent);
+}
+
+/* Outlined watermark type (decorative numerals/text) */
+.text-watermark {
+  -webkit-text-stroke: 1.5px rgba(0, 38, 119, 0.12); /* Changed to primary blue */
+  color: transparent;
+  user-select: none;
+}
+.text-watermark-light {
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.22);
+  color: transparent;
+  user-select: none;
+}
+
+/* Dark liquid glass for deep blue/navy sections */
+.liquid-glass-dark {
+  background: rgba(0, 18, 51, 0.42); /* Shifted to deep navy */
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* Highlighter sweep under key phrases (Uses the yellow accent) */
+.hl {
+  background-image: linear-gradient(transparent 64%, rgba(242, 169, 0, 0.4) 64%);
+  border-radius: 2px;
+  padding: 0 0.1em;
+}
+
+/* Slow drifting aurora background (Shifted to deep ocean blues) */
+@keyframes aurora-drift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.bg-aurora {
+  background: linear-gradient(115deg, #001233 0%, #002677 30%, #1a4ccc 52%, #004d66 72%, #001f54 100%);
+  background-size: 240% 240%;
+  animation: aurora-drift 18s ease-in-out infinite;
+}
+
+/* Infinite marquee ribbon */
+@keyframes marquee-x {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee-x 38s linear infinite;
+  will-change: transform;
+}
+.animate-marquee:hover { animation-play-state: paused; }
+
+/* Gentle levitation for floating chips */
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+.animate-float { animation: float-soft 6.5s ease-in-out infinite; }
+.animate-float-slow { animation: float-soft 9s ease-in-out infinite; }
+
+/* Pulsing scroll cue */
+@keyframes cue-drop {
+  0%   { transform: translateY(0); opacity: 1; }
+  70%  { transform: translateY(10px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+.animate-cue { animation: cue-drop 2.2s ease-in-out infinite; }
+
+/* Hide scrollbars on snap rails */
+.scrollbar-hidden { scrollbar-width: none; }
+.scrollbar-hidden::-webkit-scrollbar { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee, .animate-float, .animate-float-slow, .animate-cue, .bg-aurora {
+    animation: none;
+  }
+}
+
+/* ── De-capsing pass ──────────────────────────────────────
+   All-caps micro-labels read as generic. These overrides sit
+   outside Tailwind's @layer utilities, so they win the cascade
+   and neutralize every uppercase/tracking utility site-wide. */
+.uppercase { text-transform: none; }
+.tracking-wider { letter-spacing: 0.015em; }
+.tracking-widest { letter-spacing: 0.025em; }
+.tracking-\[0\.2em\] { letter-spacing: 0.025em; }
+.tracking-\[0\.22em\] { letter-spacing: 0.025em; }
+.tracking-\[0\.25em\] { letter-spacing: 0.03em; }
+.tracking-\[0\.28em\] { letter-spacing: 0.03em; }
+.tracking-\[0\.3em\] { letter-spacing: 0.03em; }
+.tracking-\[0\.35em\] { letter-spacing: 0.03em; }
+
+/* ── Word-by-word masked headline reveals ─────────────────── */
+@media (prefers-reduced-motion: no-preference) {
+  .split-words .w-mask {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    padding: 0.22em;
+    margin: -0.22em;
+  }
+  .split-words .w-inner {
+    display: inline-block;
+    transform: translateY(140%);
+    opacity: 0;
+    transition: transform 0.8s cubic-bezier(0.2, 0.65, 0.2, 1), opacity 0.5s ease;
+    will-change: transform;
+  }
+  .split-words.in-view .w-inner {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Staggered fluid entrance animations for detail pages */
+@keyframes slide-up-fade {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up-fade {
+  opacity: 0;
+  animation: slide-up-fade 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
