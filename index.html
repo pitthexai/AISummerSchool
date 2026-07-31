@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="AI Summer School: Pitt HexAI Research Laboratory">
+    <meta name="keywords" content="AI Summer School">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI Summer School: Pitt HexAI Research Laboratory</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" href="./static/images/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">    
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style>
+    .circle-avatar-container{
+      width: 128px;
+      height: 128px;
+      margin: 0 auto;
+      position: relative;
+    
+      border-radius: 50%;
+      overflow: hidden; 
+    }
+    
+    .circle-avatar-container .is-rounded{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    
+      border: 3px solid #d9d9d9;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.10);
+    
+      transition: transform 0.25s ease,
+                  box-shadow 0.25s ease,
+                  border-color 0.25s ease;
+    }
+    
+   
+    .circle-avatar-container:hover .is-rounded{
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.14);
+      border-color: #1f4e79;
+    }
+
+
+    #team .columns{
+      justify-content: center;
+      gap: 24px;
+    }
+
+    #team .column.is-narrow{
+      flex: 0 0 200px;
+      width: 200px;
+      text-align: center;
+    }
+    
+    #team .column.is-narrow p{
+      word-break: keep-all;
+      overflow-wrap: normal;
+      hyphens: none;
+    }
+        
+    </style>
+
+
+
+    
+    <script>
+        $(document).ready(function () {
+            $(".nav-item a").click(function (event) {
+                event.preventDefault();
+                var target = $(this).attr("href");
+                $('html, body').animate({
+                    scrollTop: $(target).offset().top
+                }, 600);
+            });
+        });
+    </script>
+
+    <style>
+        /* ===== Ensure perfect circles and consistent sizing ===== */
+        .circle-avatar-container {
+            width: 128px;
+            height: 128px;
+            margin: 0 auto;
+        }
+
+        .circle-avatar-container .is-rounded {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* Optional: Add hover effect */
+        .circle-avatar-container img {
+            transition: transform 0.3s ease;
+        }
+
+        .circle-avatar-container img:hover {
+            transform: scale(1.05);
+        }
+
+
+
+
+
+        /* ===== 2025 Collapsible button ===== */
+        .year-btn {
+            cursor: pointer;
+            user-select: none;
+            color: #3273dc;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+    
+        .year-content {
+            display: none;
+        }
+    
+        .year-content.open {
+            display: block;
+        }
+    </style>
+
+
+    <style>
+    .pitt-topbar {
+      background: #003594;
+      color: white;
+      font-size: 11px;
+      display: flex;
+      justify-content: flex-end;
+      padding: 4px 340px;
+    }
+    
+    .pitt-site-header {
+      background: #fff;
+      padding: 4px 0 2px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .pitt-site-header .inner {
+      max-width: 1140px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      padding: 0 16px 0 80px;;
+    }
+    
+    .pitt-logo {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-decoration: none;
+      line-height: 1;
+    }
+    
+    .pitt-logo img {
+      height: 62px;
+      width: auto;
+      display: block;
+    }
+    
+    .pitt-logo-subtitle {
+      color: #106eea;
+      font-size: 12px;
+      font-weight: 700;
+      margin-top: -2px;
+      white-space: nowrap;
+    }
+    
+    .pitt-main-nav {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    
+    .pitt-main-nav a {
+      color: #222;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+    }
+    
+    .pitt-main-nav a:hover,
+    .pitt-main-nav a.active {
+      color: #106eea;
+    }
+    
+    .pitt-main-nav a.active {
+      border-bottom: 2px solid #106eea;
+      padding-bottom: 4px;
+    }
+    
+    .pitt-social {
+      font-size: 20px;
+      color: #111 !important;
+    }
+    
+    .pitt-social:hover {
+      color: #106eea !important;
+    }
+
+    .pitt-social.youtube-icon:hover {
+      color: #ff0000 !important;
+    }
+    
+    /* black local nav thinner */
+    .navbar.is-dark {
+      min-height: 36px;
+    }
+    
+    .navbar.is-dark .navbar-item {
+      padding-top: 6px;
+      padding-bottom: 6px;
+      font-size: 14px;
+    }
+
+    .navbar.is-dark .navbar-start {
+      padding-left: 180px;
+    }
+        
+    </style>    
+
+        <!--
+
+        /* ===== Force center alignment for Our Team section ===== */
+        #team {
+            text-align: center;
+        }
+    
+        #team .columns {
+            justify-content: center;
+        }
+    
+        #team .column {
+            text-align: center;
+        }
+    </style> -->
+
+    
+</head>
+<body>
+
+
+<!-- ===== Pitt HexAI Website Header ===== -->
+<div class="pitt-topbar">
+  University of Pittsburgh
+</div>
+
+<header class="pitt-site-header">
+  <div class="inner">
+
+    <a class="pitt-logo" href="https://pitthexai.github.io/index.html">
+      <img src="./photos/Pitthexai_logo.png" alt="Pitt HexAI Logo">
+      <span class="pitt-logo-subtitle">AI for Musculoskeletal Care</span>
+    </a>
+
+    <nav class="pitt-main-nav">
+      <a href="https://pitthexai.github.io/index.html">
+        <i class="bx bx-home"></i> Home
+      </a>
+
+      <a href="https://pitthexai.github.io/research.html">
+        <i class="bx bx-search"></i> Research Projects
+      </a>
+
+      <a href="https://pitthexai.github.io/publications.html">
+        <i class="bx bx-search"></i> Publications
+      </a>
+
+      <a href="https://pitthexai.github.io/podcast.html">
+        <i class="bi bi-broadcast-pin"></i> HexAI Podcast
+      </a>
+
+      <a class="active" href="https://pitthexai.github.io/AISummerSchool/">
+        <i class="bx bxs-bank"></i> AI Summer School
+      </a>
+
+      <a href="https://pitthexai.github.io/people.html">
+        <i class="bi bi-people-fill"></i> Team
+      </a>
+
+      <a class="pitt-social" href="https://www.linkedin.com/in/ahmadtafti/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <i class="bi bi-linkedin"></i>
+      </a>
+
+      <a class="pitt-social youtube-icon" href="https://www.youtube.com/@user-xb1ti1jp4e" target="_blank" rel="noopener" aria-label="YouTube">
+        <i class="bi bi-youtube"></i>
+      </a>
+    </nav>
+
+  </div>
+</header>
+
+
+    
+<nav class="navbar is-dark" role="navigation">
+    <div class="container">
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item nav-item" href="#home">Home</a>
+                <a class="navbar-item nav-item" href="#program">Program</a>
+                <a class="navbar-item nav-item" href="#registration">Registration</a>
+                <a class="navbar-item nav-item" href="#testimonials">Students' Testimonials</a>
+                <a class="navbar-item nav-item" href="#alumni">Alumni</a>
+                <a class="navbar-item nav-item" href="#statistics">AI Summer School by the Numbers</a>
+                <a class="navbar-item nav-item" href="#sponsors">Sponsors</a>
+                <a class="navbar-item nav-item" href="#team">Our Team</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<!-- Sticky hero wrapper starts -->
+<div id="sticky-hero">
+        
+<!-- Flex container for logos -->
+<div class="logo-row" style="display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap; margin-bottom: 2rem;">
+
+    <!-- LOGO 1 -->
+    <div>
+        <a href="https://www.shrs.pitt.edu" target="_blank">
+            <img src="./photos/shrs.png" alt="Pitt SHRS" style="max-width: 315px; height: auto;">
+        </a>
+    </div>
+
+    <!-- LOGO 2 -->
+    <div>
+        <a href="https://cpace.pitt.edu" target="_blank">
+            <img src="./photos/cpace.png" alt="CPACE" style="max-width: 255px; height: auto;">
+        </a>
+    </div>
+
+
+
+    <!-- LOGO 3 -->
+    <div>
+        <a href="https://www.leidos.com" target="_blank">
+            <img src="./photos/Leidos-logo.png" alt="Leidos" style="max-width: 220px; height: auto;">
+        </a>
+    </div>
+
+    
+    
+    <!-- LOGO 3 -->
+    <div>
+        <a href="https://pitthexai.github.io" target="_blank">
+            <img src="./photos/Pitthexai_logo.png" alt="Pitt HexAI" style="max-width: 255px; height: auto;">
+        </a>
+    </div>
+
+</div>
+
+
+    <h1 class="title is-1 hero-title" style="text-align: center;">AI Summer School</h1>
+    <h3 class="title is-3 hero-subtitle" style="text-align: center;">Medical Imaging Informatics</h3>
+    <hr class="section-divider dashed">
+    <h2 class="title has-text-centered">University of Pittsburgh</h2>
+    <hr class="section-divider dashed">
+
+</div>
+<!-- Sticky hero wrapper ends -->
+
+<div id="hero-spacer"></div>    
+    
+<section id="home" class="section">
+    <div class="container is-max-desktop">
+
+
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+        <h1 class="title is-1" style="text-align: center;">AI Summer School</h1>
+        <h3 class="title is-3" style="text-align: center;">Medical Imaging Informatics</h3>
+        <h4 class="title is-4" style="text-align: center;">University of Pittsburgh</h4>
+        -->
+        <p></p>
+        <div class="columns is-centered has-text-centered">
+
+           
+            <div class="content has-text-justified">
+                <p></p>
+                <p>Our AI Summer School organized by the <a href="https://pitthexai.github.io/" target="_blank">Pitt
+                    HexAI Research Laboratory</a> and <a href="https://cpace.pitt.edu/" target="_blank">Computational Pathology and AI Center of Excellence (CPACE)</a> aims to provide a stimulating and unique opportunity for <strong>high
+                    school students (grades 11 and 12)</strong> to dive into the fascinating world
+                    of artificial intelligence (AI) and its application in medical imaging informatics. This is a
+                    program designed for advanced high school students (grades 11–12). We launched the AI Summer School in the summer of 2023, and it
+                    has been conducted annually since its inception. This year, our AI Summer School will be held
+                    between <strong>Monday, June 8 to Friday, June 12, 2026; 9:00 AM to 4:00 PM EDT</strong>, at the <a
+                            href="http://www.pitt.edu" target="_blank">University of Pittsburgh</a>, in collaboration
+                    with the <a
+                            href="https://www.path.pitt.edu/divisions/computational-pathology-informatics/computational-pathology-ai-center-excellence"
+                            target="_blank">Computational Pathology & AI Center of Excellence (CPACE)</a>, the <a
+                            href="https://www.shrs.pitt.edu/" target="_blank">School of Health and Rehabilitation
+                        Sciences</a>, and <a href="https://webinabox.vtools.ieee.org/wibp_home/index/R20037"
+                                             target="_blank">IEEE Computer Society</a> in Pittsburgh, Pennsylvania.</p>
+                <p>Medical imaging informatics leverages AI-driven computer vision to analyze and interpret medical
+                    images for better diagnosis and treatment. A key area of focus is object detection and localization,
+                    where AI systems identify and locate relevant features within medical images. This summer school
+                    will dive into these techniques, teaching participants how to apply them using Python programming.
+                    Through lectures, hands-on exercises, and collaborative projects, attendees will gain practical
+                    skills in AI-powered medical image analysis, preparing them to tackle real-world challenges in the
+                    field.</p>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<section>
+  <div class="column has-text-centered">
+    <div class="publication-links">
+
+      <!-- Flex container for the videos -->
+      <div class="video-row" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+
+        <!-- First video -->
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/--jPZdjR4-0?si=3U1kO3RpvKfgBzMs" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen style="width: 480px; height: 280px;"></iframe>
+        </div>
+
+        <!-- Second video -->
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/emEAd2dhQb0?si=SUnv1l0TCb9bYhXM" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen style="width: 480px; height: 280px;"></iframe>
+        </div>
+
+      </div> <!-- end video-row -->
+
+    </br>
+        
+            <span class="link-block">
+                <a href="https://github.com/pitthexai/AISummerSchoolinMedicalImagingInformatics" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>GitHub</span>
+                  </a>
+              </span>
+        </div>
+    </div>
+
+    <p></p>
+
+
+</section>
+
+
+<section id="program" class="section">
+    <div class="container">
+        <h2 class="title">Program</h2>
+        <div class="content has-text-justified">
+            <p>The AI Summer School offers a comprehensive <strong>one week</strong> program designed to introduce high
+                school and community college students to artificial intelligence and its applications in medical
+                imaging. The program begins with foundational concepts, including an introduction to AI, computer
+                vision, and digital image operations, followed by <strong>hands-on practice with Python and Google
+                    Colab</strong>. As the week progresses, students explore advanced topics such as deep learning,
+                convolutional neural networks (CNNs), and object detection techniques like YOLO and SSD. Each day
+                includes lectures from esteemed faculty, hands-on coding exercises, and guest talks from AI researchers
+                in academia and industry. Students will gain practical experience in medical image annotation, image
+                filtering, and object localization, utilizing tools like PyTorch, ITK-SNAP, and Liner.ai. The program
+                culminates in a collaborative team project, where participants apply their knowledge to real-world
+                challenges, followed by team presentations. The summer school concludes with a <strong>certificate
+                    ceremony</strong>, recognizing students' achievements and their participation in this immersive AI
+                learning experience. Further information is available <a
+                        href="https://github.com/pitthexai/AISummerSchoolinMedicalImagingInformatics" target="_blank">here</a>!
+            </p>
+            <p><strong>Prerequisite:</strong> Basic Python programming! If not familiar with this prerequisite, follow
+                the link <a href="https://www.tutorialspoint.com/python/index.htm" target="_blank">here</a>!</p>
+        </div>
+    </div>
+
+    <style>
+        /* Optional: Centering the video */
+        .video-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        iframe {
+            width: 560px;
+            height: 315px;
+            border: none;
+        }
+    </style>
+
+    <div class="video-container">
+        <!-- Embed code from YouTube -->
+        <iframe src="https://cdnapisec.kaltura.com/p/5687602/embedPlaykitJs/uiconf_id/53926702?iframeembed=true&entry_id=1_qg4nv08s"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+    </div>
+</section>
+
+<section id="registration" class="section">
+    <div class="container">
+        <h2 class="title">Registration (Free)</h2>
+        <div class="content has-text-justified">
+            <p>We invite <strong>high school students in grades 11 and 12</strong>, who have a strong interest in advanced technology, 
+                healthcare informatics, and artificial intelligence (AI) to apply. Students from all backgrounds and levels of experience are 
+                encouraged to apply. Upon successful completion of the summer program, students will receive a certificate of participation, 
+                acknowledging their commitment and accomplishments in AI-powered medical imaging informatics.</p>
+
+            <ul>
+                 <li>
+  <strong>Year 2026:</strong> Registration closed on Thursday, April 30, 2026 at 11:59 PM EDT [Closed].
+</li>
+                 <li>Year 2025: [Closed]</li>
+                 <li>Year 2024: [Closed]</li>
+                 <li>Year 2023: [Closed]</li>
+            </ul>
+        </div>
+    </div>
+
+</section>
+
+<section id="testimonials" class="section">
+    <div class="container">
+        <h2 class="title">Students' Testimonials</h2>
+        <div class="content has-text-justified">
+            <p>Read what past participants have to say about their experience at the AI Summer School.</p>
+            <ul>
+                <li><i>Everything was just so interesting and I feel like I have found something new that I might want
+                    pursue in the future, and I think Dr. Tafti and all the other instructors were very helpfuland
+                    really just facilitated like the entire learning process. And I found that AI and all these really
+                    hard things that I always thought were really complicated were actually quite easy to
+                    understand. </i> - <strong>Katherine</strong>
+                </li>
+                <li><i>After coming here I learnd a lot as I didn't know a huge lot about AI before coming here, but
+                    after coming here know I have learned about like machine learning and like deep learning, the
+                    differences between that and I just feel like AI is such a big like broad topic that can really be
+                    implemented into anything.</i> - <strong>Sophia</strong>
+                </li>
+                <li><i>I was so glad that I signed up because there is so many opportunities and so much to learn from
+                    this program, and you can meet a lot of guest speakers and we have a great teacher Dr. Tafti and he
+                    will teach you so much about AI and medical imaging.</i> - <strong>Zoe</strong>
+                </li>
+
+                <li><i>It was such a pleasure being part of the AI in Medical Imaging camp this past week. 
+                    Thank you for leading such a fun and insightful experience! I really appreciated your engaging teaching style and the way you broke down complex concepts in a way that was easy to understand.
+                    The camp has sparked my interest in learning more about bioinformatics and the intersection between AI and medicine.</i> - <strong>Hrshikesh</strong>
+                </li>
+
+                <li><i>Thank you very much for conducting this AI Summer school, I feel like I learned a lot and I am now interested in maybe pursuing a career in health informatics.</i> - <strong>Pragnya</strong>
+                </li>
+
+
+
+                
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+<section id="alumni" class="section">
+    <div class="container">
+        <h2 class="title">Alumni</h2>
+
+        <div class="content">
+            <p>Our AI Summer School alumni (first names only):</p>
+
+            <div class="columns is-multiline">
+
+                <div class="column is-one-quarter">
+                    <ul>
+                        <li>Katherine</li>
+                        <li>Saniya</li>
+                        <li>Sophia</li>
+                        <li>Delia</li>
+                        <li>Samuel</li>
+                        <li>Ethan</li>
+                        <li>Alan</li>
+                        <li>Sarah</li>
+                        <li>Jailyn</li>
+                        <li>Othman</li>
+                        <li>Danny</li>
+                        <li>Akshar</li>
+                        <li>Parth</li>
+                    </ul>
+                </div>
+
+                <div class="column is-one-quarter">
+                    <ul>
+                        <li>Ishal Fathima</li>
+                        <li>Sara</li>
+                        <li>Amber</li>
+                        <li>Saharsha</li>
+                        <li>Amulya</li>
+                        <li>Rachel</li>
+                        <li>Leah</li>
+                        <li>Sarah</li>
+                        <li>Jailyn</li>
+                        <li>Othman</li>
+                        <li>Thomas</li>
+                        <li>Ahmed</li>
+                        <li>Chun Kit</li>
+                    </ul>
+                </div>
+
+                <div class="column is-one-quarter">
+                    <ul>
+                        <li>Darren</li>
+                        <li>Sohan</li>
+                        <li>Sophia</li>
+                        <li>Alexandra</li>
+                        <li>Airah</li>
+                        <li>Chuhan</li>
+                        <li>Bhavika</li>
+                        <li>Shaun</li>
+                        <li>Srenithi</li>
+                        <li>Mariam</li>
+                        <li>Neil</li>
+                        <li>Kevin</li>
+                        <li>Erick</li>
+                    </ul>
+                </div>
+
+                <div class="column is-one-quarter">
+                    <ul>
+                        <li>Neil</li>
+                        <li>Ziqian</li>
+                        <li>Zoe</li>
+                        <li>Arthur</li>
+                        <li>Fae</li>
+                        <li>Milan</li>
+                        <li>McKayla</li>
+                        <li>Rasika</li>
+                        <li>Julia</li>
+                        <li>Jason</li>
+                        <li>Michael </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section id="statistics" class="section">
+  <div class="container">
+    <h2 class="title">AI Summer School - By the Numbers</h2>
+
+    <div class="content">
+      <h3 class="subtitle">Number of Students by Year</h3>
+      <figure class="image">
+        <img src="./photos/Statistics/number_of_students_by_year_v1.png" alt="Number of students by year" style="max-width:500px; margin:auto; display:block;">
+      </figure>
+
+      <hr class="section-divider dashed">
+
+      <h3 class="subtitle">Sex Distribution by Year</h3>
+      <div class="columns is-multiline is-centered has-text-centered">
+
+        <div class="column is-one-third">
+          <h4 class="has-text-weight-semibold">2023</h4>
+          <figure class="image">
+            <img src="./photos/Statistics/sex_2023_v1.png" style="max-width:300px;">
+          </figure>
+        </div>
+
+        <div class="column is-one-third">
+          <h4 class="has-text-weight-semibold">2024</h4>
+          <figure class="image">
+            <img src="./photos/Statistics/sex_2024_v1.png" style="max-width:300px;">
+          </figure>
+        </div>
+
+        <div class="column is-one-third">
+          <h4 class="has-text-weight-semibold">2025</h4>
+          <figure class="image">
+            <img src="./photos/Statistics/sex_2025_v1.png" style="max-width:300px;">>
+          </figure>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+    
+
+<!--
+<section id="sponsors" class="section">
+    <div class="container">
+        <h2 class="title">Sponsors</h2>
+        <ul>
+            <li>
+                <a href="https://www.path.pitt.edu/divisions/computational-pathology-informatics/computational-pathology-ai-center-excellence"
+                   target="_blank">Computational Pathology & AI Center of Excellence (CPACE)</a></li>
+            <li><a href="https://www.shrs.pitt.edu/" target="_blank">Pitt School of Health and Rehabilitation
+                Sciences</a></li>
+            <li><a href="https://webinabox.vtools.ieee.org/wibp_home/index/R20037" target="_blank">IEEE Computer
+                Society</a></li>
+
+             <li><a href="https://www.pghtech.org/" target="_blank">Pittsburgh Technology Council</a></li>
+
+            
+        </ul>
+        <div class="content has-text-justified">
+            <p></p>
+
+        </div>
+    </div>
+</section>
+
+-->
+
+    
+<section id="team" class="section">
+    <div class="container">
+        <h2 class="title has-text-centered">Our Team</h2>
+
+
+<!-- Organizing Committee -->
+        <div class="team-subsection">
+            <h3 class="subtitle has-text-centered"><strong>Program Chair</strong></h3>
+            <div class="columns  is-mobile is-multiline is-centered">
+                <!-- Team Member 1 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Organizing%20Committee/aptafti.jpg"
+                                 alt="Ahmad P. Tafti, PhD, FAMIA">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold mt-3">Ahmad P. Tafti, PhD, FAMIA</p>
+                </div>
+            </div>
+        </div>
+    
+
+    </br>
+        
+        <!-- Organizing Committee -->
+        <div class="team-subsection">
+            <h3 class="subtitle has-text-centered"><strong>Organizing Committee</strong></h3>
+            <div class="columns  is-mobile is-multiline is-centered">
+                <!-- Team Member 1 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Organizing%20Committee/aptafti.jpg"
+                                 alt="Ahmad P. Tafti, PhD, FAMIA">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold mt-3">Ahmad P. Tafti, PhD, FAMIA</p>
+                </div>
+                <!-- Team Member 2 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Organizing%20Committee/Hooman_Rashidi.png"
+                                 alt="Hooman H. Rashidi, MD, MS">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold mt-3">Hooman H. Rashidi, MD, MS</p>
+                </div>
+                <!-- Team Member 3 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Organizing%20Committee/Liron%20Pantanowitz.jpg"
+                                 alt="Liron Pantanowitz, MD, PhD">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold mt-3">Liron Pantanowitz, MD, PhD</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Program Directors -->
+        <div class="team-subsection mt-6">
+            
+            <h3 class="subtitle has-text-centered"><strong>Program Directors</strong></h3>
+            <div class="columns  is-mobile is-multiline is-centered">
+                <!-- Team Member 1 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Program%20Directors/Ann%20Vinski.png"
+                                 alt="Ann Vinski, PhD">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold mt-3">Ann Vinski, PhD</p>
+                </div>
+                <!-- Team Member 2 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Program%20Directors/Nicole%20Myers.jpg"
+                                 alt="Nicole Myers, RN, MS">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold mt-3">Nicole Myers, RN, MS</p>
+                </div>
+            </div>
+        </div>
+
+        
+
+
+        
+
+
+
+         
+          <!-- ===================== 2026 ===================== -->
+         <!-- Instructors -->
+        <div class="team-subsection mt-6">
+            
+            <hr class="section-divider dashed">
+            <h2 class="title has-text-centered">2026</h2>
+            <hr class="section-divider dashed">
+            
+            <h3 class="subtitle has-text-centered"><strong>Instructors</strong></h3>
+            <div class="columns  is-mobile is-multiline is-centered">
+
+                
+                <!-- Team Member 1 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Instructors/aptafti.jpg"
+                                 alt="Ahmad P. Tafti, PhD, FAMIA">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold mt-3">Ahmad P. Tafti, PhD, FAMIA</p>
+                </div>
+
+
+                <!-- Team Member2 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Instructors/Myers.jpg" alt="Nicole Myers, RN, MSHI">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold mt-3">Nicole Myers, RN, MSHI</p>
+                </div>
+            </div>
+               
+
+
+                <!-- Scond Row -->
+                <div class="columns is-centered is-multiline is-mobile">
+
+                
+                
+                <!-- Team Member 3 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Instructors/Fengyi%20Gao.jpg" alt="Fengyi Gao, MS">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold mt-3">Fengyi Gao, MS</p>
+                </div>
+
+                
+                <!-- Team Member 4 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Instructors/Yushui.jpeg" alt="Yushui Han, MS">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold mt-3">Yushui Han, MS</p>
+                </div>
+
+                
+                <!-- Team Member 5 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Instructors/Nickolas%20Littlefield.jpg"
+                                 alt="Nickolas Littlefield, MS">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold mt-3">Nickolas Littlefield, MS</p>
+                </div>
+
+                
+                <!-- Team Member 6 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Instructors/chloe.png" alt="Chloe Fox, MSHI">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold mt-3">Chloe Fox, MSHI</p>
+                </div>
+
+
+
+                <!-- Team Member 7 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Instructors/Shah_Palak.jpg" alt="Palak Shah, BA, MS1">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold mt-3">Palak Shah, BA, MS1</p>
+                </div>
+               
+                
+
+                
+            </div>
+        </div>
+
+
+
+
+
+
+        
+        <hr class="section-divider dashed">
+        <!-- Teaching Assistant -->
+        <div class="team-subsection mt-6">
+            <h3 class="subtitle has-text-centered"><strong>Teaching Assistant</strong></h3>
+            <div class="columns  is-mobile is-multiline is-centered">
+
+                
+                <!-- Team Member 1 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Teaching%20Assistant/Sara_Tafti.jpeg"
+                                 alt="Sara_Tafti (University of Pittsburgh)">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold has-text-centered mt-3">Sara Tafti<br>(University of Pittsburgh)</p>
+                </div>
+
+
+                
+                <!-- Team Member 2 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Teaching%20Assistant/Oliwia.jpg"
+                                 alt="Oliwia Saykiewicz (University of Pittsburgh)">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold has-text-centered mt-3">Oliwia Saykiewicz<br>(University of Pittsburgh)</p>
+                </div>
+
+
+                
+            </div>
+        </div>
+
+
+
+
+
+
+
+        
+
+        
+
+        <hr class="section-divider dashed">
+        <!-- Guest Speakers -->
+        <div class="team-subsection mt-6">
+            <h3 class="subtitle has-text-centered"><strong>Keynote Speakers</strong></h3>
+            <div class="columns  is-mobile is-multiline is-centered">
+
+                
+                <!-- Team Member 1 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Guest%20Speakers/Wang_Yanshan_2025_1.jpg"
+                                 alt="Yanshan Wang, PhD, FAMIA (University of Pittsburgh)">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold has-text-centered mt-3">Yanshan Wang, PhD, FAMIA<br>(University of Pittsburgh)</p>
+                </div>
+
+                
+                <!-- Team Member 2 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Guest%20Speakers/shyam_Visweswaran.png"
+                                 alt="Shyam Visweswaran, PhD (University of Pittsburgh)">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold has-text-centered mt-3">Shyam Visweswaran, PhD<br>(University of Pittsburgh)</p>
+                </div>
+
+                
+                <!-- Team Member 3 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Guest%20Speakers/Farnaz.png"
+                                 alt="Farnaz Rezvani, MSc (IEEE Member)">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold has-text-centered mt-3">Farnaz Rezvani, MSc<br>(IEEE Member)</p>
+                </div>
+
+
+                <!-- Team Member 4 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Guest%20Speakers/Jamie%20Gramz.jpg"
+                                 alt="Jamie Gramz (Siemens Healthineers)">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold has-text-centered mt-3">Jamie Gramz<br>(Siemens Healthineers)</p>
+                </div>
+
+                
+                <!-- Team Member 5 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Guest%20Speakers/Bharmal_1.png"
+                                 alt="Shabbir Bharmal<br>(Leidos)">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold has-text-centered mt-3">Shabbir Bharmal<br>(Leidos)</p>
+                </div>
+
+                
+                <!-- Team Member 6 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Guest%20Speakers/Hanieh_1.jpg"
+                                 alt="Hanieh Alasti <br>(IEEE Member)">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold has-text-centered mt-3">Hanieh Alasti<br>(IEEE Member)</p>
+                </div>
+
+
+                
+                <!-- Team Member 7 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Guest%20Speakers/Alexandrini.jfif"
+                                 alt="Mohammad K. Alexanderani, MD (University of Pittsburgh)">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold has-text-centered mt-3">Mohammad K. Alexanderani, MD<br>(University of Pittsburgh)</p>
+                </div>
+                
+
+                <!-- Team Member 8 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Guest%20Speakers/Davneet.png"
+                                 alt="Davneet Minhas, PhD (University of Pittsburgh)">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold has-text-centered mt-3">Davneet Minhas, PhD<br>(University of Pittsburgh)</p>
+                </div>
+
+
+                <!-- Team Member 9 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Guest%20Speakers/Rema_Padman.jpg"
+                                 alt="Rema Padman, PhD, FAMIA<br>(Carnegie Mellon University)">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold has-text-centered mt-3">Rema Padman, PhD, FAMIA<br>(Carnegie Mellon University)</p>
+                </div>
+
+
+                
+                <!-- Team Member 10 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Guest%20Speakers/Jeremy_Minkowitz.jfif"
+                                 alt="Jeremy Minkowitz, DO <br>(University of Pittsburgh)">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold has-text-centered mt-3">Jeremy Minkowitz, DO<br>(University of Pittsburgh)</p>
+                </div>
+                                
+                
+                <!-- Team Member 11 -->
+
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Guest%20Speakers/Husam.png"
+                                 alt="Husam Ghazaleh, PhD<br>(Benedictine University)">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold has-text-centered mt-3">Husam Ghazaleh, PhD<br>(Benedictine University)</p>
+                </div>
+
+            </div>
+
+
+                
+                <!-- Third Row -->
+                <div class="columns is-centered is-multiline is-mobile">
+
+                    
+
+                <!-- Team Member 12 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Guest%20Speakers/ArezooSH.jpg"
+                                 alt="Arezoo Sarkheyli-Hägele, PhD>(Malmö University)">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold has-text-centered mt-3">Arezoo Sarkheyli-Hägele, PhD<br>(Malmö University)</p>
+                </div>
+                    
+
+                <!-- Team Member 13 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Guest%20Speakers/Jacob_Mathew_1.png"
+                                 alt="Jacob_Mathewh, MD, EMDM>(University of Pittsburgh)">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold has-text-centered mt-3">Jacob_Mathew, MD, EMDM<br>(University of Pittsburgh)</p>
+                </div>
+
+                    
+                <!-- Team Member 14 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Guest%20Speakers/Lindsey_Seigh_1.jpg"
+                                 alt="Lindsey Seigh, BS, M.Ed.<br>(University of Pittsburgh)">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold has-text-centered mt-3">Lindsey Seigh, BS, M.Ed.<br>(University of Pittsburgh)</p>
+                </div>
+
+
+                    
+                <!-- Team Member 15 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Guest%20Speakers/rose.png"
+                                 alt="Rose Olson, DC, M.ed<br>(University of Pittsburgh)">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold has-text-centered mt-3">Rose Olson, DC, M.ed<br>(University of Pittsburgh)</p>
+                </div>
+            </div>
+
+
+
+
+
+
+
+                <!-- Fourth Row -->
+                <div class="columns is-centered is-multiline is-mobile">
+
+                    
+
+                <!-- Team Member 16 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Guest%20Speakers/Curtis_Rasmussen.png"
+                                 alt="Curtis Rasmussen, PhD<br>(Focal Point Coachingh)">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold has-text-centered mt-3">Curtis Rasmussen, PhD<br>(Focal Point Coaching)</p>
+                </div>
+
+
+                <!-- Team Member 17 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Guest%20Speakers/Kofi.jpg"
+                                 alt="Kofi Asante Asamoah, MPH<br>(Sankofi Health)">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold has-text-centered mt-3">Kofi Asante Asamoah, MPH<br>(Sankofi Health)</p>
+                </div>
+                    
+
+                <!-- Team Member 18 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Guest%20Speakers/Katayoon_Dadkhah.jpeg"
+                                 alt="Katayoon Dadkhah, MS<br>(George Mason Universityv)">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold has-text-centered mt-3">Katayoon Dadkhah, MS<br>(George Mason University)</p>
+                </div>
+
+                    
+                
+            </div>
+        </div>
+
+
+        <hr class="section-divider dashed">
+        <!-- Career Development -->
+        <div class="team-subsection mt-6">
+            <h3 class="subtitle has-text-centered"><strong>Career Development</strong></h3>
+            <div class="columns  is-mobile is-multiline is-centered">
+                <!-- Team Member 1 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Career%20Development/Taylor%20Cronauer.jpg"
+                                 alt="Taylor Cronauer, MS (University of Pittsburgh)">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold has-text-centered mt-3">Taylor Cronauer, MS<br>(University of Pittsburgh)</p>
+                </div>
+            </div>
+        </div>
+
+
+
+        <hr class="section-divider dashed">
+        <!-- Webmaster -->
+        <div class="team-subsection mt-6">
+            <h3 class="subtitle has-text-centered"><strong>Webmaster</strong></h3>
+            <div class="columns  is-mobile is-multiline is-centered">
+                <!-- Team Member 1 -->
+                <div class="column is-narrow ">
+                    <div class="circle-avatar-container">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="photos/Guest%20Speakers/Farnaz.png"
+                                 alt="Farnaz Rezvani, MSc (IEEE Member)">
+                        </figure>
+                    </div>
+                    <p class="has-text-weight-semibold has-text-centered mt-3">Farnaz Rezvani, MSc<br>(IEEE Member)</p>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</section>
+
+</body>
+</html>
+
+
+
+<hr class="section-divider dashed">
+<section id="sponsors" class="section">
+  <div class="container has-text-centered">
+
+    <!-- Organizers -->
+    <h2 class="title is-4 mt-6">Organizers</h2>
+    
+    <div class="columns is-centered is-multiline is-variable is-4 mt-4">
+
+
+    
+      <!-- SHRS -->
+      <div class="column is-3-desktop is-6-tablet is-12-mobile has-text-centered">
+        <a href="https://www.shrs.pitt.edu/" target="_blank">
+          <img src="photos/Sponsors/SHRS_1.png" style="max-height: 70px;">
+          <p class="mt-2 has-text-weight-semibold">
+            Pitt School of Health and Rehabilitation Sciences
+          </p>
+        </a>
+      </div>
+
+
+        
+      <!-- CPACE -->
+      <div class="column is-3-desktop is-6-tablet is-12-mobile has-text-centered">
+        <a href="https://www.path.pitt.edu/divisions/computational-pathology-informatics/computational-pathology-ai-center-excellence" target="_blank">
+          <img src="photos/Sponsors/cpace.png" style="max-height: 80px;">
+          <p class="mt-2 has-text-weight-semibold">
+            Computational Pathology & AI<br>
+            Center of Excellence (CPACE)
+          </p>
+        </a>
+      </div>
+    
+
+      <!-- Leidos -->
+      <div class="column is-3-desktop is-6-tablet is-12-mobile has-text-centered">
+        <a href="https://www.leidos.com/" target="_blank">
+          <img src="photos/Sponsors/Leidos-logo.png" style="max-height: 90px;">
+          <p class="mt-2 has-text-weight-semibold">
+            Leidos<br>
+            
+          </p>
+        </a>
+      </div>
+
+
+
+        
+      <!-- Pitt HexAI -->
+      <div class="column is-3-desktop is-6-tablet is-12-mobile has-text-centered">
+        <a href="https://pitthexai.github.io/index.html" target="_blank">
+          <img src="photos/Pitthexai_logo.png" style="max-height: 90px;">
+          <p class="mt-2 has-text-weight-semibold">
+            Pitt Health + Explainable AI<br>
+            (Pitt HexAI) Research Laboratory
+          </p>
+        </a>
+      </div>
+    
+    </div>
+
+
+    <hr class="section-divider dashed">  
+    <!-- Sponsors -->
+    <h2 class="title is-4 mt-6">Sponsors</h2>
+
+    <div class="columns is-centered is-multiline is-variable is-5 mt-4">
+
+      <!-- IEEE -->
+      <div class="column is-narrow">
+        <a href="https://webinabox.vtools.ieee.org/wibp_home/index/R20037" target="_blank">
+          <img src="photos/Sponsors/IEEE.png" style="max-height: 80px;">
+          <p class="mt-2 has-text-weight-semibold">
+            IEEE Computer Society
+          </p>
+        </a>
+      </div>
+
+
+
+        
+      <!-- Pittsburgh Technology Council -->
+        <!--
+      <div class="column is-narrow">
+        <a href="https://www.pghtech.org/" target="_blank">
+          <img src="photos/Sponsors/Council.png" style="max-height: 80px;">
+          <p class="mt-2 has-text-weight-semibold">
+            Pittsburgh Technology Council
+          </p>
+        </a>
+      </div> -->
+
+
+
+
+
+        
+
+      <!-- Logo Cabin Fence -->
+      <div class="column is-narrow">
+        <a href="https://logcabinfence.com/" target="_blank">
+          <img src="photos/Sponsors/Log_Cabin_Fence.png" style="max-height: 80px;">
+          <p class="mt-2 has-text-weight-semibold">
+            Log Cabin Fence
+          </p>
+        </a>
+      </div>
+
+
+    <!-- Logo Humanitarian AI -->
+      <div class="column is-narrow">
+        <a href="https://humanitarianai.org/" target="_blank">
+          <img src="photos/Sponsors/HAIToday_icon.png" style="max-height: 80px;">
+          <p class="mt-2 has-text-weight-semibold">
+            Humanitarian AI
+          </p>
+        </a>
+      </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ===================== 2025 ===================== -->
+
+<div class="team-subsection mt-6">
+  <h2 class="title has-text-centered">
+    <span class="year-btn" onclick="toggle2025(this)">
+      <span class="arrow">▶</span> 2025
+    </span>
+  </h2>
+
+  <!-- Everything that should collapse goes inside this div -->
+  <div id="content2025" class="year-content">
+
+    <!-- Instructors -->
+    <h3 class="subtitle has-text-centered"><strong>Instructors</strong></h3>
+    <div class="columns is-mobile is-multiline is-centered">
+      <div class="column is-narrow">
+        <div class="circle-avatar-container">
+          <figure class="image is-128x128">
+            <img class="is-rounded" src="photos/Instructors/Ahmad%20P%20Tafti.jpg" alt="Ahmad P. Tafti, PhD, FAMIA">
+          </figure>
+        </div>
+        <p class="has-text-weight-semibold mt-3">Ahmad P. Tafti, PhD, FAMIA</p>
+      </div>
+
+      <div class="column is-narrow">
+        <div class="circle-avatar-container">
+          <figure class="image is-128x128">
+            <img class="is-rounded" src="photos/Instructors/Nickolas%20Littlefield.jpg" alt="Nickolas Littlefield, MS">
+          </figure>
+        </div>
+        <p class="has-text-weight-semibold mt-3">Nickolas Littlefield, MS</p>
+      </div>
+
+      <div class="column is-narrow">
+        <div class="circle-avatar-container">
+          <figure class="image is-128x128">
+            <img class="is-rounded" src="photos/Instructors/Fengyi%20Gao.jpg" alt="Fengyi Gao, MS">
+          </figure>
+        </div>
+        <p class="has-text-weight-semibold mt-3">Fengyi Gao, MS</p>
+      </div>
+    </div>
+
+    <!-- Guest Speakers -->
+    <div class="team-subsection mt-6">
+      <h3 class="subtitle has-text-centered"><strong>Guest Speakers</strong></h3>
+      <div class="columns is-mobile is-multiline is-centered">
+
+        <div class="column is-narrow">
+          <div class="circle-avatar-container">
+            <figure class="image is-128x128">
+              <img class="is-rounded" src="photos/Guest%20Speakers/Mahdieh%20Poostchi.jpeg" alt="Mahdieh Poostchi, PhD (Microsoft)">
+            </figure>
+          </div>
+          <p class="has-text-weight-semibold has-text-centered mt-3">Mahdieh Poostchi, PhD<br>(Microsoft)</p>
+        </div>
+
+        <div class="column is-narrow">
+          <div class="circle-avatar-container">
+            <figure class="image is-128x128">
+              <img class="is-rounded" src="photos/Guest%20Speakers/Jamie%20Gramz.jpg" alt="Jamie Gramz (Siemens Healthineers)">
+            </figure>
+          </div>
+          <p class="has-text-weight-semibold has-text-centered mt-3">Jamie Gramz<br>(Siemens Healthineers)</p>
+        </div>
+
+        <div class="column is-narrow">
+          <div class="circle-avatar-container">
+            <figure class="image is-128x128">
+              <img class="is-rounded" src="photos/Guest%20Speakers/Yanshan%20Wang.jpg" alt="Yanshan Wang, PhD, FAMIA (University of Pittsburgh)">
+            </figure>
+          </div>
+          <p class="has-text-weight-semibold has-text-centered mt-3">Yanshan Wang, PhD, FAMIA<br>(University of Pittsburgh)</p>
+        </div>
+
+        <div class="column is-narrow">
+          <div class="circle-avatar-container">
+            <figure class="image is-128x128">
+              <img class="is-rounded" src="photos/Guest%20Speakers/Arezou%20Farzaneh.jpg" alt="Arezou Farzaneh, MS (University of Pittsburgh)">
+            </figure>
+          </div>
+          <p class="has-text-weight-semibold has-text-centered mt-3">Arezou Farzaneh, MS<br>(University of Pittsburgh)</p>
+        </div>
+
+        <div class="column is-narrow">
+          <div class="circle-avatar-container">
+            <figure class="image is-128x128">
+              <img class="is-rounded" src="photos/Guest%20Speakers/Lindsey%20Seigh.JPG" alt="Lindsey Seigh, BS, M.Ed. (University of Pittsburgh)">
+            </figure>
+          </div>
+          <p class="has-text-weight-semibold has-text-centered mt-3">Lindsey Seigh, BS, M.Ed.<br>(University of Pittsburgh)</p>
+        </div>
+
+        <div class="column is-narrow">
+          <div class="circle-avatar-container">
+            <figure class="image is-128x128">
+              <img class="is-rounded" src="photos/Guest%20Speakers/Matthew%20Hanna.jpg" alt="Matthew Hanna, MD (University of Pittsburgh)">
+            </figure>
+          </div>
+          <p class="has-text-weight-semibold has-text-centered mt-3">Matthew Hanna, MD<br>(University of Pittsburgh)</p>
+        </div>
+
+        <div class="column is-narrow">
+          <div class="circle-avatar-container">
+            <figure class="image is-128x128">
+              <img class="is-rounded" src="photos/Guest%20Speakers/rose.png" alt="Rose Olson, DC, M.Ed (University of Pittsburgh)">
+            </figure>
+          </div>
+          <p class="has-text-weight-semibold has-text-centered mt-3">Rose Olson, DC, M.Ed<br>(University of Pittsburgh)</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Career Development -->
+    <div class="team-subsection mt-6">
+      <h3 class="subtitle has-text-centered"><strong>Career Development</strong></h3>
+      <div class="columns is-mobile is-multiline is-centered">
+        <div class="column is-narrow">
+          <div class="circle-avatar-container">
+            <figure class="image is-128x128">
+              <img class="is-rounded" src="photos/Career%20Development/Taylor%20Cronauer.jpg" alt="Taylor Cronauer, MS (University of Pittsburgh)">
+            </figure>
+          </div>
+          <p class="has-text-weight-semibold has-text-centered mt-3">Taylor Cronauer, MS<br>(University of Pittsburgh)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sponsors (inside the collapsible 2025 box) -->
+    <section id="sponsors" class="section">
+      <div class="container has-text-centered">
+
+        <!-- Organizers -->
+        <h2 class="title is-4 mt-6">Organizers</h2>
+
+        <div class="columns is-centered is-multiline is-variable is-4 mt-4">
+
+          <div class="column is-4-desktop is-6-tablet is-12-mobile has-text-centered">
+            <a href="https://www.path.pitt.edu/divisions/computational-pathology-informatics/computational-pathology-ai-center-excellence" target="_blank">
+              <img src="photos/Sponsors/cpace.png" style="max-height: 80px;">
+              <p class="mt-2 has-text-weight-semibold">
+                Computational Pathology & AI<br>
+                Center of Excellence (CPACE)
+              </p>
+            </a>
+          </div>
+
+          <div class="column is-4-desktop is-6-tablet is-12-mobile has-text-centered">
+            <a href="https://www.shrs.pitt.edu/" target="_blank">
+              <img src="photos/Sponsors/SHRS_1.png" style="max-height: 70px;">
+              <p class="mt-2 has-text-weight-semibold">
+                Pitt School of Health and Rehabilitation Sciences
+              </p>
+            </a>
+          </div>
+
+          <div class="column is-4-desktop is-6-tablet is-12-mobile has-text-centered">
+            <a href="https://pitthexai.github.io/index.html" target="_blank">
+              <img src="photos/Pitthexai_logo.png" style="max-height: 90px;">
+              <p class="mt-2 has-text-weight-semibold">
+                Pitt Health + Explainable AI<br>
+                (Pitt HexAI) Research Laboratory
+              </p>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Sponsors -->
+        <h2 class="title is-4 mt-6">Sponsors</h2>
+
+        <div class="columns is-centered is-multiline is-variable is-5 mt-4">
+
+          <div class="column is-narrow">
+            <a href="https://webinabox.vtools.ieee.org/wibp_home/index/R20037" target="_blank">
+              <img src="photos/Sponsors/IEEE.png" style="max-height: 80px;">
+              <p class="mt-2 has-text-weight-semibold">IEEE Computer Society</p>
+            </a>
+          </div>
+
+          <div class="column is-narrow">
+            <a href="https://www.pghtech.org/" target="_blank">
+              <img src="photos/Sponsors/Council.png" style="max-height: 80px;">
+              <p class="mt-2 has-text-weight-semibold">Pittsburgh Technology Council</p>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </div> <!-- /#content2025 -->
+
+</div> <!-- /.team-subsection -->
+
+<script>
+  function toggle2025(el) {
+    const box = document.getElementById("content2025");
+    const arrow = el.querySelector(".arrow");
+
+    if (box.classList.contains("open")) {
+      box.classList.remove("open");
+      arrow.textContent = "▶";
+    } else {
+      box.classList.add("open");
+      arrow.textContent = "▼";
+    }
+  }
+</script>
+
+<!-- =================== /2025 (Collapsible) + Sponsors =================== -->
