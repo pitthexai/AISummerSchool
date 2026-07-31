@@ -167,7 +167,7 @@ body.nav-open .scrim{opacity:1;visibility:visible}
 /* ════ HERO ════ */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:120px clamp(22px,5vw,72px) 90px;overflow:hidden;color:#fff}
 .hero .skyline{position:absolute;inset:0;background:url("photos%20and%20videos/university-of-pittsburgh-cloudy-skyline-dol98832g1ht6q32.jpg") center/cover;opacity:.24;filter:saturate(1.1);animation:kenburns 26s ease-in-out infinite;will-change:transform}
-.hero .veil{position:absolute;inset:0;background:linear-gradient(115deg,rgba(0,18,51,.92),rgba(0,38,119,.78) 45%,rgba(0,77,102,.7))}
+.hero .veil{position:absolute;inset:0;background:linear-gradient(115deg,rgba(0,18,51,.84),rgba(0,38,119,.70) 45%,rgba(0,77,102,.62))}
 .hero .glow{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none}
 .hero .glow.g1{width:480px;height:480px;background:rgba(26,76,204,.5);top:-120px;right:-80px}
 .hero .glow.g2{width:420px;height:420px;background:rgba(242,169,0,.18);bottom:-120px;left:10%}
@@ -287,8 +287,9 @@ body.nav-open .scrim{opacity:1;visibility:visible}
 .team-group .gh h3{font-size:24px;color:var(--primary)}
 .team-group .gh .line{flex:1;height:1px;background:linear-gradient(90deg,var(--outline-variant),transparent)}
 .team-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:22px}
-.member{position:relative;flex:0 0 200px;width:200px;border-radius:20px;overflow:hidden;aspect-ratio:3/4;cursor:pointer;background:linear-gradient(135deg,#dbe6fb,#c3d4f2);box-shadow:0 10px 28px -10px rgba(0,18,51,.4),inset 0 1px 0 rgba(255,255,255,.6)}
-@media (max-width:480px){.member{flex:0 0 46%;width:46%}}
+.instructor-faculty{margin-bottom:28px}
+.member{position:relative;flex:0 0 188px;width:188px;border-radius:50%;overflow:hidden;aspect-ratio:1;cursor:pointer;background:linear-gradient(135deg,#dbe6fb,#c3d4f2);border:3px solid rgba(255,255,255,.9);box-shadow:0 10px 28px -10px rgba(0,18,51,.38),inset 0 1px 0 rgba(255,255,255,.65)}
+@media (max-width:480px){.member{flex:0 0 44vw;width:44vw;max-width:168px}}
 /* team section: faint, slowly moving gradient background */
 #team{position:relative;overflow:hidden}
 #team .wrap{position:relative;z-index:1}
@@ -313,7 +314,7 @@ body.nav-open .scrim{opacity:1;visibility:visible}
 .member .label .af{font-size:11.5px;color:rgba(255,255,255,.8);margin-top:2px}
 .member .minfo{position:absolute;inset:0;z-index:3;padding:20px 18px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;opacity:0;transition:opacity .35s;background:linear-gradient(160deg,rgba(0,31,84,.72),rgba(0,12,40,.92));backdrop-filter:blur(6px) saturate(140%);-webkit-backdrop-filter:blur(6px) saturate(140%)}
 .member:hover .minfo{opacity:1}
-.member .minfo::before{content:"";position:absolute;inset:11px;border:1px solid rgba(255,255,255,.42);border-radius:12px;pointer-events:none}
+.member .minfo::before{content:"";position:absolute;inset:11px;border:1px solid rgba(255,255,255,.42);border-radius:50%;pointer-events:none}
 .member .minfo .role{font-size:11px;font-weight:700;color:var(--secondary-bright);margin-bottom:5px}
 .member .minfo .bn{font-family:var(--font-display);font-size:17px;line-height:1.15;margin-bottom:3px}
 .member .minfo .ba{font-size:11.5px;color:var(--inverse-primary);margin-bottom:9px}
@@ -496,7 +497,7 @@ body.nav-open .scrim{opacity:1;visibility:visible}
   <div class="wrap">
     <div class="about-grid flip">
       <div class="about-media reveal-l">
-        <div class="pic"><img src="photos%20and%20videos/Students%20listening%20to%20lecture%20(2025).jpg" alt="Students at the AI Summer School, 2025" loading="lazy" decoding="async"></div>
+        <div class="pic"><img src="photos%20and%20videos/1749519856631.jpg" alt="Dr. Ahmad Tafti teaching AI Summer School students" loading="lazy" decoding="async"></div>
         <div class="chip c1 glass sheen"><small>Running since</small><b>2023</b></div>
         <div class="chip c2 glass sheen"><small>Tuition</small><b>Free</b></div>
       </div>
@@ -568,7 +569,7 @@ body.nav-open .scrim{opacity:1;visibility:visible}
 
 <section class="section img-bg" id="program">
   <div class="imgbg" style="background-image:url('photos%20and%20videos/1749519856631.jpg')"></div>
-  <div class="imgbg-ov" style="background:linear-gradient(125deg,rgba(0,12,40,.93),rgba(0,31,84,.84) 50%,rgba(0,38,119,.78))"></div>
+  <div class="imgbg-ov" style="background:linear-gradient(125deg,rgba(0,12,40,.85),rgba(0,31,84,.74) 50%,rgba(0,38,119,.68))"></div>
   <div class="wrap">
     <span class="eyebrow eyebrow-light reveal">One week, start to finish</span>
     <h2 class="title reveal d1" style="color:#fff">The Program</h2>
@@ -639,7 +640,7 @@ body.nav-open .scrim{opacity:1;visibility:visible}
 
 <section class="section img-bg" id="testimonials">
   <div class="imgbg" style="background-image:url('photos%20and%20videos/1749519856667.jpg')"></div>
-  <div class="imgbg-ov" style="background:linear-gradient(135deg,rgba(0,12,40,.92),rgba(0,31,84,.82) 55%,rgba(0,77,102,.74))"></div>
+  <div class="imgbg-ov" style="background:linear-gradient(135deg,rgba(0,12,40,.84),rgba(0,31,84,.72) 55%,rgba(0,77,102,.64))"></div>
   <div class="wrap ta-right">
     <span class="eyebrow eyebrow-light right reveal">In their own words</span>
     <h2 class="title reveal d1" style="color:#fff">Students' Testimonials</h2>
@@ -687,7 +688,7 @@ body.nav-open .scrim{opacity:1;visibility:visible}
 
 <section class="section img-bg cv" id="statistics">
   <div class="imgbg" style="background-image:url('photos%20and%20videos/1749519857001.jpg')"></div>
-  <div class="imgbg-ov bg-aurora" style="opacity:.93"></div>
+  <div class="imgbg-ov bg-aurora" style="opacity:.82"></div>
   <div class="wrap">
     <span class="eyebrow eyebrow-light reveal">Impact</span>
     <h2 class="title reveal d1" style="color:#fff">By the Numbers</h2>
@@ -866,15 +867,20 @@ function memberHTML(m){
     +'<div class="ba">'+esc(m.af||"")+'</div><div class="bt">'+bioBody+'</div>'+link+'</div></div>';
 }
 function teamImgFail(img){var d=document.createElement("div");d.className="fallback";d.textContent=img.dataset.init||"?";img.parentNode.insertBefore(d,img);img.remove();}
-function groupHTML(t,a){
+function groupHTML(t,a,isCurrent){
   var collapsible=/speaker/i.test(t);
   var grid='<div class="team-grid'+(collapsible?' cbody':'')+'">'+a.map(memberHTML).join("")+'</div>';
+  if(isCurrent&&t==="Instructors"){
+    return '<div class="team-group reveal"><div class="gh"><h3>'+t+'</h3><span class="line"></span></div>'
+      +'<div class="team-grid instructor-faculty">'+a.slice(0,2).map(memberHTML).join("")+'</div>'
+      +'<div class="team-grid instructor-students">'+a.slice(2).map(memberHTML).join("")+'</div></div>';
+  }
   if(collapsible){
     return '<div class="team-group reveal"><div class="gh gh-toggle" data-gtoggle><h3>'+t+' <span class="gcount">('+a.length+')</span></h3><span class="line"></span><span class="garw">&#9654;</span></div>'+grid+'</div>';
   }
   return '<div class="team-group reveal"><div class="gh"><h3>'+t+'</h3><span class="line"></span></div>'+grid+'</div>';
 }
-function renderTeam(root,data){document.getElementById(root).innerHTML=Object.keys(data).map(function(k){return groupHTML(k,data[k]);}).join("");}
+function renderTeam(root,data){var isCurrent=root==="teamRoot";document.getElementById(root).innerHTML=Object.keys(data).map(function(k){return groupHTML(k,data[k],isCurrent);}).join("");}
 renderTeam("teamRoot",team2026);
 renderTeam("team2025Root",team2025);
 
