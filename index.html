@@ -773,49 +773,40 @@
 
 <style>
 #impact-2026 {
-  padding: 55px 0;
-  background: #f8fbff;
+  background: #ffffff;
+  padding: 48px 0;
 }
 
-#impact-2026 .impact-wrap {
-  max-width: 1100px;
-  margin: auto;
-  padding: 0 20px;
+#impact-2026 .container {
+  width: 100%;
+  max-width: 1344px;
 }
 
-#impact-2026 h2 {
-  font-size: 30px;
-  font-weight: 750;
-  color: #173353;
-  margin-bottom: 8px;
-}
-
-#impact-2026 .impact-subtitle {
-  font-size: 17px;
-  color: #52677c;
-  margin-bottom: 30px;
+#impact-2026 .impact-title {
+  color: #222222;
+  text-align: left;
+  margin-bottom: 28px;
 }
 
 #impact-2026 .impact-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 26px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
 }
 
 #impact-2026 .impact-card {
   margin: 0;
   background: #ffffff;
   border: 1px solid #e4ebf3;
-  border-radius: 18px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(25,49,78,0.07);
-  transition: transform 0.25s ease,
-              box-shadow 0.25s ease;
+  box-shadow: 0 6px 20px rgba(25, 49, 78, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 #impact-2026 .impact-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 14px 32px rgba(25,49,78,0.13);
+  box-shadow: 0 12px 28px rgba(25, 49, 78, 0.14);
 }
 
 #impact-2026 .impact-card img {
@@ -824,51 +815,47 @@
   height: auto;
 }
 
-#impact-2026 figcaption {
-  padding: 12px 22px 24px;
+#impact-2026 .impact-card figcaption {
+  padding: 12px 16px 20px;
   color: #42536a;
-  font-size: 14px;
-  line-height: 1.7;
+  font-size: 13px;
+  line-height: 1.6;
   text-align: left;
 }
 
 #impact-2026 .impact-note {
-  margin-top: 25px;
-  font-size: 12px;
+  margin-top: 24px;
   color: #61758c;
+  font-size: 12px;
   line-height: 1.7;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1024px) {
+  #impact-2026 .impact-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
   #impact-2026 .impact-grid {
     grid-template-columns: 1fr;
-  }
-
-  #impact-2026 h2 {
-    font-size: 25px;
   }
 }
 </style>
 
 <section id="impact-2026" class="section">
-  <div class="impact-wrap">
+  <div class="container">
 
-    <!-- Main Title -->
-    <h2 class="title">
-      2026 AI Summer School — Learning, Growth &amp; Impact
+    <h2 class="title impact-title">
+      2026 AI Summer School - Learning, Growth &amp; Impact
     </h2>
-
-    <!-- Subtitle -->
-    <p class="impact-subtitle">
-      Empowering the Next Generation of AI Innovators
-    </p>
 
     <div class="impact-grid">
 
-      <!-- Chart 1: Learning Impact -->
+      <!-- Chart 1 -->
       <figure class="impact-card">
         <img
-          src="./photos/Statistics/summer2026_new_1_learning.png"
+          src="./photos/Statistics/AI_Summer_School_2026_learning_clean.png"
           alt="Learning Impact Across Six Domains"
           loading="lazy">
 
@@ -880,10 +867,10 @@
         </figcaption>
       </figure>
 
-      <!-- Chart 2: Before and After -->
+      <!-- Chart 2 -->
       <figure class="impact-card">
         <img
-          src="./photos/Statistics/summer2026_new_2_before_after.png"
+          src="./photos/Statistics/AI_Summer_School_2026_confidence_clean.png"
           alt="AI Confidence Before and After"
           loading="lazy">
 
@@ -892,51 +879,47 @@
           positive responses to related AI self-efficacy
           questions were <strong>75.0% before</strong>
           and <strong>83.9% after</strong> the program.
-          The questions were not identical; this is a
-          descriptive comparison, not a validated
-          improvement score.
+          The questions were not identical, so this
+          comparison is descriptive.
         </figcaption>
       </figure>
 
-      <!-- Chart 3: Student Satisfaction -->
+      <!-- Chart 3 -->
       <figure class="impact-card">
         <img
-          src="./photos/Statistics/summer2026_new_3_satisfaction.png"
+          src="./photos/Statistics/AI_Summer_School_2026_satisfaction_clean.png"
           alt="Student Satisfaction and Recommendation"
           loading="lazy">
 
         <figcaption>
           Among <strong>29 post-course respondents</strong>,
-          <strong>96.6%</strong> would recommend the
-          program and <strong>93.1%</strong> reported
-          overall satisfaction.
+          <strong>96.6%</strong> would recommend the program,
+          and <strong>93.1%</strong> reported overall satisfaction.
         </figcaption>
       </figure>
 
-      <!-- Chart 4: Career Inspiration -->
+      <!-- Chart 4 -->
       <figure class="impact-card">
         <img
-          src="./photos/Statistics/summer2026_new_4_career.png"
+          src="./photos/Statistics/AI_Summer_School_2026_future_ai_clean.png"
           alt="Career and Educational Inspiration"
           loading="lazy">
 
         <figcaption>
-          Students reported increased interest in
+          Students expressed strong interest in
           <strong>AI research (89.7%)</strong>,
           <strong>AI-related education (86.2%)</strong>,
-          and <strong>AI career opportunities (82.8%)</strong>.
+          and <strong>AI careers (82.8%)</strong>.
         </figcaption>
       </figure>
 
     </div>
 
-    <!-- Survey Methodology Note -->
     <p class="impact-note">
-      <strong>Source:</strong> 2026 student pre-course
-      and post-course surveys. Percentages represent
-      Agree/Strongly Agree responses. Pre/post items
-      are related but not identical. Results are
-      descriptive and self-reported, rather than
+      <strong>Source:</strong> 2026 student pre-course and
+      post-course surveys. Percentages represent positive
+      self-reported responses. Pre/post questions were related
+      but not identical. Results are descriptive rather than
       objective performance scores.
     </p>
 
