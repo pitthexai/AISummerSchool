@@ -772,73 +772,68 @@
 <!-- ===== AI Summer School 2026: Learning, Growth & Impact ===== -->
 
 <style>
-#impact-2026 {
+.impact-section {
   background: #ffffff;
-  padding: 48px 0;
+  padding: 40px 0;
 }
 
-#impact-2026 .container {
-  width: 100%;
-  max-width: 1344px;
+.impact-section .container {
+  max-width: 1152px;
+  margin: 0 auto;
 }
 
-#impact-2026 .impact-title {
+.impact-section h2 {
   color: #222222;
   text-align: left;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
-#impact-2026 .impact-grid {
+.impact-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 35px 30px;
 }
 
-#impact-2026 .impact-card {
+.impact-card {
   margin: 0;
-  background: #ffffff;
-  border: 1px solid #e4ebf3;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 6px 20px rgba(25, 49, 78, 0.08);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  min-width: 0;
 }
 
-#impact-2026 .impact-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 28px rgba(25, 49, 78, 0.14);
-}
-
-#impact-2026 .impact-card img {
+.impact-card img {
   display: block;
   width: 100%;
   height: auto;
+  object-fit: contain;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
 }
 
-#impact-2026 .impact-card figcaption {
-  padding: 12px 16px 20px;
-  color: #42536a;
-  font-size: 13px;
-  line-height: 1.6;
+.impact-card figcaption {
+  margin-top: 14px;
+  padding: 0;
+  color: #222222;
+  font-size: 15px;
+  line-height: 1.7;
   text-align: left;
 }
 
-#impact-2026 .impact-note {
-  margin-top: 24px;
-  color: #61758c;
-  font-size: 12px;
-  line-height: 1.7;
+.impact-note {
+  margin-top: 28px;
+  color: #444444;
+  font-size: 13px;
+  line-height: 1.6;
 }
 
-@media (max-width: 1024px) {
-  #impact-2026 .impact-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 600px) {
-  #impact-2026 .impact-grid {
+@media (max-width: 768px) {
+  .impact-grid {
     grid-template-columns: 1fr;
+    gap: 30px;
   }
 }
 </style>
@@ -875,9 +870,11 @@
           loading="lazy">
 
         <figcaption>
-          For <strong>Among 29 matched participants, positive responses to AI-related confidence questions
-              increased from 75.0% before the program to 83.9% afterward, highlighting a positive shift 
-              in students' self-reported confidence.
+          Among <strong>29 matched participants</strong>,
+          positive responses to AI-related confidence questions
+          increased from <strong>75.0% before</strong> the program
+          to <strong>83.9% afterward</strong>, highlighting a
+          positive shift in students' self-reported confidence.
         </figcaption>
       </figure>
 
@@ -911,6 +908,7 @@
       </figure>
 
     </div>
+
 
     <p class="impact-note">
       <strong>Source:</strong> AI Summer School pre- and post-course student surveys (2026). 
